@@ -62,7 +62,7 @@ class _InformativePage extends State<InformativePage> {
             ),
             
             Padding(
-                padding: const EdgeInsets.only(left: 30, right: 20, top: 5),
+                padding: const EdgeInsets.only(left: 30, right: 20, top: 5,bottom: 0),
                 child: InkWell(
                   child: Container(
                     height: 60,
@@ -80,7 +80,7 @@ class _InformativePage extends State<InformativePage> {
                     ),
                     child: const Center(
                       child: Text(
-                        'Edit User Details',
+                        'Articles',
                         style: TextStyle(fontSize: 40, color: Colors.white),
                       ),
                     ),
@@ -90,11 +90,124 @@ class _InformativePage extends State<InformativePage> {
                     }
                 )
                 ),
-          ]
+                Padding(
+                padding: const EdgeInsets.only(top:20,left: 30, right: 20, bottom: 20),
+                child: InkWell(
+                  child: Container(
+                    height: 60,
+                    // width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(60),
+                      gradient: const LinearGradient(
+                        colors: <Color>[
+                          Color(0xff0ED1C2),
+                          Color(0xff38EF7D),
+                          // Color(0xff0ED1C2),
+                          // Color(0xff38EF7D),
+                        ],
+                      ),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Get Involved!',
+                        style: TextStyle(fontSize: 40, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  onTap: ()async {
+                    _launchURL2();
+                    }
+                )
         ),
-    ));
-  }
-}
+        Padding(
+                padding: const EdgeInsets.only(top: 0,left: 30, right: 20),
+                child: InkWell(
+                  child: Container(
+                    height: 60,
+                    // width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(60),
+                      gradient: const LinearGradient(
+                        colors: <Color>[
+                          Color(0xff0ED1C2),
+                          Color(0xff38EF7D),
+                          // Color(0xff0ED1C2),
+                          // Color(0xff38EF7D),
+                        ],
+                      ),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Videos',
+                        style: TextStyle(fontSize: 40, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  onTap: ()async {
+                    _launchURL2();
+                    }
+                )
+        ),
+        Padding(
+                padding: const EdgeInsets.only(top: 25,bottom:20,left: 30, right: 20),
+                child: InkWell(
+                  child: Container(
+                    height: 60,
+                    // width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(60),
+                      gradient: const LinearGradient(
+                        colors: <Color>[
+                          Color(0xff0ED1C2),
+                          Color(0xff38EF7D),
+                          // Color(0xff0ED1C2),
+                          // Color(0xff38EF7D),
+                        ],
+                      ),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Connect',
+                        style: TextStyle(fontSize: 40, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  onTap: ()async {
+                    _launchURL2();
+                    }
+                )
+        ),
+        Padding(
+                padding: const EdgeInsets.only(bottom:20,left: 30, right: 20),
+                child: InkWell(
+                  child: Container(
+                    height: 60,
+                    // width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(60),
+                      gradient: const LinearGradient(
+                        colors: <Color>[
+                          Color(0xff0ED1C2),
+                          Color(0xff38EF7D),
+                          // Color(0xff0ED1C2),
+                          // Color(0xff38EF7D),
+                        ],
+                      ),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Share Feedback',
+                        style: TextStyle(fontSize: 40, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  onTap: ()async {
+                    _launchURL2();
+                    }
+                )
+        ),
+    ])));
+    }
 _launchURL() async {
   const url = 'https://homeliving.co.ke';
   if (await launchUrlString(url)) {
@@ -104,3 +217,14 @@ _launchURL() async {
   }
 }
 
+_launchURL2()async {
+  const url = 'https://jira.com';
+  if (await launchUrlString(url)) {
+    await launchUrlString(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+
+}
