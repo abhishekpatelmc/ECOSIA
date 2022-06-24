@@ -44,7 +44,8 @@ class _InformativePage extends State<InformativePage> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
+      body: 
+      SingleChildScrollView(
         child: Column(
           children: [
             Stack(
@@ -85,15 +86,21 @@ class _InformativePage extends State<InformativePage> {
                     ),
                   ),
                   onTap: ()async {
-                    const url = 'homeliving.co.ke';
-                    if (await canLaunchUrlString(url)){
-                      await launchUrlString(url);
+                    _launchURL();
                     }
-                  }
+                )
                 ),
-        )
-          ],
-    )));
+          ]
+        ),
+    ));
+  }
+}
+_launchURL() async {
+  const url = 'https://homeliving.co.ke';
+  if (await launchUrlString(url)) {
+    await launchUrlString(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
 
