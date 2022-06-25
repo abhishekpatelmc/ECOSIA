@@ -1,4 +1,4 @@
-package com.example.ecosia
+package com.appliedcomputing.ecosia
 
 import io.flutter.embedding.android.FlutterActivity
 
