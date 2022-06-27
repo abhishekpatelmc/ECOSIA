@@ -1,7 +1,10 @@
+import 'package:ecosia/models/user.dart';
 import 'package:ecosia/screens/wrapper.dart';
+import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   // ===========To Handel Error: Unhandled Exception: Binding has not yet been initialized.==============
@@ -19,8 +22,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Wrapper(),
+    return StreamProvider<UserModel?>.value(
+      value: AuthService().user,
+      initialData: null,
+      child: const MaterialApp(
+        home: Wrapper(),
+      ),
     );
   }
 }
