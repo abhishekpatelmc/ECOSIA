@@ -173,6 +173,9 @@
 //
 //
 
+
+// THis is to check the tutorial page is working
+
 import 'package:ecosia/Tutorial%20Pages/getstarted.dart';
 import 'package:ecosia/Tutorial%20Pages/tutorial2.dart';
 import 'package:flutter/material.dart';
