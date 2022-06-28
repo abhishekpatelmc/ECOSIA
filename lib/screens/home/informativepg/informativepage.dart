@@ -209,7 +209,7 @@ class _InformativePage extends State<InformativePage> {
     ])));
     }
 _launchURL() async {
-  const url = 'https://homeliving.co.ke';
+  const url = 'https://www.google.com';
   if (await launchUrlString(url)) {
     await launchUrlString(url);
   } else {
