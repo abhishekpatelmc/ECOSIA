@@ -172,8 +172,9 @@
 //
 //
 //
-import 'package:ecosia/getstarted.dart';
-import 'package:ecosia/tutorial2.dart';
+
+import 'package:ecosia/Tutorial%20Pages/getstarted.dart';
+import 'package:ecosia/Tutorial%20Pages/tutorial2.dart';
 import 'package:flutter/material.dart';
 
 class Tutorial3 extends StatefulWidget {

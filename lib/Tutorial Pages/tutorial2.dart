@@ -1,4 +1,4 @@
-import 'package:ecosia/tutorial3.dart';
+import 'package:ecosia/Tutorial%20Pages/tutorial3.dart';
 import 'package:flutter/material.dart';
 
 class Tutorial2 extends StatefulWidget {
