@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'User profile/UserProfile.dart';
 
 void main() {

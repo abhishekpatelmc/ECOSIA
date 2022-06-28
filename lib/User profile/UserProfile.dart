@@ -79,9 +79,9 @@ class _UserInfoState extends State<UserInfo> {
             ),
             const Center(
                 child: Text(
-              "User's name",
-              style: TextStyle(fontSize: 25, color: Colors.black),
-            )),
+                  "User's name",
+                  style: TextStyle(fontSize: 25, color: Colors.black),
+                )),
             const Card(
               margin: EdgeInsets.symmetric(vertical: 5,horizontal: 25),
               child: ListTile(
@@ -239,7 +239,7 @@ class _UserProfileState extends State<UserProfile> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsets.only(top: 60, left: 20, right: 20),
+                      const EdgeInsets.only(top: 60, left: 20, right: 20),
                       child: TextField(
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
@@ -256,7 +256,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsets.only(top: 15, left: 20, right: 20),
+                      const EdgeInsets.only(top: 15, left: 20, right: 20),
                       child: TextField(
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
@@ -273,7 +273,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsets.only(top: 15, left: 20, right: 20),
+                      const EdgeInsets.only(top: 15, left: 20, right: 20),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
@@ -307,7 +307,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     Padding(
                         padding:
-                            const EdgeInsets.only(top: 15, left: 20, right: 20),
+                        const EdgeInsets.only(top: 15, left: 20, right: 20),
                         child: TextField(
                             controller: enterDate,
                             readOnly: true,
@@ -345,7 +345,7 @@ class _UserProfileState extends State<UserProfile> {
                             })),
                     Padding(
                         padding:
-                            const EdgeInsets.only(top: 15, left: 20, right: 20),
+                        const EdgeInsets.only(top: 15, left: 20, right: 20),
                         child: InkWell(
                           child: Container(
                             height: 50,
@@ -373,7 +373,7 @@ class _UserProfileState extends State<UserProfile> {
                         )),
                     Padding(
                         padding:
-                            const EdgeInsets.only(top: 15, left: 20, right: 20,bottom: 15),
+                        const EdgeInsets.only(top: 15, left: 20, right: 20,bottom: 15),
                         child: InkWell(
                           child: Container(
                             height: 50,
