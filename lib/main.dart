@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 
 void main() {
@@ -110,6 +111,27 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+*/
+
+import 'package:ecosia/tutorial1.dart';
+import 'package:ecosia/tutorial2.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Tutorial1(),
     );
   }
 }
