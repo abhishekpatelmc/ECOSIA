@@ -11,7 +11,7 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // Create uesr object based on FirebaseUser
-  UserModel? _userFromFirebaseUser(User user) {
+  UserModel? _userFromFirebaseUser(User? user) {
     return user != null ? UserModel(uid: user.uid) : null;
   }
 
@@ -19,7 +19,8 @@ class AuthService {
   Stream<UserModel?> get user {
     return _auth
         .authStateChanges()
-        .map((User? user) => _userFromFirebaseUser(user!));
+        //.map((User? user) => _userFromFirebaseUser(user!));
+        .map(_userFromFirebaseUser);
   }
 
   // sign in anonmously
