@@ -2,19 +2,19 @@ import 'dart:async';
 import 'package:ecosia/SplashScreen/splashScreenTwo.dart';
 import 'package:flutter/material.dart';
 
-
-import '../main.dart';
-void main() { runApp(MyApp());}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SplashScreenOne(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
+//
+// import '../main.dart';
+// void main() { runApp(MyApp());}
+//
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: SplashScreenOne(),
+//       debugShowCheckedModeBanner: false,
+//     );
+//   }
+// }
 
 class SplashScreenOne extends StatefulWidget {
   @override
@@ -24,7 +24,7 @@ class SplashScreenState extends State<SplashScreenOne> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3),
+    Timer(const Duration(seconds: 3),
             ()=>Navigator.pushReplacement(context,
             MaterialPageRoute(builder:
                 (context) => SplashScreenTwo(),
@@ -46,24 +46,22 @@ class SplashScreenState extends State<SplashScreenOne> {
                 Container(
                   width: 270,
                   height: 270,
-                  decoration: BoxDecoration(
-                    color:const Color.fromRGBO(200, 236, 141,1),
+                  decoration: const BoxDecoration(
+                    color:Color.fromRGBO(200, 236, 141,1),
                     shape: BoxShape.circle,
                   ),
                 ),
-                Container(
-                  child: Text("ECOSIA",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w300,
-                      color: Color.fromRGBO(52,157,149, 0.8 ),
-                      letterSpacing: 5,
-                      fontFamily: 'Linden Hill',
-                      fontSize: 60,
-                      shadows: [
-                        Shadow(color: Colors.blueAccent, offset: Offset(2,1), blurRadius:10)
-                      ],),),
-                ),],
+                const Text("ECOSIA",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w300,
+                    color: Color.fromRGBO(52,157,149, 0.8 ),
+                    letterSpacing: 5,
+                    fontFamily: 'Linden Hill',
+                    fontSize: 60,
+                    shadows: [
+                      Shadow(color: Colors.blueAccent, offset: Offset(2,1), blurRadius:10)
+                    ],),),],
             )
 
         )

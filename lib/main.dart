@@ -1,5 +1,6 @@
+import 'package:ecosia/SplashScreen/splashScreen.dart';
+import 'package:ecosia/Userprofile/UserProfile.dart';
 import 'package:flutter/material.dart';
-import 'User profile/UserProfile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const UserInfo(),
+      home: SplashScreenOne(),
     );
   }
 }

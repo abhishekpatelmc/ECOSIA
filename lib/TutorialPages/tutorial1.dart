@@ -1,4 +1,5 @@
-import 'package:ecosia/Tutorial%20Pages/tutorial2.dart';
+// import 'package:ecosia/Tutorial%20Pages/tutorial2.dart';
+import 'package:ecosia/TutorialPages/tutorial2.dart';
 import 'package:flutter/material.dart';
 
 class Tutorial1 extends StatefulWidget {
@@ -26,7 +27,7 @@ class _Tutorial1State extends State<Tutorial1> {
                   fontSize: 40),textAlign: TextAlign.center,
             ),
             Row(
-              children: [
+              children: const [
                 Image(
                   image: AssetImage("assets/Picture9.png"),
                   height: 440,
