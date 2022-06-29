@@ -1,3 +1,4 @@
+import 'package:ecosia/screens/authenticate/register.dart';
 import 'package:ecosia/screens/authenticate/sign_in.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +16,18 @@ class Authenticate extends StatefulWidget {
 }
 
 class _AuthenticateState extends State<Authenticate> {
+  bool showSgnIn = true;
+// TO toggel between sign in and sign up
+  void toggelView() {
+    setState(() => showSgnIn = !showSgnIn);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const SignIn();
+    if (showSgnIn) {
+      return SignIn(toggelView: toggelView);
+    } else {
+      return Register(toggelView: toggelView);
+    }
   }
 }

@@ -1,20 +1,20 @@
-import 'package:ecosia/screens/authenticate/register.dart';
+import 'package:ecosia/screens/authenticate/sign_in.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   final Function toggelView;
-  SignIn({required this.toggelView});
+
+  Register({required this.toggelView});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _SignInState createState() => _SignInState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
 
-// Text field state
+  // Text field state
   String email = '';
   String password = '';
 
@@ -26,17 +26,17 @@ class _SignInState extends State<SignIn> {
         backgroundColor: Colors.green[300],
         elevation: 0.0,
         centerTitle: true,
-        title: const Text('Sign in to Ecosia'),
+        title: const Text('Sign up to Ecosia'),
         actions: [
           TextButton.icon(
             onPressed: () {
               widget.toggelView();
             },
-            icon: const Icon(Icons.person),
-            label: const Text('Sign up'),
+            icon: Icon(Icons.person),
+            label: Text('Sign in'),
             style: TextButton.styleFrom(
               primary: Colors.white,
-              // backgroundColor: Colors.teal,
+              //backgroundColor: Colors.teal,
               textStyle: const TextStyle(
                 fontSize: 14,
               ),
@@ -67,7 +67,7 @@ class _SignInState extends State<SignIn> {
             const SizedBox(height: 25.0),
             ElevatedButton(
               onPressed: () async {
-                print("Email:" + email);
+                print("Email: $email");
                 print("Password: $password");
               },
               style: ElevatedButton.styleFrom(
@@ -78,7 +78,7 @@ class _SignInState extends State<SignIn> {
                       letterSpacing: 1.5,
                       fontSize: 20,
                       fontWeight: FontWeight.w500)),
-              child: const Text('Sign in'),
+              child: const Text('Register'),
             ),
           ],
         )),

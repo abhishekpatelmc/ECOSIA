@@ -64,9 +64,9 @@ class AuthService {
     try {
       return await _auth.signOut();
     } catch (e) {
-      return null;
       // ignore: avoid_print
       print(e.toString());
+      return null;
     }
   }
 }

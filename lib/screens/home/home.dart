@@ -22,7 +22,8 @@ class Home extends StatelessWidget {
             label: const Text('Log out'),
             style: TextButton.styleFrom(
               primary: Colors.white,
-              backgroundColor: Colors.teal,
+              // backgroundColor: Colors.teal,
+              textStyle: const TextStyle(fontSize: 14),
             ),
           )
         ],
