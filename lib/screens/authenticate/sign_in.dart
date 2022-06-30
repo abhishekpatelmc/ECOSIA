@@ -13,10 +13,12 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
 
 // Text field state
   String email = '';
   String password = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -47,41 +49,62 @@ class _SignInState extends State<SignIn> {
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: Form(
+            key: _formKey,
             child: Column(
-          children: [
-            const SizedBox(height: 20.0),
-            //email address
-            TextFormField(
-              onChanged: (val) {
-                setState(() => email = val);
-              },
-            ),
-            const SizedBox(height: 20.0),
-            //password
-            TextFormField(
-              obscureText: true,
-              onChanged: (val) {
-                setState(() => password = val);
-              },
-            ),
-            const SizedBox(height: 25.0),
-            ElevatedButton(
-              onPressed: () async {
-                print("Email:" + email);
-                print("Password: $password");
-              },
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.green[600],
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-                  textStyle: const TextStyle(
-                      letterSpacing: 1.5,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500)),
-              child: const Text('Sign in'),
-            ),
-          ],
-        )),
+              children: [
+                const SizedBox(height: 20.0),
+                //email address
+                TextFormField(
+                  validator: (val) => val!.isEmpty ? 'Enter an email' : null,
+                  onChanged: (val) {
+                    setState(() => email = val);
+                  },
+                ),
+                const SizedBox(height: 20.0),
+                //password
+                TextFormField(
+                  validator: (val) => val!.length < 6
+                      ? 'Enter a password bigger than 6 '
+                      : null,
+                  obscureText: true,
+                  onChanged: (val) {
+                    setState(() => password = val);
+                  },
+                ),
+                const SizedBox(height: 25.0),
+                ElevatedButton(
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      dynamic result =
+                          await _auth.signInEmailPassword(email, password);
+                      if (result == null) {
+                        setState(() =>
+                            error = 'couldnt sign in with those credentials');
+                      }
+                      // print(email);
+                      // print(password);
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.green[600],
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 40, vertical: 10),
+                      textStyle: const TextStyle(
+                          letterSpacing: 1.5,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500)),
+                  child: const Text('Sign in'),
+                ),
+                const SizedBox(height: 14.0),
+                Text(
+                  error,
+                  style: const TextStyle(
+                    color: Colors.red,
+                    fontSize: 14.0,
+                  ),
+                ),
+              ],
+            )),
       ),
     );
   }
