@@ -55,6 +55,11 @@ class _RegisterState extends State<Register> {
                 const SizedBox(height: 20.0),
                 //email address
                 TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: 'Email',
+                    fillColor: Colors.white,
+                    filled: true,
+                  ),
                   validator: (val) => val!.isEmpty ? 'Enter an email' : null,
                   onChanged: (val) {
                     setState(() => email = val);
@@ -63,6 +68,11 @@ class _RegisterState extends State<Register> {
                 const SizedBox(height: 20.0),
                 //password
                 TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: 'Password',
+                    fillColor: Colors.white,
+                    filled: true,
+                  ),
                   obscureText: true,
                   validator: (val) => val!.length < 6
                       ? 'Enter a password bigger than 6 '
