@@ -28,6 +28,9 @@ class Home extends StatelessWidget {
           )
         ],
       ),
+      body: const Center(
+        child: Text('Home'),
+      ),
     );
   }
 }
