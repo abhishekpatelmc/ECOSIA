@@ -17,7 +17,46 @@ class _UserInfoState extends State<UserInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            const UserAccountsDrawerHeader(
+              accountName: null,
+              accountEmail: null,
+              decoration: BoxDecoration(
+                // image: DecorationImage(
+                //   image: ExactAssetImage('assets/images/drawerbg.jpg'),
+                //   fit: BoxFit.cover,
+                // ),
+                color: Colors.white,
+              ),
+              currentAccountPicture: CircleAvatar(
+                // backgroundImage: AssetImage(
+                //   'assets/images/girlicon.png',
+                // ),
+              ),
+            ),
+            ListTile(
+              tileColor: Colors.blueGrey,
+              leading: const Icon(
+                Icons.supervised_user_circle,
+                color: Colors.blueGrey,
+              ),
+              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UserInfo()));},
+              title: Text("User profile",style: TextStyle(color: Colors.white),),
+            ),
+            ListTile(
+              tileColor: Colors.blueGrey,
+              leading: const Icon(
+                Icons.supervised_user_circle,
+                color: Colors.blueGrey,
+              ),
+              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> InformativePage()));},
+              title: Text("Informative Page",style: TextStyle(color: Colors.white),),
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: const Text(""),
         // backgroundColor: ,
