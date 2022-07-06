@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:ecosia/SplashScreen/splashScreenTwo.dart';
 import 'package:flutter/material.dart';
 
+import '../TutorialPages/getstarted.dart';
+
 //
 // import '../main.dart';
 // void main() { runApp(MyApp());}
@@ -27,7 +29,7 @@ class SplashScreenState extends State<SplashScreenOne> {
     Timer(const Duration(seconds: 3),
             ()=>Navigator.pushReplacement(context,
             MaterialPageRoute(builder:
-                (context) => SplashScreenTwo(),
+                (context) => GetStarted(),
             )
         )
     );
@@ -57,7 +59,7 @@ class SplashScreenState extends State<SplashScreenOne> {
                     fontWeight: FontWeight.w300,
                     color: Color.fromRGBO(52,157,149, 0.8 ),
                     letterSpacing: 5,
-                    fontFamily: 'Linden Hill',
+                    // fontFamily: 'Linden Hill',
                     fontSize: 60,
                     shadows: [
                       Shadow(color: Colors.blueAccent, offset: Offset(2,1), blurRadius:10)

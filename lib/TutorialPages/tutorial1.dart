@@ -29,7 +29,7 @@ class _Tutorial1State extends State<Tutorial1> {
             Row(
               children: const [
                 Image(
-                  image: AssetImage("assets/Picture9.png"),
+                  image: AssetImage("assets/images/Picture9.png"),
                   height: 440,
                   width: 380,
                   fit: BoxFit.cover,

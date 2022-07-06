@@ -1,89 +1,108 @@
+import 'package:ecosia/Userprofile/UserProfile.dart';
+import 'package:ecosia/informativepg/informativepage.dart';
 import 'package:flutter/material.dart';
 
-main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: MemberProfile(),
-  ));
-}
-
-class MemberProfile extends StatelessWidget {
+class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      drawer: Drawer(child: ListView(
-        children: [
-          ListTile(leading: Icon(Icons.supervised_user_circle,color: Colors.blueGrey,
-          ),
-          title: Text("User profile"),
-          // onTap: Navigator.push(context, MaterialPageRoute(builder: (context)=> User),),
-
-        ],
-      ),),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            const UserAccountsDrawerHeader(
+              accountName: null,
+              accountEmail: null,
+              decoration: BoxDecoration(
+                // image: DecorationImage(
+                //   image: ExactAssetImage('assets/images/drawerbg.jpg'),
+                //   fit: BoxFit.cover,
+                // ),
+                color: Colors.white,
+              ),
+              currentAccountPicture: CircleAvatar(
+                // backgroundImage: AssetImage(
+                //   'assets/images/girlicon.png',
+                // ),
+              ),
+            ),
+            ListTile(
+              tileColor: Colors.blueGrey,
+              leading: const Icon(
+                Icons.supervised_user_circle,
+                color: Colors.blueGrey,
+              ),
+              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UserInfo()));},
+              title: Text("User profile",style: TextStyle(color: Colors.white),),
+            ),
+            ListTile(
+              tileColor: Colors.blueGrey,
+              leading: const Icon(
+                Icons.supervised_user_circle,
+                color: Colors.blueGrey,
+              ),
+              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> InformativePage()));},
+              title: Text("Informative Page",style: TextStyle(color: Colors.white),),
+            ),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
-              child:Container(
-
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width,
-              height: 200.0,
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-
-                      children: const [
-                        Padding(
-                          padding: EdgeInsets.only(top: 10,bottom: 5,left: 50, right: 20),
-                          child: Text("Hello user,",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 24.0)),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 50, right: 20),
-                          child: Text("Today you have 3 ",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14.0)),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 40),
-                          child: Text("tasks to complete...",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14.0)),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: <Widget>[
-
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0),
-                          child: SizedBox(
-                            width: 200.0,
-                            height: 200.0,
-                            child: Image.asset(
-                                'assets/images/dashboard_icon.png'), // Your image widget here
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 200.0,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: 10, bottom: 5, left: 50, right: 20),
+                            child: Text("Hello user,",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 24.0)),
                           ),
-                        ),
-
-                      ],
-                    ),
-
-                  ]
+                          Padding(
+                            padding: EdgeInsets.only(left: 50, right: 20),
+                            child: Text("Today you have 3 ",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14.0)),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 40),
+                            child: Text("tasks to complete...",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14.0)),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0),
+                            child: SizedBox(
+                              width: 200.0,
+                              height: 200.0,
+                              child: Image.asset(
+                                  'assets/images/flag.png'), // Your image widget here
+                            ),
+                          ),
+                        ],
+                      ),
+                    ]),
               ),
-            ),),
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -99,19 +118,18 @@ class MemberProfile extends StatelessWidget {
                 child: Row(
                   children: const [
                     Center(
-                      child: Text(
-                          "Today's Task and Progress",
-                              style: TextStyle(
+                      child: Text("Today's Task and Progress",
+                          style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
-                              fontSize: 24.0)
-                      ),
+                              fontSize: 24.0)),
                     ),
                   ],
                 ),
               ),
             ),
-            Padding(padding: EdgeInsets.only(top: 20,right: 20,left: 20),
+            Padding(
+              padding: EdgeInsets.only(top: 20, right: 20, left: 20),
               child: Container(
                 height: 90,
                 width: double.infinity,
@@ -125,10 +143,10 @@ class MemberProfile extends StatelessWidget {
                   // ),
                 ),
                 child: Center(child: Text("Task 1")),
-
               ),
             ),
-            Padding(padding: EdgeInsets.only(top: 20,right: 20,left: 20),
+            Padding(
+              padding: EdgeInsets.only(top: 20, right: 20, left: 20),
               child: Container(
                 height: 90,
                 width: double.infinity,
@@ -142,10 +160,10 @@ class MemberProfile extends StatelessWidget {
                   // ),
                 ),
                 child: Center(child: Text("Task 2")),
-
               ),
             ),
-            Padding(padding: EdgeInsets.only(top: 20,right: 20,left: 20),
+            Padding(
+              padding: EdgeInsets.only(top: 20, right: 20, left: 20),
               child: Container(
                 height: 90,
                 width: double.infinity,
@@ -159,16 +177,11 @@ class MemberProfile extends StatelessWidget {
                   // ),
                 ),
                 child: Center(child: Text("Task 3")),
-
               ),
             ),
-
           ],
-
         ),
       ),
-
     );
   }
-
 }

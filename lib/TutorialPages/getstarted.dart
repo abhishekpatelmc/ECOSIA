@@ -1,3 +1,4 @@
+import 'package:ecosia/TutorialPages/tutorial1.dart';
 import 'package:flutter/material.dart';
 
 class GetStarted extends StatefulWidget {
@@ -21,9 +22,9 @@ class _GetStartedState extends State<GetStarted> {
                   fontSize: 40),textAlign: TextAlign.center,
             ),
             Row(
-              children: [
+              children: const [
                 Image(
-                  image: AssetImage("assets/Picture13.png"),
+                  image: AssetImage("assets/images/Picture13.png"),
                   height: 440,
                   width: 380,
                   fit: BoxFit.cover,
@@ -34,7 +35,7 @@ class _GetStartedState extends State<GetStarted> {
             RaisedButton(
                 child:Text("Get Started"),
                 onPressed: (){
-                  // Navigator.of(context).push(MaterialPageRoute(builder: (context)=> GetStarted()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Tutorial1()));
                 }),
           ],
           )

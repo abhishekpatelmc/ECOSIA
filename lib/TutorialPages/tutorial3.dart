@@ -1,6 +1,8 @@
 import 'package:ecosia/TutorialPages/getstarted.dart';
 import 'package:flutter/material.dart';
 
+import '../dashboard/dashboard.dart';
+
 class Tutorial3 extends StatefulWidget {
   const Tutorial3({Key? key}) : super(key: key);
 
@@ -24,7 +26,7 @@ class _Tutorial3State extends State<Tutorial3> {
             Row(
               children: const [
                 Image(
-                  image: AssetImage("assets/Picture11.png"),
+                  image: AssetImage("assets/images/Picture11.png"),
                   height: 440,
                   width: 380,
                   fit: BoxFit.cover,
@@ -35,7 +37,7 @@ class _Tutorial3State extends State<Tutorial3> {
             RaisedButton(
                 child:Text("Next"),
                 onPressed: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=> GetStarted()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Dashboard()));
                 }),
           ],
           )
