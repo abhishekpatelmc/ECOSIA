@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../informativepg/informativepage.dart';
+
 class UserInfo extends StatefulWidget {
   const UserInfo({Key? key}) : super(key: key);
 
