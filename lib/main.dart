@@ -6,6 +6,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
 
+import 'screens/home/SplashScreen/splashScreen.dart';
+
 Future<void> main() async {
   // ===========To Handel Error: Unhandled Exception: Binding has not yet been initialized.==============
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +15,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -25,8 +27,8 @@ class MyApp extends StatelessWidget {
     return StreamProvider<UserModel?>.value(
       value: AuthService().user,
       initialData: null,
-      child: const MaterialApp(
-        home: Wrapper(),
+      child: MaterialApp(
+        home: SplashScreenOne(),
       ),
     );
   }

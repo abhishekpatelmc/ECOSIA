@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ecosia/models/user.dart';
 
+import 'home/dashboard/dashboard.dart';
+
 /*
 Switch beteween Authenticate and Alerdy logged in
   - If the Signed in then it redirected to Home()
@@ -21,9 +23,9 @@ class Wrapper extends StatelessWidget {
 
     // return either the Home or Authenticate widget
     if (user == null) {
-      return const Authenticate();
+      return Authenticate();
     } else {
-      return Home();
+      return Dashboard();
     }
   }
 }
