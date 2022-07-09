@@ -1,4 +1,3 @@
-import 'package:ecosia/screens/authenticate/register.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:ecosia/shared/loading.dart';
 import 'package:flutter/material.dart';

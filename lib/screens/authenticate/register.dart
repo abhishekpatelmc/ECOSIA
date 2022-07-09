@@ -1,4 +1,3 @@
-import 'package:ecosia/screens/authenticate/sign_in.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:ecosia/shared/loading.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +5,7 @@ import 'package:flutter/material.dart';
 class Register extends StatefulWidget {
   final Function toggelView;
 
-  Register({required this.toggelView});
+  const Register({Key? key, required this.toggelView}) : super(key: key);
 
   @override
   State<Register> createState() => _RegisterState();
