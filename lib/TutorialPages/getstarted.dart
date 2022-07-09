@@ -13,7 +13,7 @@ class _GetStartedState extends State<GetStarted> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          margin:  const EdgeInsets.only(top: 50),
+          margin:  const EdgeInsets.only(top: 100),
           child: Column(children: [
             Text("Glad you are here, let's get started.",
               style: TextStyle(
@@ -32,11 +32,19 @@ class _GetStartedState extends State<GetStarted> {
                 // buildImageCard(),
               ],
             ),
-            RaisedButton(
-                child:Text("Get Started"),
-                onPressed: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Tutorial1()));
-                }),
+            const SizedBox(height: 50),
+             SizedBox(
+                width: 150.0,
+                height: 70.0,
+                child: ElevatedButton(
+                    child: const Text("Get Started"),
+                    style: ElevatedButton.styleFrom(
+                        textStyle: const TextStyle(fontSize: 22)
+                    ),
+                    onPressed:(){
+                      Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Tutorial1()));
+                    })
+            ),
           ],
           )
       ),

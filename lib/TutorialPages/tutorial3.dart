@@ -1,4 +1,4 @@
-import 'package:ecosia/TutorialPages/getstarted.dart';
+// import 'package:ecosia/TutorialPages/getstarted.dart';
 import 'package:flutter/material.dart';
 
 import '../dashboard/dashboard.dart';
@@ -15,7 +15,7 @@ class _Tutorial3State extends State<Tutorial3> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          margin:  const EdgeInsets.only(top: 50),
+          margin:  const EdgeInsets.only(top: 100),
           child: Column(children: [
             Text("Tips & Tricks to eat healthy",
               style: TextStyle(
@@ -23,6 +23,7 @@ class _Tutorial3State extends State<Tutorial3> {
                   fontWeight: FontWeight.bold,
                   fontSize: 40),textAlign: TextAlign.center,
             ),
+            const SizedBox(height: 30),
             Row(
               children: const [
                 Image(
@@ -34,11 +35,19 @@ class _Tutorial3State extends State<Tutorial3> {
                 // buildImageCard(),
               ],
             ),
-            RaisedButton(
-                child:Text("Next"),
-                onPressed: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Dashboard()));
-                }),
+            const SizedBox(height: 20),
+            SizedBox(
+                width: 150.0,
+                height: 70.0,
+                child: ElevatedButton(
+                    child: const Text("Next"),
+                    style: ElevatedButton.styleFrom(
+                        textStyle: const TextStyle(fontSize: 22)
+                    ),
+                    onPressed:(){
+                      Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Dashboard()));
+                    })
+            ),
           ],
           )
       ),

@@ -14,7 +14,7 @@ class _Tutorial2State extends State<Tutorial2> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          margin: const EdgeInsets.only(top: 50),
+          margin: const EdgeInsets.only(top: 100),
           child: Column(
             children: [
               Text(
@@ -36,11 +36,19 @@ class _Tutorial2State extends State<Tutorial2> {
                   // buildImageCard(),
                 ],
               ),
-              RaisedButton(
-                  child:Text("Next"),
-                  onPressed: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Tutorial3()));
-                  }),
+              const SizedBox(height: 7),
+              SizedBox(
+                  width: 150.0,
+                  height: 70.0,
+                  child: ElevatedButton(
+                      child: const Text("Next"),
+                      style: ElevatedButton.styleFrom(
+                          textStyle: const TextStyle(fontSize: 22)
+                      ),
+                      onPressed:(){
+                        Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Tutorial3()));
+                      })
+              ),
             ],
           )),
     );
