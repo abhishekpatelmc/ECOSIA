@@ -1,5 +1,6 @@
 // import 'package:ecosia/Tutorial%20Pages/tutorial3.dart';
-import 'package:ecosia/TutorialPages/tutorial3.dart';
+
+import 'package:ecosia/screens/home/TutorialPages/tutorial3.dart';
 import 'package:flutter/material.dart';
 
 class Tutorial2 extends StatefulWidget {
@@ -43,12 +44,11 @@ class _Tutorial2State extends State<Tutorial2> {
                   child: ElevatedButton(
                       child: const Text("Next"),
                       style: ElevatedButton.styleFrom(
-                          textStyle: const TextStyle(fontSize: 22)
-                      ),
-                      onPressed:(){
-                        Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Tutorial3()));
-                      })
-              ),
+                          textStyle: const TextStyle(fontSize: 22)),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => Tutorial3()));
+                      })),
             ],
           )),
     );
