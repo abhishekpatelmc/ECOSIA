@@ -1,16 +1,18 @@
+import 'package:ecosia/screens/home/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
+import 'package:ecosia/services/auth.dart';
 import '../informativepg/informativepage.dart';
 
 class UserInfo extends StatefulWidget {
-  const UserInfo({Key? key}) : super(key: key);
-
   @override
   State<UserInfo> createState() => _UserInfoState();
 }
 
 class _UserInfoState extends State<UserInfo> {
+
+  final AuthService _auth = AuthService();
+
   TextEditingController name = TextEditingController();
   TextEditingController Contact = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -44,6 +46,15 @@ class _UserInfoState extends State<UserInfo> {
                 Icons.supervised_user_circle,
                 color: Colors.blueGrey,
               ),
+              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Dashboard()));},
+              title: Text("Dasboard",style: TextStyle(color: Colors.white),),
+            ),
+            ListTile(
+              tileColor: Colors.blueGrey,
+              leading: const Icon(
+                Icons.supervised_user_circle,
+                color: Colors.blueGrey,
+              ),
               onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UserInfo()));},
               title: Text("User profile",style: TextStyle(color: Colors.white),),
             ),
@@ -55,6 +66,20 @@ class _UserInfoState extends State<UserInfo> {
               ),
               onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> InformativePage()));},
               title: Text("Informative Page",style: TextStyle(color: Colors.white),),
+            ),
+            ListTile(
+              tileColor: Colors.blueGrey,
+              leading: const Icon(
+                Icons.supervised_user_circle,
+                color: Colors.blueGrey,
+              ),
+              onTap: () async {
+                await _auth.signOut();
+              },
+              title: Text(
+                "Log out",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),
@@ -440,7 +465,7 @@ class _UserProfileState extends State<UserProfile> {
                           ),
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const UserInfo()));
+                                builder: (context) => UserInfo()));
                           },
                         )),
                   ],
