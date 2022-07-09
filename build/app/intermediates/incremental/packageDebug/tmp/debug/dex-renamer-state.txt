@@ -1,4 +1,0 @@
-#Wed Jun 29 22:38:21 EDT 2022
-base.0=E\:\\code\\flutter\\ECOSIA\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
