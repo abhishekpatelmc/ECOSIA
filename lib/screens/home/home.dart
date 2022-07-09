@@ -32,11 +32,9 @@ class Home extends StatelessWidget {
         ],
       ),
       body: TaskInformation(),
-
     );
   }
 }
-
 
 class TaskInformation extends StatefulWidget {
   @override
@@ -44,7 +42,9 @@ class TaskInformation extends StatefulWidget {
 }
 
 class _TaskInformationState extends State<TaskInformation> {
-  final Stream<QuerySnapshot> _tasksStream = FirebaseFirestore.instance.collection('Tasks').snapshots(includeMetadataChanges: true);
+  final Stream<QuerySnapshot> _tasksStream = FirebaseFirestore.instance
+      .collection('Tasks')
+      .snapshots(includeMetadataChanges: true);
 
   @override
   Widget build(BuildContext context) {
@@ -61,14 +61,18 @@ class _TaskInformationState extends State<TaskInformation> {
 
         return ListView(
           children: snapshot.data!.docs.map((DocumentSnapshot document) {
-            Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+            Map<String, dynamic> data =
+                document.data()! as Map<String, dynamic>;
             return ListTile(
-
-              title: Text(data['Name']),
-              subtitle: Text(data['Description']),
-                onTap: (){ Navigator.push(context,MaterialPageRoute(builder:(context)=>TaskDesription(document.reference.id)));
-              }
-            );
+                title: Text(data['Name']),
+                subtitle: Text(data['Description']),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              TaskDesription(document.reference.id)));
+                });
           }).toList(),
         );
       },
