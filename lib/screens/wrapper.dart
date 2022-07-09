@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ecosia/models/user.dart';
 
-import 'home/dashboard/dashboard.dart';
+// import 'home/AddTask.dart';
+
+
 
 /*
 Switch beteween Authenticate and Alerdy logged in
@@ -23,9 +25,10 @@ class Wrapper extends StatelessWidget {
 
     // return either the Home or Authenticate widget
     if (user == null) {
-      return Authenticate();
+      return const Authenticate();
     } else {
-      return Dashboard();
+      // return AddTask("Walk", "Walk for 20 minutes");
+      return Home();
     }
   }
 }
