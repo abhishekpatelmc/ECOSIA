@@ -1,12 +1,11 @@
 import 'package:ecosia/models/user.dart';
+// import 'package:ecosia/screens/authenticate/authenticate.dart';
 import 'package:ecosia/screens/wrapper.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
-
-import 'screens/home/SplashScreen/splashScreen.dart';
 
 Future<void> main() async {
   // ===========To Handel Error: Unhandled Exception: Binding has not yet been initialized.==============
@@ -27,8 +26,8 @@ class MyApp extends StatelessWidget {
     return StreamProvider<UserModel?>.value(
       value: AuthService().user,
       initialData: null,
-      child: MaterialApp(
-        home: SplashScreenOne(),
+      child:const  MaterialApp(
+        home: Wrapper(),
       ),
     );
   }
