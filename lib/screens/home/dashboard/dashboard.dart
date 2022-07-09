@@ -1,8 +1,11 @@
+import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
 import '../Userprofile/UserProfile.dart';
 import '../informativepg/informativepage.dart';
 
 class Dashboard extends StatelessWidget {
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,9 +24,24 @@ class Dashboard extends StatelessWidget {
                 color: Colors.white,
               ),
               currentAccountPicture: CircleAvatar(
-                // backgroundImage: AssetImage(
-                //   'assets/images/girlicon.png',
-                // ),
+                  // backgroundImage: AssetImage(
+                  //   'assets/images/girlicon.png',
+                  // ),
+                  ),
+            ),
+            ListTile(
+              tileColor: Colors.blueGrey,
+              leading: const Icon(
+                Icons.supervised_user_circle,
+                color: Colors.blueGrey,
+              ),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => UserInfo()));
+              },
+              title: Text(
+                "User profile",
+                style: TextStyle(color: Colors.white),
               ),
             ),
             ListTile(
@@ -32,8 +50,14 @@ class Dashboard extends StatelessWidget {
                 Icons.supervised_user_circle,
                 color: Colors.blueGrey,
               ),
-              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UserInfo()));},
-              title: Text("User profile",style: TextStyle(color: Colors.white),),
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => InformativePage()));
+              },
+              title: Text(
+                "Informative Page",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             ListTile(
               tileColor: Colors.blueGrey,
@@ -41,8 +65,13 @@ class Dashboard extends StatelessWidget {
                 Icons.supervised_user_circle,
                 color: Colors.blueGrey,
               ),
-              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> InformativePage()));},
-              title: Text("Informative Page",style: TextStyle(color: Colors.white),),
+              onTap: () async {
+                await _auth.signOut();
+              },
+              title: Text(
+                "Log out",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),
