@@ -1,6 +1,5 @@
 // import 'package:ecosia/Tutorial%20Pages/tutorial2.dart';
-// import 'package:ecosia/TutorialPages/tutorial2.dart';
-import 'package:ecosia/screens/home/TutorialPages/tutorial2.dart';
+import 'package:ecosia/TutorialPages/tutorial2.dart';
 import 'package:flutter/material.dart';
 
 class Tutorial1 extends StatefulWidget {
@@ -19,7 +18,7 @@ class _Tutorial1State extends State<Tutorial1> {
       // ),
 
       body: Container(
-          margin:  const EdgeInsets.only(top: 50),
+          margin:  const EdgeInsets.only(top: 100),
           child: Column(children: [
             Text("Tips & Tricks to reduce waste",
               style: TextStyle(
@@ -38,11 +37,20 @@ class _Tutorial1State extends State<Tutorial1> {
                 // buildImageCard(),
               ],
             ),
-            RaisedButton(
-                child:Text("Next"),
-                onPressed: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Tutorial2()));
-                }),],
+        const SizedBox(height: 50),
+        SizedBox(
+            width: 150.0,
+            height: 70.0,
+            child: ElevatedButton(
+                child: const Text("Next"),
+                style: ElevatedButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 22)
+                ),
+                onPressed:(){
+                  Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Tutorial2()));
+                })
+        ),
+          ],
           )
       ),
     );
@@ -63,6 +71,9 @@ Widget buildImageCard() => Card(
       ],
     )
 );
+
+
+
 
 
 
