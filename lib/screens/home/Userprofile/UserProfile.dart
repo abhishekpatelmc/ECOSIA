@@ -2,6 +2,7 @@ import 'package:ecosia/screens/home/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:ecosia/services/auth.dart';
+import 'package:provider/provider.dart';
 import '../informativepg/informativepage.dart';
 
 class UserInfo extends StatefulWidget {
@@ -76,7 +77,7 @@ class _UserInfoState extends State<UserInfo> {
               onTap: () async {
                 await _auth.signOut();
               },
-              title: Text(
+              title: const Text(
                 "Log out",
                 style: TextStyle(color: Colors.white),
               ),
@@ -463,7 +464,9 @@ class _UserProfileState extends State<UserProfile> {
                               ),
                             ),
                           ),
-                          onTap: () {
+                          onTap: () async {
+                            // final uid = await Provider.of(context).auth.getUserUID();
+                            // await db.collection("Users")
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => UserInfo()));
                           },
