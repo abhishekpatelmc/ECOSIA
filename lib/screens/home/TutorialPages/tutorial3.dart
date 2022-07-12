@@ -1,7 +1,6 @@
 // import 'package:ecosia/TutorialPages/getstarted.dart';
+import 'package:ecosia/screens/wrapper.dart';
 import 'package:flutter/material.dart';
-
-import '../dashboard/dashboard.dart';
 
 class Tutorial3 extends StatefulWidget {
   const Tutorial3({Key? key}) : super(key: key);
@@ -45,7 +44,7 @@ class _Tutorial3State extends State<Tutorial3> {
                         textStyle: const TextStyle(fontSize: 22)
                     ),
                     onPressed:(){
-                      Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Dashboard()));
+                      Navigator.of(context).push(MaterialPageRoute(builder:(context)=>const Wrapper()));
                     })
             ),
           ],
