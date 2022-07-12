@@ -2,6 +2,7 @@ import 'package:ecosia/screens/home/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:ecosia/services/auth.dart';
+import '../../wrapper.dart';
 import '../informativepg/informativepage.dart';
 
 class UserInfo extends StatefulWidget {
@@ -49,15 +50,15 @@ class _UserInfoState extends State<UserInfo> {
               onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Dashboard()));},
               title: Text("Dasboard",style: TextStyle(color: Colors.white),),
             ),
-            ListTile(
-              tileColor: Colors.blueGrey,
-              leading: const Icon(
-                Icons.supervised_user_circle,
-                color: Colors.blueGrey,
-              ),
-              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UserInfo()));},
-              title: Text("User profile",style: TextStyle(color: Colors.white),),
-            ),
+            // ListTile(
+            //   tileColor: Colors.blueGrey,
+            //   leading: const Icon(
+            //     Icons.supervised_user_circle,
+            //     color: Colors.blueGrey,
+            //   ),
+            //   onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UserInfo()));},
+            //   title: Text("User profile",style: TextStyle(color: Colors.white),),
+            // ),
             ListTile(
               tileColor: Colors.blueGrey,
               leading: const Icon(
@@ -75,6 +76,10 @@ class _UserInfoState extends State<UserInfo> {
               ),
               onTap: () async {
                 await _auth.signOut();
+                Navigator.pushAndRemoveUntil(context,
+                  MaterialPageRoute(builder: (context) => Wrapper()),
+                      (Route<dynamic> route) => false,
+                );
               },
               title: Text(
                 "Log out",

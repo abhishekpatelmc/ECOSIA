@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 
@@ -20,7 +18,8 @@ class _InformativePage extends State<InformativePage> {
         //title: const Text(""),
         // backgroundColor: ,
         flexibleSpace: Container(
-          height: 150,
+
+          height: 130,
           width: 600,
           decoration: const BoxDecoration(
             // borderRadius: BorderRadius.circular(30),
@@ -34,11 +33,11 @@ class _InformativePage extends State<InformativePage> {
             ),
           ),
           child: const Padding(
-            padding: EdgeInsets.only(top: 30),
+            padding: EdgeInsets.only(top: 37),
             child: Center(
               child: Text(
                 'Ecosia Informative Page',
-                style: TextStyle(fontSize: 36, color: Colors.white),
+                style: TextStyle(fontSize: 26, color: Colors.white),
               ),
             ),
           ),
@@ -62,7 +61,7 @@ class _InformativePage extends State<InformativePage> {
             ),
             
             Padding(
-                padding: const EdgeInsets.only(left: 30, right: 20, top: 5,bottom: 0),
+                padding: const EdgeInsets.only(left: 30, right: 20, top: 15,bottom: 0),
                 child: InkWell(
                   child: Container(
                     height: 60,
@@ -81,7 +80,7 @@ class _InformativePage extends State<InformativePage> {
                     child: const Center(
                       child: Text(
                         'Articles',
-                        style: TextStyle(fontSize: 40, color: Colors.white),
+                        style: TextStyle(fontSize: 30, color: Colors.white),
                       ),
                     ),
                   ),
@@ -110,7 +109,7 @@ class _InformativePage extends State<InformativePage> {
                     child: const Center(
                       child: Text(
                         'Get Involved!',
-                        style: TextStyle(fontSize: 40, color: Colors.white),
+                        style: TextStyle(fontSize: 30, color: Colors.white),
                       ),
                     ),
                   ),
@@ -139,7 +138,7 @@ class _InformativePage extends State<InformativePage> {
                     child: const Center(
                       child: Text(
                         'Videos',
-                        style: TextStyle(fontSize: 40, color: Colors.white),
+                        style: TextStyle(fontSize: 30, color: Colors.white),
                       ),
                     ),
                   ),
@@ -168,7 +167,7 @@ class _InformativePage extends State<InformativePage> {
                     child: const Center(
                       child: Text(
                         'Connect',
-                        style: TextStyle(fontSize: 40, color: Colors.white),
+                        style: TextStyle(fontSize: 30, color: Colors.white),
                       ),
                     ),
                   ),
@@ -197,7 +196,7 @@ class _InformativePage extends State<InformativePage> {
                     child: const Center(
                       child: Text(
                         'Share Feedback',
-                        style: TextStyle(fontSize: 40, color: Colors.white),
+                        style: TextStyle(fontSize: 30, color: Colors.white),
                       ),
                     ),
                   ),
@@ -209,7 +208,7 @@ class _InformativePage extends State<InformativePage> {
     ])));
     }
 _launchURL() async {
-  const url = 'https://www.google.com';
+  const url = 'https://www.naturespath.com/en-ca/blog/nine-things-you-can-do-to-save-the-environment/';
   if (await launchUrlString(url)) {
     await launchUrlString(url);
   } else {
@@ -218,7 +217,7 @@ _launchURL() async {
 }
 
 _launchURL2()async {
-  const url = 'https://jira.com';
+  const url = 'https://www.youtube.com/watch?v=X2YgM1Zw4_E';
   if (await launchUrlString(url)) {
     await launchUrlString(url);
   } else {

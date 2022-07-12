@@ -160,7 +160,7 @@ class Dashboard extends StatelessWidget {
             ),
 
             Padding(
-              padding: EdgeInsets.only(top: 20, right: 20, left: 20),
+              padding: EdgeInsets.only(top: 20, right: 15, left: 15),
               child:Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -239,14 +239,15 @@ class _TaskInformationState extends State<TaskInformation> {
         }
 
         return Container(
-          height: 160,
-          margin: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+          height: 330,
+          margin: const EdgeInsets.fromLTRB(9, 5, 9, 0),
           child: Center(
             child:ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
               return ListTile(
-                  title: Text(data['Name']),
+                  title: Text(data['Name'],
+                      style: TextStyle(fontSize: 26, color: Colors.white)),
                   // subtitle: Text(data['Description']),
                   onTap: (){ Navigator.push(context,
                       MaterialPageRoute(builder:(context)=>TaskDesription(document.reference.id)));
