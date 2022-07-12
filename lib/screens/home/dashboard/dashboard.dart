@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
+import '../UserTask/UserTask.dart';
 import '../Userprofile/UserProfile.dart';
 import '../informativepg/informativepage.dart';
 import '../TaskPages/taskDescription.dart';
@@ -66,6 +67,15 @@ class Dashboard extends StatelessWidget {
                 Icons.supervised_user_circle,
                 color: Colors.blueGrey,
               ),
+              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UserTask()));},
+              title: Text("Your Tasks",style: TextStyle(color: Colors.white),),
+            ),
+            ListTile(
+              tileColor: Colors.blueGrey,
+              leading: const Icon(
+                Icons.supervised_user_circle,
+                color: Colors.blueGrey,
+              ),
               onTap: () async {
                 await _auth.signOut();
               },
@@ -120,9 +130,9 @@ class Dashboard extends StatelessWidget {
                       Column(
                         children: <Widget>[
                           Padding(
-                            padding: const EdgeInsets.only(top: 0),
+                            padding: const EdgeInsets.only(top: 0,right: 20),
                             child: SizedBox(
-                              width: 200.0,
+                              width: 140,
                               height: 200.0,
                               child: Image.asset(
                                   'assets/images/flag.png'), // Your image widget here

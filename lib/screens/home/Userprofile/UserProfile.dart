@@ -1,3 +1,4 @@
+import 'package:ecosia/screens/home/UserTask/UserTask.dart';
 import 'package:ecosia/screens/home/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -67,6 +68,15 @@ class _UserInfoState extends State<UserInfo> {
               ),
               onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> InformativePage()));},
               title: Text("Informative Page",style: TextStyle(color: Colors.white),),
+            ),
+            ListTile(
+              tileColor: Colors.blueGrey,
+              leading: const Icon(
+                Icons.supervised_user_circle,
+                color: Colors.blueGrey,
+              ),
+              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UserTask()));},
+              title: Text("Your Tasks",style: TextStyle(color: Colors.white),),
             ),
             ListTile(
               tileColor: Colors.blueGrey,
