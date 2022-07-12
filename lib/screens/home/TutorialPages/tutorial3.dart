@@ -13,60 +13,58 @@ class _Tutorial3State extends State<Tutorial3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          margin:  const EdgeInsets.only(top: 100),
-          child: Column(children: [
-            Text("Tips & Tricks to eat healthy",
-              style: TextStyle(
-                  color: Colors.green[800],
-                  fontWeight: FontWeight.bold,
-                  fontSize: 40),textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 30),
-            Row(
-              children: const [
-                Image(
-                  image: AssetImage("assets/images/Picture11.png"),
-                  height: 440,
-                  width: 380,
-                  fit: BoxFit.cover,
+      body: SingleChildScrollView(
+        child: Container(
+            margin: const EdgeInsets.only(top: 100),
+            child: Column(
+              children: [
+                Text(
+                  "Tips & Tricks to eat healthy",
+                  style: TextStyle(
+                      color: Colors.green[800],
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40),
+                  textAlign: TextAlign.center,
                 ),
-                // buildImageCard(),
-              ],
-            ),
-            const SizedBox(height: 20),
-            SizedBox(
-                width: 150.0,
-                height: 70.0,
-                child: ElevatedButton(
-                    child: const Text("Next"),
-                    style: ElevatedButton.styleFrom(
-                        textStyle: const TextStyle(fontSize: 22)
+                const SizedBox(height: 30),
+                Row(
+                  children: const [
+                    Image(
+                      image: AssetImage("assets/images/Picture11.png"),
+                      height: 440,
+                      width: 380,
+                      fit: BoxFit.cover,
                     ),
-                    onPressed:(){
-                      Navigator.of(context).push(MaterialPageRoute(builder:(context)=>const Wrapper()));
-                    })
-            ),
-          ],
-          )
+                    // buildImageCard(),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                SizedBox(
+                    width: 140.0,
+                    height: 50.0,
+                    child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            textStyle: const TextStyle(fontSize: 22)),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const Wrapper()));
+                        },
+                        child: const Text("Next"))),
+              ],
+            )),
       ),
     );
   }
 }
 
-
 Widget buildImageCard() => Card(
-    child:Stack(
+        child: Stack(
       children: [
         Ink.image(
           image: const AssetImage("assets/Picture11.png"),
-          height:440,
+          height: 440,
           width: 380,
-          fit:BoxFit.cover,
-
+          fit: BoxFit.cover,
         )
       ],
-    )
-);
-
-
+    ));
