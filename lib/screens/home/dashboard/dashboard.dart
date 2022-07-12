@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
+import '../../wrapper.dart';
 import '../Userprofile/UserProfile.dart';
 import '../informativepg/informativepage.dart';
 import '../TaskPages/taskDescription.dart';
@@ -68,6 +69,10 @@ class Dashboard extends StatelessWidget {
               ),
               onTap: () async {
                 await _auth.signOut();
+                Navigator.pushAndRemoveUntil(context,
+                  MaterialPageRoute(builder: (context) => Wrapper()),
+                      (Route<dynamic> route) => false,
+                );
               },
               title: Text(
                 "Log out",
