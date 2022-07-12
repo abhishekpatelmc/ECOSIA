@@ -113,7 +113,7 @@ class _TutorialState extends State<Tutorial> {
         options: CarouselOptions(
           height: 750,
           enlargeCenterPage: true,
-          // autoPlay: true,
+          autoPlay: true,
           // aspectRatio: 16 / 9,
           autoPlayCurve: Curves.fastOutSlowIn,
           enableInfiniteScroll: false,
