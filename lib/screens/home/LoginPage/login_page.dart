@@ -104,6 +104,22 @@ class _LoginPageState extends State<LoginPage> {
             ]
           )
 
+    //       RichText(
+    //   text: TextSpan(
+    //       style: DefaultTextStyle.of(context).style,
+    //     children: <TextSpan>[
+    //       TextSpan(
+    //           text: 'Not a Member?',
+    //           style: TextStyle(fontSize: 10)),
+    //       TextSpan(
+    //           text: ' Register Now!',
+    //           recognizer: TapGestureRecognizer()
+    //             ..onTap = () => Navigator.of(context).push(
+    //                 MaterialPageRoute(builder: (context) =>  SplashScreenOne()))
+    //       )
+    //     ],
+    //   ),
+    // ),
         ],),
       )
       )

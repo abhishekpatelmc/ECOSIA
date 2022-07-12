@@ -87,7 +87,10 @@ Future<String> getCurrentUID() async{
   // sign out
   Future signOut() async {
     try {
-      return await _auth.signOut();
+      User? user = FirebaseAuth.instance.currentUser;
+      if(user != null){
+        await _auth.signOut();
+      }
     } catch (e) {
       // ignore: avoid_print
       print(e.toString());

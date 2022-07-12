@@ -1,9 +1,6 @@
 // import 'package:ecosia/TutorialPages/getstarted.dart';
 import 'package:ecosia/screens/wrapper.dart';
 import 'package:flutter/material.dart';
-import 'package:ecosia/screens/authenticate/authenticate.dart';
-import '../../authenticate/register.dart';
-import '../dashboard/dashboard.dart';
 
 class Tutorial3 extends StatefulWidget {
   const Tutorial3({Key? key}) : super(key: key);
@@ -17,7 +14,7 @@ class _Tutorial3State extends State<Tutorial3> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          margin:  const EdgeInsets.only(top: 50),
+          margin:  const EdgeInsets.only(top: 100),
           child: Column(children: [
             Text("Tips & Tricks to eat healthy",
               style: TextStyle(
@@ -25,6 +22,7 @@ class _Tutorial3State extends State<Tutorial3> {
                   fontWeight: FontWeight.bold,
                   fontSize: 40),textAlign: TextAlign.center,
             ),
+            const SizedBox(height: 30),
             Row(
               children: const [
                 Image(
@@ -36,11 +34,19 @@ class _Tutorial3State extends State<Tutorial3> {
                 // buildImageCard(),
               ],
             ),
-            RaisedButton(
-                child:Text("Next"),
-                onPressed: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Wrapper()));
-                }),
+            const SizedBox(height: 20),
+            SizedBox(
+                width: 150.0,
+                height: 70.0,
+                child: ElevatedButton(
+                    child: const Text("Next"),
+                    style: ElevatedButton.styleFrom(
+                        textStyle: const TextStyle(fontSize: 22)
+                    ),
+                    onPressed:(){
+                      Navigator.of(context).push(MaterialPageRoute(builder:(context)=>const Wrapper()));
+                    })
+            ),
           ],
           )
       ),
@@ -62,4 +68,5 @@ Widget buildImageCard() => Card(
       ],
     )
 );
+
 
