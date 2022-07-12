@@ -37,16 +37,16 @@ class _GetStartedState extends State<GetStarted> {
               ),
               const SizedBox(height: 50),
               SizedBox(
-                  width: 140.0,
-                  height: 50.0,
+                  width: 150.0,
+                  height: 70.0,
                   child: ElevatedButton(
+                      child: const Text("Get Started"),
                       style: ElevatedButton.styleFrom(
-                          textStyle: const TextStyle(fontSize: 20)),
+                          textStyle: const TextStyle(fontSize: 22)),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const Tutorial1()));
-                      },
-                      child: const Text("Get Started"))),
+                            builder: (context) => Tutorial1()));
+                      })),
             ],
           )),
     );
