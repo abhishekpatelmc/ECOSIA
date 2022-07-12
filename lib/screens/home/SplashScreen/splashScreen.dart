@@ -4,8 +4,6 @@ import 'dart:async';
 import 'package:ecosia/screens/home/TutorialPages/Tutorial.dart';
 import 'package:flutter/material.dart';
 
-import '../TutorialPages/getstarted.dart';
-
 //
 // import '../main.dart';
 // void main() { runApp(MyApp());}
