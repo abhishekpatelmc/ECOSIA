@@ -14,43 +14,45 @@ class _Tutorial2State extends State<Tutorial2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          margin: const EdgeInsets.only(top: 100),
-          child: Column(
-            children: [
-              Text(
-                "Tips & Tricks to reduce carbon emissions",
-                style: TextStyle(
-                    color: Colors.green[800],
-                    fontWeight: FontWeight.bold,
-                    fontSize: 40),
-                textAlign: TextAlign.center,
-              ),
-              Row(
-                children: const [
-                  Image(
-                    image: AssetImage("assets/images/Picture10.png"),
-                    height: 440,
-                    width: 380,
-                    fit: BoxFit.cover,
-                  ),
-                  // buildImageCard(),
-                ],
-              ),
-              const SizedBox(height: 7),
-              SizedBox(
-                  width: 150.0,
-                  height: 70.0,
-                  child: ElevatedButton(
-                      child: const Text("Next"),
-                      style: ElevatedButton.styleFrom(
-                          textStyle: const TextStyle(fontSize: 22)),
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Tutorial3()));
-                      })),
-            ],
-          )),
+      body: SingleChildScrollView(
+        child: Container(
+            margin: const EdgeInsets.only(top: 100),
+            child: Column(
+              children: [
+                Text(
+                  "Tips & Tricks to reduce carbon emissions",
+                  style: TextStyle(
+                      color: Colors.green[800],
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40),
+                  textAlign: TextAlign.center,
+                ),
+                Row(
+                  children: const [
+                    Image(
+                      image: AssetImage("assets/images/Picture10.png"),
+                      height: 440,
+                      width: 380,
+                      fit: BoxFit.cover,
+                    ),
+                    // buildImageCard(),
+                  ],
+                ),
+                const SizedBox(height: 7),
+                SizedBox(
+                    width: 140.0,
+                    height: 50.0,
+                    child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            textStyle: const TextStyle(fontSize: 22)),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const Tutorial3()));
+                        },
+                        child: const Text("Next"))),
+              ],
+            )),
+      ),
     );
   }
 }
