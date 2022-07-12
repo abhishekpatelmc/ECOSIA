@@ -1,6 +1,7 @@
 // ignore: file_names
 import 'dart:async';
 // import 'package:ecosia/SplashScreen/splashScreenTwo.dart';
+import 'package:ecosia/screens/home/TutorialPages/Tutorial.dart';
 import 'package:flutter/material.dart';
 
 import '../TutorialPages/getstarted.dart';
@@ -35,7 +36,7 @@ class SplashScreenState extends State<SplashScreenOne> {
         () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const GetStarted(),
+              builder: (context) => const Tutorial(),
             )));
   }
 
