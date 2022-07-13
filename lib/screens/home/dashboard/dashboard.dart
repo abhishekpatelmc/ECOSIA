@@ -1,11 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
+import '../UserTask/UserTask.dart';
 import '../Userprofile/UserProfile.dart';
 import '../informativepg/informativepage.dart';
+import '../TaskPages/taskDescription.dart';
 
 class Dashboard extends StatelessWidget {
   final AuthService _auth = AuthService();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +60,15 @@ class Dashboard extends StatelessWidget {
                 "Informative Page",
                 style: TextStyle(color: Colors.white),
               ),
+            ),
+            ListTile(
+              tileColor: Colors.blueGrey,
+              leading: const Icon(
+                Icons.supervised_user_circle,
+                color: Colors.blueGrey,
+              ),
+              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UserTask()));},
+              title: Text("Your Tasks",style: TextStyle(color: Colors.white),),
             ),
             ListTile(
               tileColor: Colors.blueGrey,
@@ -119,9 +130,9 @@ class Dashboard extends StatelessWidget {
                       Column(
                         children: <Widget>[
                           Padding(
-                            padding: const EdgeInsets.only(top: 0),
+                            padding: const EdgeInsets.only(top: 0,right: 20),
                             child: SizedBox(
-                              width: 200.0,
+                              width: 140,
                               height: 200.0,
                               child: Image.asset(
                                   'assets/images/flag.png'), // Your image widget here
@@ -157,10 +168,10 @@ class Dashboard extends StatelessWidget {
                 ),
               ),
             ),
+
             Padding(
               padding: EdgeInsets.only(top: 20, right: 20, left: 20),
-              child: Container(
-                height: 90,
+              child:Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.grey,
@@ -171,46 +182,90 @@ class Dashboard extends StatelessWidget {
                   //   end: Alignment.topRight,
                   // ),
                 ),
-                child: Center(child: Text("Task 1")),
-              ),
+                child: TaskInformation(),
+              // ),
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 20, right: 20, left: 20),
-              child: Container(
-                height: 90,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(20),
-                  // gradient: LinearGradient(
-                  //   colors: [Color.fromRGBO(14, 209, 194, 1.0), Colors.grey],
-                  //   begin: Alignment.bottomLeft,
-                  //   end: Alignment.topRight,
-                  // ),
-                ),
-                child: Center(child: Text("Task 2")),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20, right: 20, left: 20),
-              child: Container(
-                height: 90,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(20),
-                  // gradient: LinearGradient(
-                  //   colors: [Color.fromRGBO(14, 209, 194, 1.0), Colors.grey],
-                  //   begin: Alignment.bottomLeft,
-                  //   end: Alignment.topRight,
-                  // ),
-                ),
-                child: Center(child: Text("Task 3")),
-              ),
-            ),
-          ],
+            // Padding(
+            //   padding: EdgeInsets.only(top: 20, right: 20, left: 20),
+            //   child: Container(
+            //     height: 90,
+            //     width: double.infinity,
+            //     decoration: BoxDecoration(
+            //       color: Colors.grey,
+            //       borderRadius: BorderRadius.circular(20),
+            //       // gradient: LinearGradient(
+            //       //   colors: [Color.fromRGBO(14, 209, 194, 1.0), Colors.grey],
+            //       //   begin: Alignment.bottomLeft,
+            //       //   end: Alignment.topRight,
+            //       // ),
+            //     ),
+            //     child: Center(child: Text("Task 2")),
+            //   ),
+            // ),
+            // Padding(
+            //   padding: EdgeInsets.only(top: 20, right: 20, left: 20),
+            //   child: Container(
+            //     height: 90,
+            //     width: double.infinity,
+            //     decoration: BoxDecoration(
+            //       color: Colors.grey,
+            //       borderRadius: BorderRadius.circular(20),
+            //       // gradient: LinearGradient(
+            //       //   colors: [Color.fromRGBO(14, 209, 194, 1.0), Colors.grey],
+            //       //   begin: Alignment.bottomLeft,
+            //       //   end: Alignment.topRight,
+            //       // ),
+            //     ),
+            //     child: Center(child: Text("Task 3")),
+            //   ),
+            // ),
+            )],
         ),
       ),
+    );
+  }
+}
+
+
+class TaskInformation extends StatefulWidget {
+  @override
+  _TaskInformationState createState() => _TaskInformationState();
+}
+
+class _TaskInformationState extends State<TaskInformation> {
+  final Stream<QuerySnapshot> _tasksStream = FirebaseFirestore.instance.collection('Tasks').snapshots(includeMetadataChanges: true);
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: _tasksStream,
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Text('Something went wrong');
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Text("Loading");
+        }
+
+        return Container(
+          height: 160,
+          margin: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+          child: Center(
+            child:ListView(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+              return ListTile(
+                  title: Text(data['Name']),
+                  // subtitle: Text(data['Description']),
+                  onTap: (){ Navigator.push(context,
+                      MaterialPageRoute(builder:(context)=>TaskDesription(document.reference.id)));
+                  }
+              );
+            }).toList(),
+          ),),
+          );
+      },
     );
   }
 }
