@@ -14,7 +14,9 @@ class AuthService {
   UserModel? _userFromFirebaseUser(User? user) {
     return user != null ? UserModel(uid: user.uid) : null;
   }
-
+Future<String> getCurrentUID() async{
+    return (await _auth.currentUser)!.uid;
+}
   // Stream : auth chage user stream
   Stream<UserModel?> get user {
     return _auth

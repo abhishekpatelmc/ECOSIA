@@ -249,7 +249,7 @@ class _UserTaskState extends State<UserTask> {
                 height: 400,
                 // enlargeCenterPage: true,
                 autoPlay: false,
-                // aspectRatio: 16 / 9,
+                aspectRatio: 16 / 9,
                 // autoPlayCurve: Curves.fastOutSlowIn,
                 enableInfiniteScroll: true,
                 // autoPlayAnimationDuration: Duration(milliseconds: 800),
