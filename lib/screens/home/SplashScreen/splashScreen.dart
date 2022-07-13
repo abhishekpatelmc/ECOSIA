@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'dart:async';
 // import 'package:ecosia/SplashScreen/splashScreenTwo.dart';
 import 'package:ecosia/screens/home/TutorialPages/Tutorial.dart';
@@ -20,29 +21,31 @@ import '../TutorialPages/getstarted.dart';
 // }
 
 class SplashScreenOne extends StatefulWidget {
+  const SplashScreenOne({Key? key}) : super(key: key);
+
   @override
   SplashScreenState createState() => SplashScreenState();
 }
+
 class SplashScreenState extends State<SplashScreenOne> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 3),
-            ()=>Navigator.pushReplacement(context,
-            MaterialPageRoute(builder:
-                (context) => Tutorial(),
-            )
-        )
-    );
+    Timer(
+        const Duration(seconds: 3),
+        () => Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const Tutorial(),
+            )));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-        body:Container(
+        body: SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-
             child: Stack(
               alignment: Alignment.center,
               children: <Widget>[
@@ -50,26 +53,28 @@ class SplashScreenState extends State<SplashScreenOne> {
                   width: 270,
                   height: 270,
                   decoration: const BoxDecoration(
-                    color:Color.fromRGBO(200, 236, 141,1),
+                    color: Color.fromRGBO(200, 236, 141, 1),
                     shape: BoxShape.circle,
                   ),
                 ),
-                const Text("ECOSIA",
+                const Text(
+                  "ECOSIA",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.w300,
-                    color: Color.fromRGBO(52,157,149, 0.8 ),
+                    color: Color.fromRGBO(52, 157, 149, 0.8),
                     letterSpacing: 5,
                     // fontFamily: 'Linden Hill',
                     fontSize: 60,
                     shadows: [
-                      Shadow(color: Colors.blueAccent, offset: Offset(2,1), blurRadius:10)
-                    ],),),],
-            )
-
-        )
-
-    );
-
+                      Shadow(
+                          color: Colors.blueAccent,
+                          offset: Offset(2, 1),
+                          blurRadius: 10)
+                    ],
+                  ),
+                ),
+              ],
+            )));
   }
 }

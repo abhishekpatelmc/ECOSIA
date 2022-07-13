@@ -1,18 +1,18 @@
-import 'package:ecosia/screens/home/UserTask/UserTask.dart';
 import 'package:ecosia/screens/home/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:ecosia/services/auth.dart';
-import 'package:provider/provider.dart';
+import '../../wrapper.dart';
 import '../informativepg/informativepage.dart';
 
 class UserInfo extends StatefulWidget {
+  const UserInfo({Key? key}) : super(key: key);
+
   @override
   State<UserInfo> createState() => _UserInfoState();
 }
 
 class _UserInfoState extends State<UserInfo> {
-
   final AuthService _auth = AuthService();
 
   TextEditingController name = TextEditingController();
@@ -37,10 +37,10 @@ class _UserInfoState extends State<UserInfo> {
                 color: Colors.white,
               ),
               currentAccountPicture: CircleAvatar(
-                // backgroundImage: AssetImage(
-                //   'assets/images/girlicon.png',
-                // ),
-              ),
+                  // backgroundImage: AssetImage(
+                  //   'assets/images/girlicon.png',
+                  // ),
+                  ),
             ),
             ListTile(
               tileColor: Colors.blueGrey,
@@ -48,35 +48,38 @@ class _UserInfoState extends State<UserInfo> {
                 Icons.supervised_user_circle,
                 color: Colors.blueGrey,
               ),
-              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Dashboard()));},
-              title: Text("Dasboard",style: TextStyle(color: Colors.white),),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+              },
+              title: const Text(
+                "Dasboard",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
+            // ListTile(
+            //   tileColor: Colors.blueGrey,
+            //   leading: const Icon(
+            //     Icons.supervised_user_circle,
+            //     color: Colors.blueGrey,
+            //   ),
+            //   onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UserInfo()));},
+            //   title: Text("User profile",style: TextStyle(color: Colors.white),),
+            // ),
             ListTile(
               tileColor: Colors.blueGrey,
               leading: const Icon(
                 Icons.supervised_user_circle,
                 color: Colors.blueGrey,
               ),
-              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UserInfo()));},
-              title: Text("User profile",style: TextStyle(color: Colors.white),),
-            ),
-            ListTile(
-              tileColor: Colors.blueGrey,
-              leading: const Icon(
-                Icons.supervised_user_circle,
-                color: Colors.blueGrey,
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => InformativePage()));
+              },
+              title: Text(
+                "Informative Page",
+                style: TextStyle(color: Colors.white),
               ),
-              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> InformativePage()));},
-              title: Text("Informative Page",style: TextStyle(color: Colors.white),),
-            ),
-            ListTile(
-              tileColor: Colors.blueGrey,
-              leading: const Icon(
-                Icons.supervised_user_circle,
-                color: Colors.blueGrey,
-              ),
-              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UserTask()));},
-              title: Text("Your Tasks",style: TextStyle(color: Colors.white),),
             ),
             ListTile(
               tileColor: Colors.blueGrey,
@@ -86,8 +89,13 @@ class _UserInfoState extends State<UserInfo> {
               ),
               onTap: () async {
                 await _auth.signOut();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => Wrapper()),
+                  (Route<dynamic> route) => false,
+                );
               },
-              title: const Text(
+              title: Text(
                 "Log out",
                 style: TextStyle(color: Colors.white),
               ),
@@ -156,11 +164,11 @@ class _UserInfoState extends State<UserInfo> {
             ),
             const Center(
                 child: Text(
-                  "User's name",
-                  style: TextStyle(fontSize: 25, color: Colors.black),
-                )),
+              "User's name",
+              style: TextStyle(fontSize: 25, color: Colors.black),
+            )),
             const Card(
-              margin: EdgeInsets.symmetric(vertical: 5,horizontal: 25),
+              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 25),
               child: ListTile(
                 leading: Icon(
                   Icons.phone,
@@ -169,7 +177,7 @@ class _UserInfoState extends State<UserInfo> {
               ),
             ),
             const Card(
-              margin: EdgeInsets.symmetric(vertical: 5,horizontal: 25),
+              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 25),
               child: ListTile(
                 leading: Icon(
                   Icons.email,
@@ -178,7 +186,7 @@ class _UserInfoState extends State<UserInfo> {
               ),
             ),
             const Card(
-              margin: EdgeInsets.symmetric(vertical: 5,horizontal: 25),
+              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 25),
               child: ListTile(
                 leading: Icon(
                   Icons.date_range_sharp,
@@ -187,7 +195,7 @@ class _UserInfoState extends State<UserInfo> {
               ),
             ),
             const Card(
-              margin: EdgeInsets.symmetric(vertical: 5,horizontal: 25),
+              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 25),
               child: ListTile(
                 leading: Icon(
                   Icons.location_city,
@@ -316,7 +324,7 @@ class _UserProfileState extends State<UserProfile> {
                   children: [
                     Padding(
                       padding:
-                      const EdgeInsets.only(top: 60, left: 20, right: 20),
+                          const EdgeInsets.only(top: 60, left: 20, right: 20),
                       child: TextField(
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
@@ -333,7 +341,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     Padding(
                       padding:
-                      const EdgeInsets.only(top: 15, left: 20, right: 20),
+                          const EdgeInsets.only(top: 15, left: 20, right: 20),
                       child: TextField(
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
@@ -350,7 +358,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     Padding(
                       padding:
-                      const EdgeInsets.only(top: 15, left: 20, right: 20),
+                          const EdgeInsets.only(top: 15, left: 20, right: 20),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
@@ -367,7 +375,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     Padding(
                       padding:
-                      const EdgeInsets.only(top: 15, left: 20, right: 20),
+                          const EdgeInsets.only(top: 15, left: 20, right: 20),
                       child: TextField(
                         keyboardType: TextInputType.streetAddress,
                         decoration: InputDecoration(
@@ -384,7 +392,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     Padding(
                         padding:
-                        const EdgeInsets.only(top: 15, left: 20, right: 20),
+                            const EdgeInsets.only(top: 15, left: 20, right: 20),
                         child: TextField(
                             controller: enterDate,
                             readOnly: true,
@@ -422,7 +430,7 @@ class _UserProfileState extends State<UserProfile> {
                             })),
                     Padding(
                         padding:
-                        const EdgeInsets.only(top: 15, left: 20, right: 20),
+                            const EdgeInsets.only(top: 15, left: 20, right: 20),
                         child: InkWell(
                           child: Container(
                             height: 50,
@@ -449,8 +457,8 @@ class _UserProfileState extends State<UserProfile> {
                           onTap: () {},
                         )),
                     Padding(
-                        padding:
-                        const EdgeInsets.only(top: 15, left: 20, right: 20,bottom: 15),
+                        padding: const EdgeInsets.only(
+                            top: 15, left: 20, right: 20, bottom: 15),
                         child: InkWell(
                           child: Container(
                             height: 50,
@@ -474,9 +482,7 @@ class _UserProfileState extends State<UserProfile> {
                               ),
                             ),
                           ),
-                          onTap: () async {
-                            // final uid = await Provider.of(context).auth.getUserUID();
-                            // await db.collection("Users")
+                          onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => UserInfo()));
                           },

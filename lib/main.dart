@@ -1,6 +1,6 @@
 import 'package:ecosia/models/user.dart';
 // import 'package:ecosia/screens/authenticate/authenticate.dart';
-import 'package:ecosia/screens/wrapper.dart';
+// import 'package:ecosia/screens/wrapper.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,7 +15,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
