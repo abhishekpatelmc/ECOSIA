@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ecosia/screens/wrapper.dart';
+
 class Tutorial extends StatefulWidget {
   const Tutorial({Key? key}) : super(key: key);
 
@@ -16,7 +17,7 @@ class _TutorialState extends State<Tutorial> {
     return Scaffold(
       // backgroundColor: Colors.greenAccent,
       body: CarouselSlider(
-        items:  [
+        items: [
           Column(
             children: [
               Padding(
@@ -34,10 +35,11 @@ class _TutorialState extends State<Tutorial> {
                 width: double.infinity,
                 height: 400,
                 // margin: const EdgeInsets.all(6.0),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   // borderRadius: BorderRadius.circular(8.0),
-                  image: const DecorationImage(
-                    image: NetworkImage("https://media2.giphy.com/media/jrt8JhFAVkWBbOHNzd/200w.gif?cid=82a1493bs7kpjgnf9jo4dw27reyxen8o4bv36miva4dgujja&rid=200w.gif&ct=s"),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        "https://media2.giphy.com/media/jrt8JhFAVkWBbOHNzd/200w.gif?cid=82a1493bs7kpjgnf9jo4dw27reyxen8o4bv36miva4dgujja&rid=200w.gif&ct=s"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -66,7 +68,8 @@ class _TutorialState extends State<Tutorial> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                     image: const DecorationImage(
-                      image: NetworkImage("https://thumbs.gfycat.com/CourteousGloomyHornshark-size_restricted.gif"),
+                      image: NetworkImage(
+                          "https://thumbs.gfycat.com/CourteousGloomyHornshark-size_restricted.gif"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -111,12 +114,13 @@ class _TutorialState extends State<Tutorial> {
                   child: ListTile(
                     // tileColor: Colors.blueGrey,
                     leading: const Icon(
-                      Icons.arrow_forward_rounded,size: 35,
-                      color: Colors.blueGrey,
+                      Icons.arrow_forward_rounded,
+                      size: 35,
+                      color: Colors.white,
                     ),
                     onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) => const Wrapper()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Wrapper()));
                     },
                   ),
                 ),
@@ -143,7 +147,7 @@ class _TutorialState extends State<Tutorial> {
           // aspectRatio: 16 / 9,
           autoPlayCurve: Curves.fastOutSlowIn,
           enableInfiniteScroll: false,
-          autoPlayAnimationDuration: Duration(milliseconds: 200),
+          autoPlayAnimationDuration: const Duration(milliseconds: 200),
           // viewportFraction: 0.8,
         ),
       ),
