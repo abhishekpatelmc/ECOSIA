@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
+import '../../wrapper.dart';
 import '../UserTask/UserTask.dart';
 import '../Userprofile/UserProfile.dart';
 import '../informativepg/informativepage.dart';
@@ -78,6 +79,9 @@ class Dashboard extends StatelessWidget {
               ),
               onTap: () async {
                 await _auth.signOut();
+                Navigator.pushAndRemoveUntil(context,
+                    MaterialPageRoute(builder: (context) => Wrapper()),
+                (Route<dynamic> route) => false);
               },
               title: Text(
                 "Log out",
@@ -158,7 +162,7 @@ class Dashboard extends StatelessWidget {
                 child: Row(
                   children: const [
                     Center(
-                      child: Text("Today's Task and Progress",
+                      child: Text("     Today's Task and Progress",
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -256,7 +260,7 @@ class _TaskInformationState extends State<TaskInformation> {
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
               return ListTile(
-                  title: Text(data['Name']),
+                  title: Text(data['Name'],style: TextStyle(fontSize: 26, color: Colors.white)),
                   // subtitle: Text(data['Description']),
                   onTap: (){ Navigator.push(context,
                       MaterialPageRoute(builder:(context)=>TaskDesription(document.reference.id)));
