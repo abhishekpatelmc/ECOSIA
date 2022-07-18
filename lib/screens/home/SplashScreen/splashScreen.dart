@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'package:ecosia/screens/home/TutorialPages/Tutorial.dart';
 import 'package:flutter/material.dart';
+
 class SplashScreenOne extends StatefulWidget {
   const SplashScreenOne({Key? key}) : super(key: key);
 
