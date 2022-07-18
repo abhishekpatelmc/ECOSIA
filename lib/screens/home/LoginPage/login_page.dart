@@ -183,30 +183,30 @@ class _LoginPageState extends State<LoginPage> {
                               fontWeight: FontWeight.w500)),
                       child: const Text('Sign in'),
                     ),
-                    // Center(
-                    //   child: Text('Sign in',
-                    //   style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
-                    //   ),
-                    // ),
                   )
               ),
-                ElevatedButton(
-                  onPressed: () {
+                InkWell(
+
+                  onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => const InformativePage(),
                       ),
                     );
                   },
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.orange[600],
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      textStyle: const TextStyle(
-                          letterSpacing: 1.5,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500)),
-                  child: const Text('Guest Login'),
+                  child: Container(
+                    height: 50,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.orange[600],
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Guest login',
+                        style: TextStyle(fontSize: 24, color: Colors.white,letterSpacing: 1.5,fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ),
                 ),
                 SizedBox(height: 30),
               //Not a Member? Sign up Page
