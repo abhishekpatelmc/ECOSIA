@@ -23,6 +23,10 @@ class _UserInfoState extends State<UserInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green[300],
+        elevation: 5.0,
+      ),
       drawer: Drawer(
         child: ListView(
           children: [
@@ -30,23 +34,19 @@ class _UserInfoState extends State<UserInfo> {
               accountName: null,
               accountEmail: null,
               decoration: BoxDecoration(
-                // image: DecorationImage(
-                //   image: ExactAssetImage('assets/images/drawerbg.jpg'),
-                //   fit: BoxFit.cover,
-                // ),
                 color: Colors.white,
               ),
               currentAccountPicture: CircleAvatar(
-                  // backgroundImage: AssetImage(
-                  //   'assets/images/girlicon.png',
-                  // ),
-                  ),
+                backgroundImage: AssetImage(
+                  'assets/images/flag.png',
+                ),
+              ),
             ),
             ListTile(
-              tileColor: Colors.blueGrey,
+              tileColor: Colors.green[300],
               leading: const Icon(
-                Icons.supervised_user_circle,
-                color: Colors.blueGrey,
+                Icons.home_outlined,
+                color: Colors.white,
               ),
               onTap: () {
                 Navigator.of(context)
@@ -57,78 +57,42 @@ class _UserInfoState extends State<UserInfo> {
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            // ListTile(
-            //   tileColor: Colors.blueGrey,
-            //   leading: const Icon(
-            //     Icons.supervised_user_circle,
-            //     color: Colors.blueGrey,
-            //   ),
-            //   onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UserInfo()));},
-            //   title: Text("User profile",style: TextStyle(color: Colors.white),),
-            // ),
             ListTile(
-              tileColor: Colors.blueGrey,
+              tileColor: Colors.green[300],
               leading: const Icon(
-                Icons.supervised_user_circle,
-                color: Colors.blueGrey,
+                Icons.info_outline_rounded,
+                color: Colors.white,
               ),
               onTap: () {
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => InformativePage()));
               },
-              title: Text(
+              title: const Text(
                 "Informative Page",
                 style: TextStyle(color: Colors.white),
               ),
             ),
             ListTile(
-              tileColor: Colors.blueGrey,
+              tileColor: Colors.green[300],
               leading: const Icon(
-                Icons.supervised_user_circle,
-                color: Colors.blueGrey,
+                Icons.logout_outlined,
+                color: Colors.white,
               ),
               onTap: () async {
                 await _auth.signOut();
+                // ignore: use_build_context_synchronously
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => Wrapper()),
+                  MaterialPageRoute(builder: (context) => const Wrapper()),
                   (Route<dynamic> route) => false,
                 );
               },
-              title: Text(
+              title: const Text(
                 "Log out",
                 style: TextStyle(color: Colors.white),
               ),
             ),
           ],
-        ),
-      ),
-      appBar: AppBar(
-        title: const Text(""),
-        // backgroundColor: ,
-        flexibleSpace: Container(
-          height: 150,
-          width: 600,
-          decoration: const BoxDecoration(
-            // borderRadius: BorderRadius.circular(30),
-            gradient: LinearGradient(
-              colors: <Color>[
-                Color(0xff0ED1C2),
-                Color(0xff38EF7D),
-                // Color(0xff0ED1C2),
-                // Color(0xff38EF7D),
-              ],
-            ),
-          ),
-          child: const Padding(
-            padding: EdgeInsets.only(top: 30),
-            child: Center(
-              child: Text(
-                'User Profile',
-                style: TextStyle(fontSize: 24, color: Colors.white),
-              ),
-            ),
-          ),
         ),
       ),
       body: SingleChildScrollView(

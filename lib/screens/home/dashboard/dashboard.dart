@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecosia/screens/home/LoginPage/login_page.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
 import '../UserTask/UserTask.dart';
@@ -132,24 +133,20 @@ class Dashboard extends StatelessWidget {
                     ),
                   ],
                 ),
-                Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(top: 0, right: 20),
-                      child: SizedBox(
-                        width: 140,
-                        height: 200.0,
-                        child: Image.asset(
-                            'assets/images/flag.png'), // Your image widget here
-                      ),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(top: 0, right: 20),
+                  child: SizedBox(
+                    width: 140,
+                    height: 200.0,
+                    child: Image.asset(
+                        'assets/images/flag.png'), // Your image widget here
+                  ),
                 ),
               ],
             ),
           ),
           const Padding(
-            padding: EdgeInsets.fromLTRB(8, 10, 8, 10),
+            padding: EdgeInsets.fromLTRB(8, 10, 8, 15),
             child: Text(
               "Today's tasks",
               style: TextStyle(
@@ -188,7 +185,7 @@ class _TaskInformationState extends State<TaskInformation> {
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text("Loading");
+          return const Loading();
         }
 
         return Container(
@@ -201,7 +198,7 @@ class _TaskInformationState extends State<TaskInformation> {
                     document.data()! as Map<String, dynamic>;
                 return Card(
                   elevation: 6,
-                  margin: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.fromLTRB(10, 5, 10, 10),
                   child: ListTile(
                     title: Text(data['Name'],
                         style: const TextStyle(

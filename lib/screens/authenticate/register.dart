@@ -26,28 +26,28 @@ class _RegisterState extends State<Register> {
     return loading
         ? const Loading()
         : Scaffold(
-            backgroundColor: Colors.green[100],
+            backgroundColor: Color.fromARGB(255, 255, 255, 255),
             appBar: AppBar(
               backgroundColor: Colors.green[300],
               elevation: 0.0,
               centerTitle: true,
               title: const Text('Sign up to Ecosia'),
-              actions: [
-                TextButton.icon(
-                  onPressed: () {
-                    widget.toggelView();
-                  },
-                  icon: const Icon(Icons.person),
-                  label: const Text('Sign in'),
-                  style: TextButton.styleFrom(
-                    primary: Colors.white,
-                    //backgroundColor: Colors.teal,
-                    textStyle: const TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                )
-              ],
+              // actions: [
+              //   TextButton.icon(
+              //     onPressed: () {
+              //       widget.toggelView();
+              //     },
+              //     icon: const Icon(Icons.person),
+              //     label: const Text('Sign in'),
+              //     style: TextButton.styleFrom(
+              //       primary: Colors.white,
+              //       //backgroundColor: Colors.teal,
+              //       textStyle: const TextStyle(
+              //         fontSize: 14,
+              //       ),
+              //     ),
+              //   )
+              // ],
             ),
             body: Container(
               padding:

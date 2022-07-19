@@ -1,12 +1,11 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-// import 'package:ecosia/screens/authenticate/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'forgot_password.dart';
 
 import '../../../services/auth.dart';
-// import '../../authenticate/authenticate.dart';
+
 import '../../authenticate/register.dart';
 import '../informativepg/informativepage.dart';
 
@@ -45,24 +44,8 @@ class _LoginPageState extends State<LoginPage> {
               elevation: 0.0,
               centerTitle: true,
               title: const Text('Sign in to Ecosia'),
-              actions: [
-                TextButton.icon(
-                  onPressed: () {
-                    widget.toggelView();
-                  },
-                  icon: const Icon(Icons.person),
-                  label: const Text('Sign up'),
-                  style: TextButton.styleFrom(
-                    primary: Colors.white,
-                    // backgroundColor: Colors.teal,
-                    textStyle: const TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                )
-              ],
             ),
-            body: SafeArea(
+            body: SingleChildScrollView(
               child: Form(
                   key: _formKey,
                   child: Center(
@@ -70,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: 25,
+                          height: 80,
                         ),
 
                         //Hello, Again!
@@ -84,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         Text(
                           'Welcome back, You have been missed',
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 16),
                         ),
                         SizedBox(
                           height: 50,
@@ -116,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ))),
                         SizedBox(
-                          height: 10,
+                          height: 15,
                         ),
 
                         //Password TextField
@@ -147,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ))),
                         SizedBox(
-                          height: 15,
+                          height: 10,
                         ),
 
                         Text(
@@ -230,18 +213,19 @@ class _LoginPageState extends State<LoginPage> {
                             );
                           },
                           child: Container(
-                            height: 50,
-                            width: double.infinity,
+                            height: 42,
+                            width: 160,
                             decoration: BoxDecoration(
-                              color: Colors.orange[600],
+                              color: Colors.orange[500],
+                              borderRadius: BorderRadius.circular(5),
                             ),
                             child: const Center(
                               child: Text(
                                 'Guest login',
                                 style: TextStyle(
-                                    fontSize: 24,
+                                    fontSize: 22,
                                     color: Colors.white,
-                                    letterSpacing: 1.5,
+                                    letterSpacing: 1.2,
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
@@ -254,8 +238,10 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text('Not a Member?',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16,
+                                  )),
                               GestureDetector(
                                 onTap: () {
                                   Navigator.pushAndRemoveUntil(
