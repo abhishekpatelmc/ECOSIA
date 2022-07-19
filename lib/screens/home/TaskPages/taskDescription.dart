@@ -11,41 +11,52 @@ class TaskDesription extends StatelessWidget {
   // GetUserName(this.documentId);
   @override
   Widget build(BuildContext context) {
-
     CollectionReference tasks = FirebaseFirestore.instance.collection('Tasks');
 
     return FutureBuilder<DocumentSnapshot>(
       future: tasks.doc(documentId).get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-
         if (snapshot.hasError) {
-          return Text("Something went wrong");
+          return const Text("Something went wrong");
         }
 
         if (snapshot.hasData && !snapshot.data!.exists) {
-          return Text("Document does not exist");
+          return const Text("Document does not exist");
         }
 
         if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
-          return Container(
-            height: 100,
-            width: 100,
-            child: Card(
-              child: ListTile(
-                title: Text("Task Name: ${data['Name']}"),
-                subtitle: Text("Description: ${data['Description']}"),
+          Map<String, dynamic> data =
+              snapshot.data!.data() as Map<String, dynamic>;
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.green[300],
+              elevation: 0.0,
+            ),
+            body: Padding(
+              padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
+              child: SizedBox(
+                height: MediaQuery.of(context).size.width,
+                width: MediaQuery.of(context).size.width,
+                child: ListTile(
+                  title: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                    child: Text(
+                      "Task Name : ${data['Name']}",
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  subtitle: Text("Description: ${data['Description']}",
+                      style: const TextStyle(fontSize: 15)),
+                ),
               ),
-              elevation: 8,
-              shadowColor: Colors.green,
-              margin: EdgeInsets.all(30),
             ),
           );
           // Text("Task Name: ${data['Name']} ${data['Description']}"),
         }
 
-        return Text("loading");
+        return const Text("loading");
       },
     );
   }
