@@ -140,7 +140,7 @@ class Dashboard extends StatelessWidget {
                         width: 140,
                         height: 200.0,
                         child: Image.asset(
-                            'assets/images/flag.png'), // Your image widget here
+                            'assets/images/person.png'), // Your image widget here
                       ),
                     ),
                   ],
