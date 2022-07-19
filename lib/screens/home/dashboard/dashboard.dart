@@ -133,14 +133,18 @@ class Dashboard extends StatelessWidget {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, right: 20),
-                  child: SizedBox(
-                    width: 140,
-                    height: 200.0,
-                    child: Image.asset(
-                        'assets/images/flag.png'), // Your image widget here
-                  ),
+                Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 0, right: 20),
+                      child: SizedBox(
+                        width: 140,
+                        height: 200.0,
+                        child: Image.asset(
+                            'assets/images/person.png'), // Your image widget here
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
