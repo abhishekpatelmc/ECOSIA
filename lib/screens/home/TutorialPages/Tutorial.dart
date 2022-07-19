@@ -38,8 +38,8 @@ class _TutorialState extends State<Tutorial> {
                 decoration: const BoxDecoration(
                   // borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                    image: NetworkImage(
-                        "https://media2.giphy.com/media/jrt8JhFAVkWBbOHNzd/200w.gif?cid=82a1493bs7kpjgnf9jo4dw27reyxen8o4bv36miva4dgujja&rid=200w.gif&ct=s"),
+                    image: AssetImage(
+                        "assets/images/Picture9.png"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -68,8 +68,8 @@ class _TutorialState extends State<Tutorial> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                     image: const DecorationImage(
-                      image: NetworkImage(
-                          "https://thumbs.gfycat.com/CourteousGloomyHornshark-size_restricted.gif"),
+                      image: AssetImage(
+                          "assets/images/Picture13.png"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -97,7 +97,7 @@ class _TutorialState extends State<Tutorial> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   image: const DecorationImage(
-                    image: AssetImage("assets/images/Healty eat.gif"),
+                    image: AssetImage("assets/images/Picture11.png"),
                     // image: NetworkImage("https://cdn.dribbble.com/users/3524019/screenshots/16284498/media/d03e7f6dcf5f3a6973b650e3ede72920.gif"),
                     // fit: BoxFit.cover,
                   ),
