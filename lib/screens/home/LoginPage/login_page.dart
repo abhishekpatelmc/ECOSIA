@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
         : Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
-              backgroundColor: Colors.green[300],
+              backgroundColor: Colors.greenAccent,
               elevation: 0.0,
               centerTitle: true,
               title: const Text('Sign in to Ecosia'),
@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: 80,
+                          height: 150,
                         ),
 
                         //Hello, Again!
@@ -88,8 +88,8 @@ class _LoginPageState extends State<LoginPage> {
                                   child: TextFormField(
                                     decoration: const InputDecoration(
                                       hintText: 'Email',
-                                      fillColor: Colors.white,
-                                      filled: true,
+                                      //fillColor: Colors.white,
+                                      //filled: true,
                                     ),
                                     validator: (val) =>
                                         val!.isEmpty ? 'Enter an email' : null,
@@ -109,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: Container(
                                 decoration: BoxDecoration(
                                   color: Colors.grey[200],
-                                  border: Border.all(color: Colors.white),
+                                  //border: Border.all(color: Colors.white),
                                   borderRadius: BorderRadius.circular(16),
                                 ),
                                 child: Padding(
@@ -117,8 +117,8 @@ class _LoginPageState extends State<LoginPage> {
                                   child: TextFormField(
                                     decoration: const InputDecoration(
                                       hintText: 'Password',
-                                      fillColor: Colors.white,
-                                      filled: true,
+                                      //fillColor: Colors.white,
+                                      //filled: true,
                                     ),
                                     validator: (val) => val!.length < 6
                                         ? 'Enter a password bigger than 6 '
@@ -129,17 +129,18 @@ class _LoginPageState extends State<LoginPage> {
                                     },
                                   ),
                                 ))),
+
                         SizedBox(
                           height: 10,
                         ),
 
-                        Text(
-                          error,
-                          style: const TextStyle(
-                            color: Colors.red,
-                            fontSize: 14.0,
-                          ),
-                        ),
+                        // Text(
+                        //   error,
+                        //   style: const TextStyle(
+                        //     color: Colors.red,
+                        //     fontSize: 14.0,
+                        //   ),
+                        // ),
                         //Forgot password button
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -167,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
 
                         SizedBox(
-                          height: 15,
+                          height: 5,
                         ),
                         //Sign in Button
                         Padding(
@@ -175,7 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                                 const EdgeInsets.symmetric(horizontal: 25.0),
                             child: Container(
                               padding: EdgeInsets.all(20.0),
-                              // decoration: BoxDecoration(color: Colors.green[300], borderRadius: BorderRadius.circular(12)),
+                              //decoration: BoxDecoration(color: Colors.green[300], borderRadius: BorderRadius.circular(12)),
                               child: ElevatedButton(
                                 onPressed: () async {
                                   setState(() => loading = true);
@@ -194,7 +195,7 @@ class _LoginPageState extends State<LoginPage> {
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
-                                    primary: Colors.green[600],
+                                    primary: Colors.greenAccent,
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 40, vertical: 10),
                                     textStyle: const TextStyle(
