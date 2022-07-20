@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
             backgroundColor: Colors.white,
             appBar: AppBar(
               backgroundColor: Colors.greenAccent,
-              elevation: 0.0,
+              elevation: 5.0,
               centerTitle: true,
               title: const Text('Sign in to Ecosia'),
             ),
@@ -205,6 +205,7 @@ class _LoginPageState extends State<LoginPage> {
                                 child: const Text('Sign in'),
                               ),
                             )),
+                        //Guest login button
                         InkWell(
                           onTap: () {
                             Navigator.of(context).push(
@@ -214,25 +215,25 @@ class _LoginPageState extends State<LoginPage> {
                             );
                           },
                           child: Container(
-                            height: 42,
+                            height: 45,
                             width: 160,
                             decoration: BoxDecoration(
-                              color: Colors.orange[500],
-                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.orangeAccent,
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             child: const Center(
                               child: Text(
                                 'Guest login',
                                 style: TextStyle(
-                                    fontSize: 22,
+                                    fontSize: 20,
                                     color: Colors.white,
-                                    letterSpacing: 1.2,
-                                    fontWeight: FontWeight.w500),
+                                    letterSpacing: 1.0,
+                                    fontWeight: FontWeight.w400),
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(height: 30),
+                        SizedBox(height: 20),
 
                         //Not a Member? Sign up Page
                         Row(
