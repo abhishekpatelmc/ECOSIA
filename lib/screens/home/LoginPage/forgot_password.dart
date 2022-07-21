@@ -10,6 +10,7 @@ class ForgotPasswordPage extends StatefulWidget {
 }
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +53,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             height: 10,
           ),
           MaterialButton(
-            onPressed: () {},
+            onPressed: (){
+
+            },
             child: Text(
               'Reset Password',
             ),

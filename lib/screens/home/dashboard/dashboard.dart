@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/screens/home/LoginPage/login_page.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../UserTask/UserTask.dart';
 import '../Userprofile/UserProfile.dart';
 import '../informativepg/informativepage.dart';
@@ -194,7 +195,7 @@ class _TaskInformationState extends State<TaskInformation> {
 
         return Container(
           height: MediaQuery.of(context).size.width,
-          margin: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+          margin: const EdgeInsets.fromLTRB(10, 15, 10,0),
           child: ListView(
             children: snapshot.data!.docs.map(
               (DocumentSnapshot document) {
@@ -210,7 +211,9 @@ class _TaskInformationState extends State<TaskInformation> {
                     // subtitle: Text(data['Description']),
                     leading: IconButton(
                       icon: const Icon(Icons.check_circle_outline),
-                      onPressed: () {},
+                      onPressed: () =>{
+                        addTask(document.reference.id,data['points'])
+                      },
                     ),
                     trailing: IconButton(
                       icon: const Icon(Icons.arrow_forward_ios),
@@ -233,4 +236,33 @@ class _TaskInformationState extends State<TaskInformation> {
       },
     );
   }
+}
+
+
+addTask(String id, int point) async {
+
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? uid;
+  if (prefs.containsKey("email")) {
+    // setState(() {
+      uid = prefs.getString("email");
+    // });
+    print(uid);
+  }
+
+  FirebaseFirestore.instance.collection('users').where("Email", isEqualTo: uid).get().then(
+        (res) => {
+
+          // totalpoint = res.docs[0].data()['Points'] + point,
+          FirebaseFirestore.instance.collection('users').doc(res.docs[0].id).set({
+        'completedTasks': FieldValue.arrayUnion([
+        {
+          'ID': id,
+        },]),
+        'Point': point
+        },SetOptions(merge: true))
+            .then((value) => print("Task Added"))
+            .catchError((error) => print("Failed to add user: $error")),
+  }
+  );
 }

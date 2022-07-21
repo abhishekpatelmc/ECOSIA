@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecosia/screens/wrapper.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:ecosia/shared/loading.dart';
 import 'package:flutter/material.dart';
+
 
 class Register extends StatefulWidget {
   final Function toggelView;
@@ -98,7 +101,21 @@ class _RegisterState extends State<Register> {
                                 error = 'Please supply a valid email';
                                 loading = false;
                               });
-                            }
+                            }else
+                              {
+                                FirebaseFirestore.instance.collection('users').add({
+                                  'Email': email,
+                                })
+                                    .then((value) => print("User Added"))
+                                    .catchError((error) => print("Failed to add user: $error"));
+
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context) => const Wrapper(),
+                                  ),
+                                );
+                                // SharedPreferences prefs = await SharedPreferences.getInstance();
+                                // prefs.setString("email",email);
+                              }
                             // print(email);
                             // print(password);
                           }

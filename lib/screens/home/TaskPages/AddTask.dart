@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 class AddTask extends StatelessWidget {
   final String Name;
   final String description;
+  final int point;
 
-  const AddTask(this.Name, this.description);
+  const AddTask(this.Name, this.description, this.point);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,8 @@ class AddTask extends StatelessWidget {
       return users
           .add({
         'Name': Name, // John Doe
-        'Description': description, // Stokes and Sons
+        'Description': description,
+        'Point': point// Stokes and Sons
       })
           .then((value) => print("Task Added"))
           .catchError((error) => print("Failed to add user: $error"));

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ecosia/models/user.dart';
 
+
 // import 'home/AddTask.dart';
 
 /*
@@ -25,7 +26,7 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return Authenticate();
     } else {
-      // return AddTask("Walk", "Walk for 20 minutes");
+      // return AddTask("Walk", "Walk for 20 minutes", 10);
       return Dashboard();
     }
   }
