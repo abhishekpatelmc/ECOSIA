@@ -78,7 +78,7 @@ class _InformativePage extends State<InformativePage> {
                     ),
                   ),
                   onTap: () async {
-                    _launchURL();
+                    _launchURL3();
                   })),
           Padding(
               padding: const EdgeInsets.only(
@@ -136,7 +136,7 @@ class _InformativePage extends State<InformativePage> {
                     ),
                   ),
                   onTap: () async {
-                    _launchURL3();
+                    _launchURL2();
                   })),
           Padding(
               padding: const EdgeInsets.only(
