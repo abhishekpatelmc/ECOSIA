@@ -136,7 +136,7 @@ class _InformativePage extends State<InformativePage> {
                     ),
                   ),
                   onTap: () async {
-                    _launchURL2();
+                    _launchURL3();
                   })),
           Padding(
               padding: const EdgeInsets.only(
@@ -211,6 +211,14 @@ class _InformativePage extends State<InformativePage> {
 
   _launchURL2() async {
     const url = 'https://www.youtube.com/watch?v=X2YgM1Zw4_E';
+    if (await launchUrlString(url)) {
+      await launchUrlString(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+  _launchURL3() async {
+    const url = 'https://www.nytimes.com/guides/year-of-living-better/how-to-reduce-your-carbon-footprint';
     if (await launchUrlString(url)) {
       await launchUrlString(url);
     } else {
