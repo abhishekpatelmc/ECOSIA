@@ -261,12 +261,13 @@ class _TaskInformationState extends State<TaskInformation> {
 addTask(String id, int point) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? uid;
+  int totalpoint;
   if (prefs.containsKey("email")) {
     // setState(() {
     uid = prefs.getString("email");
     // });
     // ignore: avoid_print
-    print(uid);
+    print(point);
   }
 
   FirebaseFirestore.instance
@@ -274,7 +275,7 @@ addTask(String id, int point) async {
       .where("Email", isEqualTo: uid)
       .get()
       .then((res) => {
-            // totalpoint = res.docs[0].data()['Points'] + point,
+            totalpoint =  res.docs[0].data()['Point'] + point,
             FirebaseFirestore.instance
                 .collection('users')
                 .doc(res.docs[0].id)
@@ -284,7 +285,7 @@ addTask(String id, int point) async {
                       'ID': id,
                     },
                   ]),
-                  'Point': point
+                  'Point': totalpoint
                 }, SetOptions(merge: true))
                 // ignore: avoid_print
                 .then((value) => print("Task Added"))
