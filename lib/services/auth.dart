@@ -1,5 +1,6 @@
 import 'package:ecosia/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:firebase_core/firebase_core.dart';
 // import '../firebase_options.dart';
 
@@ -14,8 +15,10 @@ class AuthService {
   UserModel? _userFromFirebaseUser(User? user) {
     return user != null ? UserModel(uid: user.uid) : null;
   }
-Future<String> getCurrentUID() async{
-    return (await _auth.currentUser)!.uid;
+
+  Future<String?> getCurrentUID() async {
+    return (_auth.currentUser)!.uid;
+
 }
   // Stream : auth chage user stream
   Stream<UserModel?> get user {
@@ -63,6 +66,12 @@ Future<String> getCurrentUID() async{
       UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       User? user = result.user;
+
+      String? uid = user?.email.toString();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      prefs.setString("email",uid!);
+
       return _userFromFirebaseUser(user!);
     } catch (e) {
       // ignore: avoid_print
@@ -77,6 +86,11 @@ Future<String> getCurrentUID() async{
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User? user = result.user;
+      String? uid = user?.email.toString();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      prefs.setString("email",uid!);
+
       return _userFromFirebaseUser(user!);
     } catch (e) {
       print(e.toString());
@@ -90,6 +104,9 @@ Future<String> getCurrentUID() async{
       User? user = FirebaseAuth.instance.currentUser;
       if(user != null){
         await _auth.signOut();
+
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+        await preferences.clear();
       }
     } catch (e) {
       // ignore: avoid_print

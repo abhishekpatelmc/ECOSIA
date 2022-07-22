@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecosia/screens/wrapper.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:ecosia/shared/loading.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +28,7 @@ class _RegisterState extends State<Register> {
     return loading
         ? const Loading()
         : Scaffold(
-            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+            backgroundColor: const Color.fromARGB(255, 255, 255, 255),
             appBar: AppBar(
               backgroundColor: Colors.green[300],
               elevation: 0.0,
@@ -98,6 +100,26 @@ class _RegisterState extends State<Register> {
                                 error = 'Please supply a valid email';
                                 loading = false;
                               });
+                            } else {
+                              FirebaseFirestore.instance
+                                  .collection('users')
+                                  .add({
+                                    'Email': email,
+                                  })
+                                  // ignore: avoid_print
+                                  .then((value) => print("User Added"))
+                                  .catchError((error) =>
+                                      // ignore: avoid_print
+                                      print("Failed to add user: $error"));
+
+                              // ignore: use_build_context_synchronously
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const Wrapper(),
+                                ),
+                              );
+                              // SharedPreferences prefs = await SharedPreferences.getInstance();
+                              // prefs.setString("email",email);
                             }
                             // print(email);
                             // print(password);

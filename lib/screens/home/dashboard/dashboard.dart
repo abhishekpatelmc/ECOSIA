@@ -1,6 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../UserTask/UserTask.dart';
 import '../Userprofile/UserProfile.dart';
 import '../informativepg/informativepage.dart';
@@ -137,15 +140,15 @@ class Dashboard extends StatelessWidget {
                   ],
                 ),
                 Column(
+                  // ignore: prefer_const_literals_to_create_immutables
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(top: 0, right: 20),
+                      padding: EdgeInsets.only(top: 30, right: 20),
                       child: SizedBox(
-                        width: 140,
-                        height: 200.0,
-                        child: Image.asset(
-                            'assets/images/person.png'), // Your image widget here
-                      ),
+                          height: 150,
+                          width: 150,
+                          child: Image(
+                              image: AssetImage('assets/images/person.png'))),
                     ),
                   ],
                 ),
@@ -197,7 +200,7 @@ class _TaskInformationState extends State<TaskInformation> {
 
         return Container(
           height: MediaQuery.of(context).size.width,
-          margin: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+          margin: const EdgeInsets.fromLTRB(10, 15, 10, 0),
           child: ListView(
             children: snapshot.data!.docs.map(
               (DocumentSnapshot document) {
@@ -213,7 +216,8 @@ class _TaskInformationState extends State<TaskInformation> {
                     // subtitle: Text(data['Description']),
                     leading: IconButton(
                       icon: const Icon(Icons.check_circle_outline),
-                      onPressed: () {},
+                      onPressed: () =>
+                          {addTask(document.reference.id, data['points'])},
                     ),
                     trailing: IconButton(
                       icon: const Icon(Icons.arrow_forward_ios),
@@ -236,4 +240,36 @@ class _TaskInformationState extends State<TaskInformation> {
       },
     );
   }
+}
+
+addTask(String id, int point) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? uid;
+  if (prefs.containsKey("email")) {
+    // setState(() {
+    uid = prefs.getString("email");
+    // });
+    print(uid);
+  }
+
+  FirebaseFirestore.instance
+      .collection('users')
+      .where("Email", isEqualTo: uid)
+      .get()
+      .then((res) => {
+            // totalpoint = res.docs[0].data()['Points'] + point,
+            FirebaseFirestore.instance
+                .collection('users')
+                .doc(res.docs[0].id)
+                .set({
+                  'completedTasks': FieldValue.arrayUnion([
+                    {
+                      'ID': id,
+                    },
+                  ]),
+                  'Point': point
+                }, SetOptions(merge: true))
+                .then((value) => print("Task Added"))
+                .catchError((error) => print("Failed to add user: $error")),
+          });
 }
