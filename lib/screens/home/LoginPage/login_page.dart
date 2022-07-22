@@ -12,7 +12,8 @@ import '../informativepg/informativepage.dart';
 class LoginPage extends StatefulWidget {
   // const LoginPage({Key? key}) : super(key: key);
   final Function toggelView;
-  LoginPage({required this.toggelView});
+  // ignore: use_key_in_widget_constructors
+  const LoginPage({required this.toggelView});
 
   @override
   State<LoginPage> createState() => _LoginPageState();

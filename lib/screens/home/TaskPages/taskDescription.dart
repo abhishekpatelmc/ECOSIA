@@ -1,11 +1,12 @@
-// import 'dart:convert';
+// ignore_for_file: file_names
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:ecosia/models/tasks.dart';
 import 'package:flutter/material.dart';
 
 class TaskDesription extends StatelessWidget {
-  TaskDesription(this.documentId);
+  // ignore: use_key_in_widget_constructors
+  const TaskDesription(this.documentId);
   final String documentId;
 
   // GetUserName(this.documentId);

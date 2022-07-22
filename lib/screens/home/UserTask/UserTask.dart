@@ -1,5 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
-import 'package:ecosia/services/auth.dart';
+
 import '../Userprofile/UserProfile.dart';
 import '../dashboard/dashboard.dart';
 import '../informativepg/informativepage.dart';
@@ -57,8 +59,8 @@ class _UserTaskState extends State<UserTask> {
                 color: Colors.white,
               ),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => UserInfo()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const UserInfo()));
               },
               title: const Text(
                 "User profile",
@@ -72,8 +74,8 @@ class _UserTaskState extends State<UserTask> {
                 color: Colors.white,
               ),
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => InformativePage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const InformativePage()));
               },
               title: const Text(
                 "Informative Page",

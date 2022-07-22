@@ -18,8 +18,8 @@ class AuthService {
 
   Future<String?> getCurrentUID() async {
     return (_auth.currentUser)!.uid;
+  }
 
-}
   // Stream : auth chage user stream
   Stream<UserModel?> get user {
     return _auth
@@ -70,7 +70,7 @@ class AuthService {
       String? uid = user?.email.toString();
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
-      prefs.setString("email",uid!);
+      prefs.setString("email", uid!);
 
       return _userFromFirebaseUser(user!);
     } catch (e) {
@@ -89,10 +89,11 @@ class AuthService {
       String? uid = user?.email.toString();
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
-      prefs.setString("email",uid!);
+      prefs.setString("email", uid!);
 
       return _userFromFirebaseUser(user!);
     } catch (e) {
+      // ignore: avoid_print
       print(e.toString());
       return null;
     }
@@ -102,7 +103,7 @@ class AuthService {
   Future signOut() async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
-      if(user != null){
+      if (user != null) {
         await _auth.signOut();
 
         SharedPreferences preferences = await SharedPreferences.getInstance();

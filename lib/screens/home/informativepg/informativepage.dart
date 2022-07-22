@@ -20,15 +20,16 @@ class _InformativePage extends State<InformativePage> {
           flexibleSpace: Container(
             height: 130,
             width: 600,
-            decoration: const BoxDecoration(
-                // borderRadius: BorderRadius.circular(30),
-                color: Colors.greenAccent),
+            decoration: BoxDecoration(
+              // borderRadius: BorderRadius.circular(30),
+              color: Colors.green[300],
+            ),
             child: const Padding(
-              padding: EdgeInsets.only(top: 37),
+              padding: EdgeInsets.only(top: 25),
               child: Center(
                 child: Text(
                   'Ecosia Informative Page',
-                  style: TextStyle(fontSize: 26, color: Colors.white),
+                  style: TextStyle(fontSize: 22, color: Colors.white),
                 ),
               ),
             ),
@@ -48,7 +49,7 @@ class _InformativePage extends State<InformativePage> {
           //   ],
           // ),
           SizedBox(
-            height: 180,
+            height: 80,
           ),
           Padding(
               padding: const EdgeInsets.only(
@@ -59,7 +60,7 @@ class _InformativePage extends State<InformativePage> {
                     // width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.greenAccent,
+                      color: Colors.green[300],
                       // gradient: const LinearGradient(
                       //   colors: <Color>[
                       //     Color(0xff0ED1C2),
@@ -88,7 +89,7 @@ class _InformativePage extends State<InformativePage> {
                     // width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.greenAccent,
+                      color: Colors.green[300],
                       // gradient: const LinearGradient(
                       //   colors: <Color>[
                       //     Color(0xff0ED1C2),
@@ -117,7 +118,7 @@ class _InformativePage extends State<InformativePage> {
                     // width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.greenAccent,
+                      color: Colors.green[300],
                       // gradient: const LinearGradient(
                       //   colors: <Color>[
                       //     Color(0xff0ED1C2),
@@ -146,7 +147,7 @@ class _InformativePage extends State<InformativePage> {
                     // width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.greenAccent,
+                      color: Colors.green[300],
                       // gradient: const LinearGradient(
                       //   colors: <Color>[
                       //     Color(0xff0ED1C2),
@@ -175,7 +176,7 @@ class _InformativePage extends State<InformativePage> {
                     // width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.greenAccent,
+                      color: Colors.green[300],
                       // gradient: const LinearGradient(
                       //   colors: <Color>[
                       //     Color(0xff0ED1C2),

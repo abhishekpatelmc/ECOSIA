@@ -24,7 +24,7 @@ class Wrapper extends StatelessWidget {
 
     // return either the Home or Authenticate widget
     if (user == null) {
-      return Authenticate();
+      return const Authenticate();
     } else {
       // return AddTask("Walk", "Walk for 20 minutes", 10);
       return Dashboard();
