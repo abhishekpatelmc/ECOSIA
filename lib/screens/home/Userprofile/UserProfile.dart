@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/screens/home/EcoCount/EcoCount.dart';
 import 'package:ecosia/screens/home/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
@@ -228,6 +229,10 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
+  TextEditingController email = TextEditingController();
+  TextEditingController name = TextEditingController();
+  TextEditingController contact = TextEditingController();
+  TextEditingController location = TextEditingController();
   TextEditingController enterDate = TextEditingController();
 
   @override
@@ -322,6 +327,7 @@ class _UserProfileState extends State<UserProfile> {
                     padding:
                         const EdgeInsets.only(top: 15, left: 20, right: 20),
                     child: TextField(
+                      controller: email,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         icon: const Icon(
@@ -339,6 +345,7 @@ class _UserProfileState extends State<UserProfile> {
                     padding:
                         const EdgeInsets.only(top: 15, left: 20, right: 20),
                     child: TextField(
+                      controller: contact,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         icon: const Icon(
@@ -356,6 +363,7 @@ class _UserProfileState extends State<UserProfile> {
                     padding:
                         const EdgeInsets.only(top: 15, left: 20, right: 20),
                     child: TextField(
+                      controller: location,
                       keyboardType: TextInputType.streetAddress,
                       decoration: InputDecoration(
                         icon: const Icon(
@@ -418,16 +426,8 @@ class _UserProfileState extends State<UserProfile> {
                           height: 50,
                           // width: double.infinity,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            gradient: const LinearGradient(
-                              colors: <Color>[
-                                Color(0xff0ED1C2),
-                                Color(0xff38EF7D),
-                                // Color(0xff0ED1C2),
-                                // Color(0xff38EF7D),
-                              ],
-                            ),
-                          ),
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.green[300]),
                           child: const Center(
                             child: Text(
                               'Change password',
@@ -446,16 +446,8 @@ class _UserProfileState extends State<UserProfile> {
                           height: 50,
                           // width: double.infinity,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            gradient: const LinearGradient(
-                              colors: <Color>[
-                                Color(0xff0ED1C2),
-                                Color(0xff38EF7D),
-                                // Color(0xff0ED1C2),
-                                // Color(0xff38EF7D),
-                              ],
-                            ),
-                          ),
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.green[300]),
                           child: const Center(
                             child: Text(
                               'Save',
@@ -465,8 +457,21 @@ class _UserProfileState extends State<UserProfile> {
                           ),
                         ),
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const UserInfo()));
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(
+                                  builder: (context) => const UserInfo()))
+                              .then((value) => {
+                                    FirebaseFirestore.instance
+                                        .collection("Userdata")
+                                        .doc(value.user.uid)
+                                        .set({
+                                      "Name": name,
+                                      "email": email,
+                                      "contact": contact,
+                                      "location": location,
+                                      "BirthDate": enterDate,
+                                    })
+                                  });
                         },
                       )),
                 ],
