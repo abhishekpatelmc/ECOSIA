@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../EcoCount/EcoCount.dart';
 import '../UserTask/UserTask.dart';
 import '../Userprofile/UserProfile.dart';
 import '../informativepg/informativepage.dart';
@@ -73,12 +74,27 @@ class Dashboard extends StatelessWidget {
             ListTile(
               tileColor: Colors.green[300],
               leading: const Icon(
+                Icons.info_outline_rounded,
+                color: Colors.white,
+              ),
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const EcoCount()));
+              },
+              title: const Text(
+                "Eco Count",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            ListTile(
+              tileColor: Colors.green[300],
+              leading: const Icon(
                 Icons.task_alt_outlined,
                 color: Colors.white,
               ),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => UserTask()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const UserTask()));
               },
               title: const Text(
                 "Your Tasks",
@@ -249,6 +265,7 @@ addTask(String id, int point) async {
     // setState(() {
     uid = prefs.getString("email");
     // });
+    // ignore: avoid_print
     print(uid);
   }
 
@@ -269,7 +286,9 @@ addTask(String id, int point) async {
                   ]),
                   'Point': point
                 }, SetOptions(merge: true))
+                // ignore: avoid_print
                 .then((value) => print("Task Added"))
+                // ignore: avoid_print
                 .catchError((error) => print("Failed to add user: $error")),
           });
 }

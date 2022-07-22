@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecosia/screens/home/EcoCount/EcoCount.dart';
 import 'package:ecosia/screens/home/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -17,10 +17,10 @@ class _UserInfoState extends State<UserInfo> {
   final AuthService _auth = AuthService();
 
   TextEditingController name = TextEditingController();
-  TextEditingController contact = TextEditingController();
+  // ignore: non_constant_identifier_names
+  TextEditingController Contact = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController enterDate = TextEditingController();
-  TextEditingController location = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,11 +66,26 @@ class _UserInfoState extends State<UserInfo> {
                 color: Colors.white,
               ),
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => InformativePage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const InformativePage()));
               },
               title: const Text(
                 "Informative Page",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            ListTile(
+              tileColor: Colors.green[300],
+              leading: const Icon(
+                Icons.info_outline_rounded,
+                color: Colors.white,
+              ),
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const EcoCount()));
+              },
+              title: const Text(
+                "Eco Count",
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -176,8 +191,16 @@ class _UserInfoState extends State<UserInfo> {
                     height: 50,
                     // width: double.infinity,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: Colors.green[300]),
+                      borderRadius: BorderRadius.circular(30),
+                      gradient: const LinearGradient(
+                        colors: <Color>[
+                          Color(0xff0ED1C2),
+                          Color(0xff38EF7D),
+                          // Color(0xff0ED1C2),
+                          // Color(0xff38EF7D),
+                        ],
+                      ),
+                    ),
                     child: const Center(
                       child: Text(
                         'Edit User Details',
@@ -205,15 +228,10 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-  TextEditingController name = TextEditingController();
-  TextEditingController contact = TextEditingController();
-  TextEditingController email = TextEditingController();
   TextEditingController enterDate = TextEditingController();
-  TextEditingController location = TextEditingController();
 
   @override
   void initState() {
-    // TODO: implement initState
     enterDate.text = "";
     super.initState();
   }
@@ -227,9 +245,17 @@ class _UserProfileState extends State<UserProfile> {
         flexibleSpace: Container(
           height: 150,
           width: 600,
-          decoration: BoxDecoration(
-              // borderRadius: BorderRadius.circular(30),
-              color: Colors.green[300]),
+          decoration: const BoxDecoration(
+            // borderRadius: BorderRadius.circular(30),
+            gradient: LinearGradient(
+              colors: <Color>[
+                Color(0xff0ED1C2),
+                Color(0xff38EF7D),
+                // Color(0xff0ED1C2),
+                // Color(0xff38EF7D),
+              ],
+            ),
+          ),
           child: const Padding(
             padding: EdgeInsets.only(top: 30),
             child: Center(
@@ -242,216 +268,211 @@ class _UserProfileState extends State<UserProfile> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          child: Stack(
-            children: [
-              const Opacity(
-                opacity: 0.7,
-                child: Image(
-                  image: NetworkImage(
-                      "https://images.pexels.com/photos/2382325/pexels-photo-2382325.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
-                ),
+        child: Stack(
+          children: [
+            const Opacity(
+              opacity: 0.7,
+              child: Image(
+                image: NetworkImage(
+                    "https://images.pexels.com/photos/2382325/pexels-photo-2382325.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
               ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 120),
-                  child: InkWell(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(80),
-                          color: Colors.teal),
-                      height: 150,
-                      width: 150,
-                      child: const Image(
-                        image: AssetImage("assets/images/flag.png"),
-                      ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 120),
+                child: InkWell(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(80),
+                        color: Colors.teal),
+                    height: 150,
+                    width: 150,
+                    child: const Image(
+                      image: AssetImage("assets/images/flag.png"),
                     ),
                   ),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 230),
-                // height: 200,
-                width: double.infinity,
-                // color: Colors.,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(top: 60, left: 20, right: 20),
-                      child: TextField(
-                        controller: name,
-                        keyboardType: TextInputType.name,
-                        decoration: InputDecoration(
-                          icon: const Icon(
-                            Icons.supervised_user_circle,
-                            size: 30,
-                          ),
-                          hintText: "Name",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 230),
+              // height: 200,
+              width: double.infinity,
+              // color: Colors.,
+              child: Column(
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 60, left: 20, right: 20),
+                    child: TextField(
+                      keyboardType: TextInputType.name,
+                      decoration: InputDecoration(
+                        icon: const Icon(
+                          Icons.supervised_user_circle,
+                          size: 30,
+                        ),
+                        hintText: "Name",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
                         ),
                       ),
                     ),
-                    Padding(
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 15, left: 20, right: 20),
+                    child: TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        icon: const Icon(
+                          Icons.email,
+                          size: 30,
+                        ),
+                        hintText: "Email",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 15, left: 20, right: 20),
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        icon: const Icon(
+                          Icons.phone,
+                          size: 30,
+                        ),
+                        hintText: "Contact Info",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 15, left: 20, right: 20),
+                    child: TextField(
+                      keyboardType: TextInputType.streetAddress,
+                      decoration: InputDecoration(
+                        icon: const Icon(
+                          Icons.location_city,
+                          size: 30,
+                        ),
+                        hintText: "Location",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
                       padding:
                           const EdgeInsets.only(top: 15, left: 20, right: 20),
                       child: TextField(
-                        controller: email,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          icon: const Icon(
-                            Icons.email,
-                            size: 30,
-                          ),
-                          hintText: "Email",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(top: 15, left: 20, right: 20),
-                      child: TextField(
-                        controller: contact,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          icon: const Icon(
-                            Icons.phone,
-                            size: 30,
-                          ),
-                          hintText: "Contact Info",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(top: 15, left: 20, right: 20),
-                      child: TextField(
-                        controller: location,
-                        keyboardType: TextInputType.streetAddress,
-                        decoration: InputDecoration(
-                          icon: const Icon(
-                            Icons.location_city,
-                            size: 30,
-                          ),
-                          hintText: "Location",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                        padding:
-                            const EdgeInsets.only(top: 15, left: 20, right: 20),
-                        child: TextField(
-                            controller: enterDate,
-                            readOnly: true,
-                            // keyboardType: TextInputType.datetime,
-                            decoration: InputDecoration(
-                              icon: const Icon(
-                                Icons.date_range_sharp,
-                                size: 30,
-                              ),
-                              hintText: "User's Birth Date",
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30),
-                              ),
+                          controller: enterDate,
+                          readOnly: true,
+                          // keyboardType: TextInputType.datetime,
+                          decoration: InputDecoration(
+                            icon: const Icon(
+                              Icons.date_range_sharp,
+                              size: 30,
                             ),
-                            onTap: () async {
-                              DateTime? UserPickedDate = await showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(1960),
-                                  lastDate: DateTime(2101));
-                              if (UserPickedDate != null) {
-                                print(
-                                    UserPickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                                String formattedDate = DateFormat('yyyy-MM-dd')
-                                    .format(UserPickedDate);
-                                print(
-                                    formattedDate); //formatted date output using intl package =>  2021-03-16
-                                //you can implement different kind of Date Format here according to your requirement
-
-                                setState(() {
-                                  enterDate.text =
-                                      formattedDate; //set output date to TextField value.
-                                });
-                              }
-                            })),
-                    // Padding(
-                    //     padding:
-                    //         const EdgeInsets.only(top: 15, left: 20, right: 20),
-                    //     child: InkWell(
-                    //       child: Container(
-                    //         height: 50,
-                    //         // width: double.infinity,
-                    //         decoration: BoxDecoration(
-                    //           borderRadius: BorderRadius.circular(30),
-                    //           color: Colors.green[300]
-                    //         ),
-                    //         child: const Center(
-                    //           child: Text(
-                    //             'Change password',
-                    //             style: TextStyle(
-                    //                 fontSize: 24, color: Colors.white),
-                    //           ),
-                    //         ),
-                    //       ),
-                    //       onTap: () {},
-                    //     )),
-                    Padding(
-                        padding: const EdgeInsets.only(
-                            top: 15, left: 20, right: 20, bottom: 15),
-                        child: InkWell(
-                          child: Container(
-                            height: 50,
-                            // width: double.infinity,
-                            decoration: BoxDecoration(
+                            hintText: "User's Birth Date",
+                            border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              color: Colors.green[300],
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'Save',
-                                style: TextStyle(
-                                    fontSize: 24, color: Colors.white),
-                              ),
                             ),
                           ),
-                          onTap: () {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(
-                                    builder: (context) => Dashboard()))
-                                .then((value) => {
-                                      FirebaseFirestore.instance
-                                          .collection("User Data")
-                                          .doc(value.user.uid)
-                                          .set(
-                                        {
-                                          "name": value.user.name,
-                                          "email": value.user.email,
-                                          "contact": value.user.contact,
-                                          "location": value.user.location,
-                                          "User birth date":
-                                              value.user.enterdate
-                                        },
-                                      )
-                                    });
-                          },
-                        )),
-                  ],
-                ),
+                          onTap: () async {
+                            // ignore: non_constant_identifier_names
+                            DateTime? UserPickedDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(1960),
+                                lastDate: DateTime(2101));
+                            if (UserPickedDate != null) {
+                              // ignore: avoid_print
+                              print(
+                                  UserPickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                              String formattedDate = DateFormat('yyyy-MM-dd')
+                                  .format(UserPickedDate);
+                              // ignore: avoid_print
+                              print(
+                                  formattedDate); //formatted date output using intl package =>  2021-03-16
+                              //you can implement different kind of Date Format here according to your requirement
+
+                              setState(() {
+                                enterDate.text =
+                                    formattedDate; //set output date to TextField value.
+                              });
+                            }
+                          })),
+                  Padding(
+                      padding:
+                          const EdgeInsets.only(top: 15, left: 20, right: 20),
+                      child: InkWell(
+                        child: Container(
+                          height: 50,
+                          // width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            gradient: const LinearGradient(
+                              colors: <Color>[
+                                Color(0xff0ED1C2),
+                                Color(0xff38EF7D),
+                                // Color(0xff0ED1C2),
+                                // Color(0xff38EF7D),
+                              ],
+                            ),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Change password',
+                              style:
+                                  TextStyle(fontSize: 24, color: Colors.white),
+                            ),
+                          ),
+                        ),
+                        onTap: () {},
+                      )),
+                  Padding(
+                      padding: const EdgeInsets.only(
+                          top: 15, left: 20, right: 20, bottom: 15),
+                      child: InkWell(
+                        child: Container(
+                          height: 50,
+                          // width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            gradient: const LinearGradient(
+                              colors: <Color>[
+                                Color(0xff0ED1C2),
+                                Color(0xff38EF7D),
+                                // Color(0xff0ED1C2),
+                                // Color(0xff38EF7D),
+                              ],
+                            ),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Save',
+                              style:
+                                  TextStyle(fontSize: 24, color: Colors.white),
+                            ),
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const UserInfo()));
+                        },
+                      )),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
