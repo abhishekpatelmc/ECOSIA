@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/screens/home/EcoCount/EcoCount.dart';
 import 'package:ecosia/screens/home/dashboard/dashboard.dart';
