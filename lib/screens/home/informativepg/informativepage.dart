@@ -107,7 +107,7 @@ class _InformativePage extends State<InformativePage> {
                     ),
                   ),
                   onTap: () async {
-                    _launchURL2();
+                    _launchURL4();
                   })),
           Padding(
               padding:
@@ -219,6 +219,14 @@ class _InformativePage extends State<InformativePage> {
   }
   _launchURL3() async {
     const url = 'https://www.nytimes.com/guides/year-of-living-better/how-to-reduce-your-carbon-footprint';
+    if (await launchUrlString(url)) {
+      await launchUrlString(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+  _launchURL4() async {
+    const url = 'https://www.foei.org/';
     if (await launchUrlString(url)) {
       await launchUrlString(url);
     } else {
