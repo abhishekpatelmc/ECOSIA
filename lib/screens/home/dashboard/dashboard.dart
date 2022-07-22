@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecosia/screens/home/LoginPage/login_page.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
 import '../UserTask/UserTask.dart';
@@ -22,15 +21,19 @@ class Dashboard extends StatelessWidget {
       drawer: Drawer(
         child: ListView(
           children: [
-            const UserAccountsDrawerHeader(
+            UserAccountsDrawerHeader(
               accountName: null,
               accountEmail: null,
               decoration: BoxDecoration(
-                color: Colors.white,
+                image: const DecorationImage(
+                    image: NetworkImage(
+                        "https://cdn2.outdoorphotographer.com/2019/12/FMB_Landscapes_03.jpg"),
+                    fit: BoxFit.fill),
+                color: Colors.green[300],
               ),
-              currentAccountPicture: CircleAvatar(
+              currentAccountPicture: const CircleAvatar(
                 backgroundImage: AssetImage(
-                  'assets/images/flag.png',
+                  'assets/images/person.png',
                 ),
               ),
             ),
@@ -116,15 +119,15 @@ class Dashboard extends StatelessWidget {
                               fontSize: 24.0)),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 50, right: 20),
-                      child: Text("Today you have 3 ",
+                      padding: EdgeInsets.only(left: 25, right: 20),
+                      child: Text("Today you have mutiple",
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 14.0)),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 40),
+                      padding: EdgeInsets.only(left: 20),
                       child: Text("tasks to complete...",
                           style: TextStyle(
                               color: Colors.black,
@@ -150,7 +153,7 @@ class Dashboard extends StatelessWidget {
             ),
           ),
           const Padding(
-            padding: EdgeInsets.fromLTRB(8, 10, 8, 15),
+            padding: EdgeInsets.fromLTRB(8, 10, 8, 10),
             child: Text(
               "Today's tasks",
               style: TextStyle(
@@ -189,7 +192,7 @@ class _TaskInformationState extends State<TaskInformation> {
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Loading();
+          return const Text("Loading");
         }
 
         return Container(
@@ -202,7 +205,7 @@ class _TaskInformationState extends State<TaskInformation> {
                     document.data()! as Map<String, dynamic>;
                 return Card(
                   elevation: 6,
-                  margin: const EdgeInsets.fromLTRB(10, 5, 10, 10),
+                  margin: const EdgeInsets.all(10),
                   child: ListTile(
                     title: Text(data['Name'],
                         style: const TextStyle(
