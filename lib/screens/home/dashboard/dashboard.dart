@@ -72,8 +72,8 @@ class Dashboard extends StatelessWidget {
                 color: Colors.white,
               ),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => UserTask()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const UserTask()));
               },
               title: const Text(
                 "Your Tasks",
@@ -195,7 +195,7 @@ class _TaskInformationState extends State<TaskInformation> {
 
         return Container(
           height: MediaQuery.of(context).size.width,
-          margin: const EdgeInsets.fromLTRB(10, 15, 10,0),
+          margin: const EdgeInsets.fromLTRB(10, 15, 10, 0),
           child: ListView(
             children: snapshot.data!.docs.map(
               (DocumentSnapshot document) {
@@ -211,9 +211,8 @@ class _TaskInformationState extends State<TaskInformation> {
                     // subtitle: Text(data['Description']),
                     leading: IconButton(
                       icon: const Icon(Icons.check_circle_outline),
-                      onPressed: () =>{
-                        addTask(document.reference.id,data['points'])
-                      },
+                      onPressed: () =>
+                          {addTask(document.reference.id, data['points'])},
                     ),
                     trailing: IconButton(
                       icon: const Icon(Icons.arrow_forward_ios),
@@ -238,31 +237,37 @@ class _TaskInformationState extends State<TaskInformation> {
   }
 }
 
-
 addTask(String id, int point) async {
-
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? uid;
   if (prefs.containsKey("email")) {
     // setState(() {
-      uid = prefs.getString("email");
+    uid = prefs.getString("email");
     // });
+    // ignore: avoid_print
     print(uid);
   }
 
-  FirebaseFirestore.instance.collection('users').where("Email", isEqualTo: uid).get().then(
-        (res) => {
-
-          // totalpoint = res.docs[0].data()['Points'] + point,
-          FirebaseFirestore.instance.collection('users').doc(res.docs[0].id).set({
-        'completedTasks': FieldValue.arrayUnion([
-        {
-          'ID': id,
-        },]),
-        'Point': point
-        },SetOptions(merge: true))
-            .then((value) => print("Task Added"))
-            .catchError((error) => print("Failed to add user: $error")),
-  }
-  );
+  FirebaseFirestore.instance
+      .collection('users')
+      .where("Email", isEqualTo: uid)
+      .get()
+      .then((res) => {
+            // totalpoint = res.docs[0].data()['Points'] + point,
+            FirebaseFirestore.instance
+                .collection('users')
+                .doc(res.docs[0].id)
+                .set({
+                  'completedTasks': FieldValue.arrayUnion([
+                    {
+                      'ID': id,
+                    },
+                  ]),
+                  'Point': point
+                }, SetOptions(merge: true))
+                // ignore: avoid_print
+                .then((value) => print("Task Added"))
+                // ignore: avoid_print
+                .catchError((error) => print("Failed to add user: $error")),
+          });
 }
