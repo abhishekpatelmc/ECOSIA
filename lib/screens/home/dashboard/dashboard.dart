@@ -1,9 +1,10 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecosia/screens/home/LoginPage/login_page.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../EcoCount/EcoCount.dart';
 import '../UserTask/UserTask.dart';
 import '../Userprofile/UserProfile.dart';
@@ -118,78 +119,65 @@ class Dashboard extends StatelessWidget {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: 200,
-            child: Row(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
-                      child: Text("Hello user,",
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text("Hello user,",
                           style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24.0)),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 25, right: 20),
-                      child: Text("Today you have mutiple",
+                              fontWeight: FontWeight.bold, fontSize: 24.0)),
+                      Text("Today you have mutiple",
                           style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14.0)),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 20),
-                      child: Text("tasks to complete...",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14.0)),
-                    ),
-                  ],
-                ),
-                Column(
-                  // ignore: prefer_const_literals_to_create_immutables
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(top: 30, right: 20),
-                      child: SizedBox(
+                              fontWeight: FontWeight.w500, fontSize: 14.0)),
+                      Text(
+                        "tasks to complete...",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 14.0),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: <Widget>[
+                      SizedBox(
                           height: 150,
                           width: 150,
                           child: Image(
                               image: AssetImage('assets/images/person.png'))),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(8, 10, 8, 10),
-            child: Text(
+            SizedBox(
+              height: 20,
+            ),
+            Text(
               "Today's tasks",
               style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20.0),
+                  color: Colors.grey[700],
+                  fontWeight: FontWeight.w500,
+                  fontSize: 22.0),
             ),
-          ),
-          const TaskInformation(),
-        ],
+            const TaskInformation(),
+          ],
+        ),
       ),
     );
   }
 }
 
 class TaskInformation extends StatefulWidget {
-  const TaskInformation({Key? key}) : super(key: key);
+  // ignore: use_key_in_widget_constructors
+  const TaskInformation();
 
   @override
   // ignore: library_private_types_in_public_api
@@ -211,11 +199,11 @@ class _TaskInformationState extends State<TaskInformation> {
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text("Loading");
+          return const Loading();
         }
 
         return Container(
-          height: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
           margin: const EdgeInsets.fromLTRB(10, 15, 10, 0),
           child: ListView(
             children: snapshot.data!.docs.map(

@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecosia/screens/home/LoginPage/login_page.dart';
 // import 'package:ecosia/models/tasks.dart';
 import 'package:flutter/material.dart';
 
@@ -57,7 +58,7 @@ class TaskDesription extends StatelessWidget {
           // Text("Task Name: ${data['Name']} ${data['Description']}"),
         }
 
-        return const Text("loading");
+        return const Loading();
       },
     );
   }
