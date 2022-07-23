@@ -406,26 +406,27 @@ class _UserProfileState extends State<UserProfile> {
                               });
                             }
                           })),
-                  Padding(
-                      padding:
-                          const EdgeInsets.only(top: 15, left: 20, right: 20),
-                      child: InkWell(
-                        child: Container(
-                          height: 50,
-                          // width: double.infinity,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: Colors.green[300]),
-                          child: const Center(
-                            child: Text(
-                              'Change password',
-                              style:
-                                  TextStyle(fontSize: 24, color: Colors.white),
-                            ),
-                          ),
-                        ),
-                        onTap: () {},
-                      )),
+                  // Padding(
+                  //     padding:
+                  //         const EdgeInsets.only(top: 15, left: 20, right: 20),
+                  //     child: InkWell(
+                  //       child: Container(
+                  //         height: 50,
+                  //         // width: double.infinity,
+                  //         decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(30),
+                  //             color: Colors.green[300]),
+                  //         child: const Center(
+                  //           child: Text(
+                  //             'Change password',
+                  //             style:
+                  //                 TextStyle(fontSize: 24, color: Colors.white),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       onTap: () {},
+                  //     )
+                  //     ),
                   Padding(
                       padding: const EdgeInsets.only(
                           top: 15, left: 20, right: 20, bottom: 15),
@@ -448,7 +449,7 @@ class _UserProfileState extends State<UserProfile> {
                           userSet(name.text, email.text, location.text,
                               enterDate.text, contact.text);
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const UserInfo()));
+                              builder: (context) => Dashboard()));
                         },
                       )),
                 ],
