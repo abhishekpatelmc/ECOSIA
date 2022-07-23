@@ -1,10 +1,12 @@
+import 'package:ecosia/screens/home/informativepg/informativepage.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:ecosia/shared/loading.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggelView;
-  SignIn({required this.toggelView});
+  // ignore: use_key_in_widget_constructors
+  const SignIn({required this.toggelView});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -24,7 +26,7 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ?  const Loading()
+        ? const Loading()
         : Scaffold(
             backgroundColor: Colors.green[100],
             appBar: AppBar(
@@ -86,7 +88,7 @@ class _SignInState extends State<SignIn> {
                           setState(() => password = val);
                         },
                       ),
-                      const SizedBox(height: 25.0),
+                      const SizedBox(height: 50.0),
                       ElevatedButton(
                         onPressed: () async {
                           setState(() => loading = true);
@@ -122,6 +124,25 @@ class _SignInState extends State<SignIn> {
                           fontSize: 14.0,
                         ),
                       ),
+                      const SizedBox(height: 10.0),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const InformativePage(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.orange[600],
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            textStyle: const TextStyle(
+                                letterSpacing: 1.5,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500)),
+                        child: const Text('Guest Login'),
+                      )
                     ],
                   )),
             ),

@@ -1,6 +1,5 @@
 import 'package:ecosia/models/user.dart';
-// import 'package:ecosia/screens/authenticate/authenticate.dart';
-// import 'package:ecosia/screens/wrapper.dart';
+
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -27,7 +26,8 @@ class MyApp extends StatelessWidget {
     return StreamProvider<UserModel?>.value(
       value: AuthService().user,
       initialData: null,
-      child: MaterialApp(
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: SplashScreenOne(),
       ),
     );

@@ -1,7 +1,12 @@
+// ignore_for_file: prefer_const_constructors
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecosia/screens/home/LoginPage/login_page.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
-import '../../wrapper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../EcoCount/EcoCount.dart';
+import '../UserTask/UserTask.dart';
 import '../Userprofile/UserProfile.dart';
 import '../informativepg/informativepage.dart';
 import '../TaskPages/taskDescription.dart';
@@ -14,32 +19,34 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.green[300],
+        elevation: 5.0,
+      ),
       drawer: Drawer(
         child: ListView(
           children: [
-            const UserAccountsDrawerHeader(
+            UserAccountsDrawerHeader(
               accountName: null,
               accountEmail: null,
               decoration: BoxDecoration(
-                // image: DecorationImage(
-                //   image: ExactAssetImage('assets/images/drawerbg.jpg'),
-                //   fit: BoxFit.cover,
-                // ),
-                color: Colors.white,
+                image: const DecorationImage(
+                    image: NetworkImage(
+                        "https://cdn2.outdoorphotographer.com/2019/12/FMB_Landscapes_03.jpg"),
+                    fit: BoxFit.fill),
+                color: Colors.green[300],
               ),
-              currentAccountPicture: CircleAvatar(
-                radius: 40,
-                // backgroundImage: AssetImage(
-                //   'assets/images/girlicon.png',
-                // ),
+              currentAccountPicture: const CircleAvatar(
+                backgroundImage: AssetImage(
+                  'assets/images/person.png',
+                ),
               ),
             ),
             ListTile(
-              tileColor: Colors.blueGrey,
+              tileColor: Colors.green[300],
               leading: const Icon(
-                Icons.supervised_user_circle,
-                color: Colors.blueGrey,
+                Icons.person_outlined,
+                color: Colors.white,
               ),
               onTap: () {
                 Navigator.of(context).push(
@@ -51,10 +58,10 @@ class Dashboard extends StatelessWidget {
               ),
             ),
             ListTile(
-              tileColor: Colors.blueGrey,
+              tileColor: Colors.green[300],
               leading: const Icon(
-                Icons.supervised_user_circle,
-                color: Colors.blueGrey,
+                Icons.info_outline_rounded,
+                color: Colors.white,
               ),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
@@ -66,18 +73,43 @@ class Dashboard extends StatelessWidget {
               ),
             ),
             ListTile(
-              tileColor: Colors.blueGrey,
+              tileColor: Colors.green[300],
               leading: const Icon(
-                Icons.supervised_user_circle,
-                color: Colors.blueGrey,
+                Icons.info_outline_rounded,
+                color: Colors.white,
+              ),
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const EcoCount()));
+              },
+              title: const Text(
+                "Eco Count",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            ListTile(
+              tileColor: Colors.green[300],
+              leading: const Icon(
+                Icons.task_alt_outlined,
+                color: Colors.white,
+              ),
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const UserTask()));
+              },
+              title: const Text(
+                "Your Tasks",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            ListTile(
+              tileColor: Colors.green[300],
+              leading: const Icon(
+                Icons.logout_outlined,
+                color: Colors.white,
               ),
               onTap: () async {
                 await _auth.signOut();
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => Wrapper()),
-                  (Route<dynamic> route) => false,
-                );
               },
               title: const Text(
                 "Log out",
@@ -91,131 +123,51 @@ class Dashboard extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: 200.0,
               child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsets.only(
-                              top: 10, bottom: 5, left: 50, right: 20),
-                          child: Text("Hello user,",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 24.0)),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 50, right: 20),
-                          child: Text("Today you have 3 ",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14.0)),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 40),
-                          child: Text("tasks to complete...",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14.0)),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0),
-                          child: SizedBox(
-                            width: 180.0,
-                            height: 180.0,
-                            child: Image.asset(
-                                'assets/images/flag.png'), // Your image widget here
-                          ),
-                        ),
-                      ],
-                    ),
-                  ]),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 120,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Colors.grey,
-                  // gradient: const LinearGradient(
-                  //   colors: [Color.fromRGBO(14, 209, 194, 1.0), Colors.grey],
-                  //   begin: Alignment.bottomLeft,
-                  //   end: Alignment.topRight,
-                  // ),
-                ),
-                child: Row(
-                  children: const [
-                    Text(" Today's Task",
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text("Hello user,",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 24.0)),
+                      Text("Today you have mutiple",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500, fontSize: 14.0)),
+                      Text(
+                        "tasks to complete...",
                         style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 21.0)),
-                  ],
-                ),
+                            fontWeight: FontWeight.w500, fontSize: 14.0),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: <Widget>[
+                      SizedBox(
+                          height: 150,
+                          width: 150,
+                          child: Image(
+                              image: AssetImage('assets/images/person.png'))),
+                    ],
+                  ),
+                ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20, right: 15, left: 15),
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(20),
-                  // gradient: LinearGradient(
-                  //   colors: [Color.fromRGBO(14, 209, 194, 1.0), Colors.grey],
-                  //   begin: Alignment.bottomLeft,
-                  //   end: Alignment.topRight,
-                  // ),
-                ),
-                child: const TaskInformation(),
-                // ),
-              ),
-              // Padding(
-              //   padding: EdgeInsets.only(top: 20, right: 20, left: 20),
-              //   child: Container(
-              //     height: 90,
-              //     width: double.infinity,
-              //     decoration: BoxDecoration(
-              //       color: Colors.grey,
-              //       borderRadius: BorderRadius.circular(20),
-              //       // gradient: LinearGradient(
-              //       //   colors: [Color.fromRGBO(14, 209, 194, 1.0), Colors.grey],
-              //       //   begin: Alignment.bottomLeft,
-              //       //   end: Alignment.topRight,
-              //       // ),
-              //     ),
-              //     child: Center(child: Text("Task 2")),
-              //   ),
-              // ),
-              // Padding(
-              //   padding: EdgeInsets.only(top: 20, right: 20, left: 20),
-              //   child: Container(
-              //     height: 90,
-              //     width: double.infinity,
-              //     decoration: BoxDecoration(
-              //       color: Colors.grey,
-              //       borderRadius: BorderRadius.circular(20),
-              //       // gradient: LinearGradient(
-              //       //   colors: [Color.fromRGBO(14, 209, 194, 1.0), Colors.grey],
-              //       //   begin: Alignment.bottomLeft,
-              //       //   end: Alignment.topRight,
-              //       // ),
-              //     ),
-              //     child: Center(child: Text("Task 3")),
-              //   ),
-              // ),
-            )
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              "Today's tasks",
+              style: TextStyle(
+                  color: Colors.grey[700],
+                  fontWeight: FontWeight.w500,
+                  fontSize: 22.0),
+            ),
+            const TaskInformation(),
           ],
         ),
       ),
@@ -224,7 +176,8 @@ class Dashboard extends StatelessWidget {
 }
 
 class TaskInformation extends StatefulWidget {
-  const TaskInformation({Key? key}) : super(key: key);
+  // ignore: use_key_in_widget_constructors
+  const TaskInformation();
 
   @override
   // ignore: library_private_types_in_public_api
@@ -246,35 +199,85 @@ class _TaskInformationState extends State<TaskInformation> {
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text("Loading");
+          return const Loading();
         }
 
-        return SingleChildScrollView(
-          child: Container(
-            height: 120,
-            margin: const EdgeInsets.fromLTRB(9, 5, 9, 0),
-            child: Center(
-              child: ListView(
-                children: snapshot.data!.docs.map((DocumentSnapshot document) {
-                  Map<String, dynamic> data =
-                      document.data()! as Map<String, dynamic>;
-                  return ListTile(
-                      title: Text(data['Name'],
-                          style: TextStyle(fontSize: 21, color: Colors.white)),
-                      // subtitle: Text(data['Description']),
-                      onTap: () {
+        return Container(
+          height: MediaQuery.of(context).size.height,
+          margin: const EdgeInsets.fromLTRB(10, 15, 10, 0),
+          child: ListView(
+            children: snapshot.data!.docs.map(
+              (DocumentSnapshot document) {
+                Map<String, dynamic> data =
+                    document.data()! as Map<String, dynamic>;
+                return Card(
+                  elevation: 6,
+                  margin: const EdgeInsets.all(10),
+                  child: ListTile(
+                    title: Text(data['Name'],
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w400, fontSize: 18)),
+                    // subtitle: Text(data['Description']),
+                    leading: IconButton(
+                      icon: const Icon(Icons.check_circle_outline),
+                      onPressed: () =>
+                          {addTask(document.reference.id, data['points'])},
+                    ),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.arrow_forward_ios),
+                      onPressed: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    TaskDesription(document.reference.id)));
-                      });
-                }).toList(),
-              ),
-            ),
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                TaskDesription(document.reference.id),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                );
+              },
+            ).toList(),
           ),
         );
       },
     );
   }
+}
+
+addTask(String id, int point) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? uid;
+  int totalpoint;
+  if (prefs.containsKey("email")) {
+    // setState(() {
+    uid = prefs.getString("email");
+    // });
+    // ignore: avoid_print
+    print(point);
+  }
+
+  FirebaseFirestore.instance
+      .collection('users')
+      .where("Email", isEqualTo: uid)
+      .get()
+      .then((res) => {
+            totalpoint =  res.docs[0].data()['Point'] + point,
+            FirebaseFirestore.instance
+                .collection('users')
+                .doc(res.docs[0].id)
+                .set({
+                  'completedTasks': FieldValue.arrayUnion([
+                    {
+                      'ID': id,
+                    },
+                  ]),
+                  'Point': totalpoint
+                }, SetOptions(merge: true))
+                // ignore: avoid_print
+                .then((value) => print("Task Added"))
+                // ignore: avoid_print
+                .catchError((error) => print("Failed to add user: $error")),
+          });
 }
