@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/screens/home/EcoCount/EcoCount.dart';
+import 'package:ecosia/screens/home/Userprofile/firestore.dart';
 import 'package:ecosia/screens/home/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -195,14 +196,7 @@ class _UserInfoState extends State<UserInfo> {
                     // width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      gradient: const LinearGradient(
-                        colors: <Color>[
-                          Color(0xff0ED1C2),
-                          Color(0xff38EF7D),
-                          // Color(0xff0ED1C2),
-                          // Color(0xff38EF7D),
-                        ],
-                      ),
+                      color: Colors.green[300],
                     ),
                     child: const Center(
                       child: Text(
@@ -252,17 +246,9 @@ class _UserProfileState extends State<UserProfile> {
         flexibleSpace: Container(
           height: 150,
           width: 600,
-          decoration: const BoxDecoration(
-            // borderRadius: BorderRadius.circular(30),
-            gradient: LinearGradient(
-              colors: <Color>[
-                Color(0xff0ED1C2),
-                Color(0xff38EF7D),
-                // Color(0xff0ED1C2),
-                // Color(0xff38EF7D),
-              ],
-            ),
-          ),
+          decoration: BoxDecoration(
+              // borderRadius: BorderRadius.circular(30),
+              color: Colors.green[300]),
           child: const Padding(
             padding: EdgeInsets.only(top: 30),
             child: Center(
@@ -459,21 +445,10 @@ class _UserProfileState extends State<UserProfile> {
                           ),
                         ),
                         onTap: () {
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(
-                                  builder: (context) => const UserInfo()))
-                              .then((value) => {
-                                    FirebaseFirestore.instance
-                                        .collection("Userdata")
-                                        .doc(value.user.uid)
-                                        .set({
-                                      "Name": name,
-                                      "email": email,
-                                      "contact": contact,
-                                      "location": location,
-                                      "BirthDate": enterDate,
-                                    })
-                                  });
+                          userSet(name.text, email.text, location.text,
+                              enterDate.text, contact.text);
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const UserInfo()));
                         },
                       )),
                 ],
