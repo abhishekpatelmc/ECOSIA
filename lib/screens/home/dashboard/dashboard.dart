@@ -5,6 +5,7 @@ import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../wrapper.dart';
 import '../EcoCount/EcoCount.dart';
 import '../UserTask/UserTask.dart';
 import '../Userprofile/UserProfile.dart';
@@ -110,6 +111,10 @@ class Dashboard extends StatelessWidget {
               ),
               onTap: () async {
                 await _auth.signOut();
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Wrapper()),
+                (Route<dynamic> route) => false);
               },
               title: const Text(
                 "Log out",
