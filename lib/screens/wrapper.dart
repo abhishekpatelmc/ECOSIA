@@ -1,5 +1,6 @@
 import 'package:ecosia/screens/authenticate/authenticate.dart';
 import 'package:ecosia/screens/home/dashboard/dashboard.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ecosia/models/user.dart';
@@ -23,9 +24,9 @@ class Wrapper extends StatelessWidget {
 
     // return either the Home or Authenticate widget
     if (user == null) {
-      return Authenticate();
+      return const Authenticate();
     } else {
-      // return AddTask("Walk", "Walk for 20 minutes");
+      // return AddTask("Walk", "Walk for 20 minutes", 10);
       return Dashboard();
     }
   }
