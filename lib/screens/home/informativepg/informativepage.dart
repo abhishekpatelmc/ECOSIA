@@ -15,198 +15,59 @@ class _InformativePage extends State<InformativePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          //title: const Text(""),
-          // backgroundColor: ,
-          flexibleSpace: Container(
-            height: 130,
-            width: 600,
-            decoration: BoxDecoration(
-              // borderRadius: BorderRadius.circular(30),
-              color: Colors.green[300],
-            ),
-            child: const Padding(
-              padding: EdgeInsets.only(top: 25),
-              child: Center(
-                child: Text(
-                  'Ecosia Informative Page',
-                  style: TextStyle(fontSize: 22, color: Colors.white),
-                ),
-              ),
-            ),
-          ),
+          title: const Text("Informative Page"),
+          backgroundColor: Colors.green[300],
         ),
-        body: SingleChildScrollView(
-            child: Column(children: [
-          // Stack(
-          //   children: const [
-          //     Opacity(
-          //       opacity: 0.7,
-          //       child: Image(
-          //         image: NetworkImage(
-          //             "https://images.pexels.com/photos/2382325/pexels-photo-2382325.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          SizedBox(
-            height: 80,
-          ),
-          Padding(
-              padding: const EdgeInsets.only(
-                  left: 50, right: 50, top: 20, bottom: 0),
-              child: InkWell(
-                  child: Container(
-                    height: 45,
-                    // width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.green[300],
-                      // gradient: const LinearGradient(
-                      //   colors: <Color>[
-                      //     Color(0xff0ED1C2),
-                      //     Color(0xff38EF7D),
-                      //     // Color(0xff0ED1C2),
-                      //     // Color(0xff38EF7D),
-                      //   ],
-                      // ),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Articles',
-                        style: TextStyle(fontSize: 24, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  onTap: () async {
-                    _launchURL3();
-                  })),
-          Padding(
-              padding: const EdgeInsets.only(
-                  left: 50, right: 50, top: 20, bottom: 20),
-              child: InkWell(
-                  child: Container(
-                    height: 45,
-                    // width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.green[300],
-                      // gradient: const LinearGradient(
-                      //   colors: <Color>[
-                      //     Color(0xff0ED1C2),
-                      //     Color(0xff38EF7D),
-                      //     // Color(0xff0ED1C2),
-                      //     // Color(0xff38EF7D),
-                      //   ],
-                      // ),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Get Involved!',
-                        style: TextStyle(fontSize: 24, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  onTap: () async {
-                    _launchURL4();
-                  })),
-          Padding(
-              padding:
-                  const EdgeInsets.only(left: 50, right: 50, top: 0, bottom: 0),
-              child: InkWell(
-                  child: Container(
-                    height: 45,
-                    // width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.green[300],
-                      // gradient: const LinearGradient(
-                      //   colors: <Color>[
-                      //     Color(0xff0ED1C2),
-                      //     Color(0xff38EF7D),
-                      //     // Color(0xff0ED1C2),
-                      //     // Color(0xff38EF7D),
-                      //   ],
-                      // ),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Videos',
-                        style: TextStyle(fontSize: 24, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  onTap: () async {
-                    _launchURL2();
-                  })),
-          Padding(
-              padding: const EdgeInsets.only(
-                  left: 50, right: 50, top: 20, bottom: 20),
-              child: InkWell(
-                  child: Container(
-                    height: 45,
-                    // width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.green[300],
-                      // gradient: const LinearGradient(
-                      //   colors: <Color>[
-                      //     Color(0xff0ED1C2),
-                      //     Color(0xff38EF7D),
-                      //     // Color(0xff0ED1C2),
-                      //     // Color(0xff38EF7D),
-                      //   ],
-                      // ),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Connect',
-                        style: TextStyle(fontSize: 24, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  onTap: () async {
-                    _launchURL2();
-                  })),
-          Padding(
-              padding:
-                  const EdgeInsets.only(left: 50, right: 50, top: 0, bottom: 0),
-              child: InkWell(
-                  child: Container(
-                    height: 45,
-                    // width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.green[300],
-                      // gradient: const LinearGradient(
-                      //   colors: <Color>[
-                      //     Color(0xff0ED1C2),
-                      //     Color(0xff38EF7D),
-                      //     // Color(0xff0ED1C2),
-                      //     // Color(0xff38EF7D),
-                      //   ],
-                      // ),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Share Feedback',
-                        style: TextStyle(fontSize: 24, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  onTap: () async {
-                    _launchURL2();
-                  })),
-        ])));
-  }
-
-  _launchURL() async {
-    const url =
-        'https://www.naturespath.com/en-ca/blog/nine-things-you-can-do-to-save-the-environment/';
-    if (await launchUrlString(url)) {
-      await launchUrlString(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: SingleChildScrollView(
+              child: Column(children: [
+            InkWell(
+                child: customCard(
+                  name: 'Articles',
+                  image:
+                      'https://img.icons8.com/parakeet/50/000000/experimental-news-parakeet.png',
+                ),
+                onTap: () async {
+                  _launchURL3();
+                }),
+            InkWell(
+                child: customCard(
+                  name: 'Get involved',
+                  image: 'https://img.icons8.com/color/50/000000/get-along.png',
+                ),
+                onTap: () async {
+                  _launchURL4();
+                }),
+            InkWell(
+                child: customCard(
+                  name: 'Videos',
+                  image:
+                      'https://img.icons8.com/external-anggara-flat-anggara-putra/50/000000/external-video-ui-basic-anggara-flat-anggara-putra-2.png',
+                ),
+                onTap: () async {
+                  _launchURL2();
+                }),
+            InkWell(
+                child: customCard(
+                  name: 'Connect',
+                  image:
+                      'https://img.icons8.com/fluency/50/000000/handshake.png',
+                ),
+                onTap: () async {
+                  _launchURL2();
+                }),
+            InkWell(
+                child: customCard(
+                  name: 'Share Feedback',
+                  image:
+                      'https://img.icons8.com/external-filled-outline-wichaiwi/50/000000/external-Feedback-business-filled-outline-wichaiwi.png',
+                ),
+                onTap: () async {
+                  _launchURL2();
+                }),
+          ])),
+        ));
   }
 
   _launchURL2() async {
@@ -217,14 +78,17 @@ class _InformativePage extends State<InformativePage> {
       throw 'Could not launch $url';
     }
   }
+
   _launchURL3() async {
-    const url = 'https://www.nytimes.com/guides/year-of-living-better/how-to-reduce-your-carbon-footprint';
+    const url =
+        'https://www.nytimes.com/guides/year-of-living-better/how-to-reduce-your-carbon-footprint';
     if (await launchUrlString(url)) {
       await launchUrlString(url);
     } else {
       throw 'Could not launch $url';
     }
   }
+
   _launchURL4() async {
     const url = 'https://www.foei.org/';
     if (await launchUrlString(url)) {
@@ -232,5 +96,43 @@ class _InformativePage extends State<InformativePage> {
     } else {
       throw 'Could not launch $url';
     }
+  }
+}
+
+// ignore: camel_case_types, must_be_immutable
+class customCard extends StatelessWidget {
+  String name;
+  String image;
+  customCard({
+    required this.name,
+    required this.image,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+      height: 95,
+      width: double.infinity,
+      child: Card(
+        elevation: 8,
+        shadowColor: Colors.grey,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 15, 10, 0),
+          child: ListTile(
+            leading: Image.network(
+              image,
+              alignment: Alignment.topLeft,
+              fit: BoxFit.fitHeight,
+            ),
+            title: Text(
+              name,
+              style: TextStyle(fontSize: 23, fontWeight: FontWeight.w400),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
