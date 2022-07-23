@@ -199,16 +199,6 @@ class _InformativePage extends State<InformativePage> {
         ])));
   }
 
-  _launchURL() async {
-    const url =
-        'https://www.naturespath.com/en-ca/blog/nine-things-you-can-do-to-save-the-environment/';
-    if (await launchUrlString(url)) {
-      await launchUrlString(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
   _launchURL2() async {
     const url = 'https://www.youtube.com/watch?v=X2YgM1Zw4_E';
     if (await launchUrlString(url)) {
@@ -217,14 +207,17 @@ class _InformativePage extends State<InformativePage> {
       throw 'Could not launch $url';
     }
   }
+
   _launchURL3() async {
-    const url = 'https://www.nytimes.com/guides/year-of-living-better/how-to-reduce-your-carbon-footprint';
+    const url =
+        'https://www.nytimes.com/guides/year-of-living-better/how-to-reduce-your-carbon-footprint';
     if (await launchUrlString(url)) {
       await launchUrlString(url);
     } else {
       throw 'Could not launch $url';
     }
   }
+
   _launchURL4() async {
     const url = 'https://www.foei.org/';
     if (await launchUrlString(url)) {
