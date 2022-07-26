@@ -55,7 +55,7 @@ class _InformativePage extends State<InformativePage> {
                       'https://img.icons8.com/fluency/50/000000/handshake.png',
                 ),
                 onTap: () async {
-                  _launchURL2();
+                  _launchURL5();
                 }),
             InkWell(
                 child: customCard(
@@ -98,6 +98,18 @@ class _InformativePage extends State<InformativePage> {
     }
   }
 }
+ _launchURL5() async {
+    const url = 'https://oen.ca/';
+    if (await launchUrlString(url)) {
+      await launchUrlString(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+
+
+
 
 // ignore: camel_case_types, must_be_immutable
 class customCard extends StatelessWidget {
