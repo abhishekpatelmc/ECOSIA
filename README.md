@@ -2,10 +2,5 @@
 
 ASE Project 
 
-A flutter Project
+You can try the which is present on the release 
 
-Dev - currently working branch
-
-To run the code : 
-         
-Dowload the zip file
