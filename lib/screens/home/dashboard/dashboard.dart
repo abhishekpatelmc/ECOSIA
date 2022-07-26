@@ -33,7 +33,7 @@ class Dashboard extends StatelessWidget {
               decoration: BoxDecoration(
                 image: const DecorationImage(
                     image: NetworkImage(
-                        "https://cdn2.outdoorphotographer.com/2019/12/FMB_Landscapes_03.jpg"),
+                        "https://i.pinimg.com/originals/86/32/d5/8632d55b6dda69565282c907475ee594.jpg"),
                     fit: BoxFit.fill),
                 color: Colors.green[300],
               ),
