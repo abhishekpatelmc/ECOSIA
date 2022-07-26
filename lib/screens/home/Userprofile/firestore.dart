@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, unused_local_variable
+// ignore_for_file: non_constant_identifier_names, unused_local_variable, avoid_print, duplicate_ignore
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
@@ -9,7 +9,6 @@ Future<void> userSet(String name, String email, String location, String Date,
   CollectionReference users = FirebaseFirestore.instance.collection("users");
   // FirebaseAuth auth = FirebaseAuth.instance;
   // String? uid = auth.currentUser?.uid.toString();
-
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? email;
@@ -29,22 +28,20 @@ Future<void> userSet(String name, String email, String location, String Date,
   //   'Conatct': contact
   // });
 
-      users.where("Email", isEqualTo: email)
-      .get()
-      .then((res) => {
-    FirebaseFirestore.instance
-        .collection('users')
-        .doc(res.docs[0].id)
-        .set({
-      'name': name,
-      'email': email,
-      'location': location,
-      'Date': Date,
-      'Conatct': contact
-    }, SetOptions(merge: true))
-        .then((value) => print("User Info Added"))
-        .catchError((error) => print("Failed to add user info: $error")),
-  });
+  users.where("Email", isEqualTo: email).get().then((res) => {
+        FirebaseFirestore.instance
+            .collection('users')
+            .doc(res.docs[0].id)
+            .set({
+              'name': name,
+              'email': email,
+              'location': location,
+              'Date': Date,
+              'Conatct': contact
+            }, SetOptions(merge: true))
+            .then((value) => print("User Info Added"))
+            .catchError((error) => print("Failed to add user info: $error")),
+      });
 
   return;
 }

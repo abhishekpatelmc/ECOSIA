@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_typing_uninitialized_variables, no_leading_underscores_for_local_identifiers, duplicate_ignore, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/screens/home/EcoCount/EcoCount.dart';
@@ -12,16 +12,11 @@ import '../../../shared/loading.dart';
 import '../../wrapper.dart';
 import '../informativepg/informativepage.dart';
 
-
-
 class UserInfo extends StatefulWidget {
   const UserInfo({Key? key}) : super(key: key);
 
-
   @override
   State<UserInfo> createState() => _UserInfoState();
-
-
 }
 
 class _UserInfoState extends State<UserInfo> {
@@ -41,9 +36,7 @@ class _UserInfoState extends State<UserInfo> {
     super.initState();
   }
 
-
   Future<String?> userGet() async {
-
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     if (prefs.containsKey("email")) {
@@ -52,21 +45,20 @@ class _UserInfoState extends State<UserInfo> {
     }
     return userEmail;
   }
-  
+
   @override
   Widget build(BuildContext context) {
     // Map<String, dynamic> data = userGet() as Map<String, dynamic>;
     // String email = userGet() as String;
     var UserData;
     final Stream<QuerySnapshot> _tasksStream = FirebaseFirestore.instance
-        .collection('users').where("Email", isEqualTo: userEmail)
+        .collection('users')
+        .where("Email", isEqualTo: userEmail)
         .snapshots(includeMetadataChanges: true);
-
 
     return StreamBuilder<QuerySnapshot>(
       stream: _tasksStream,
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-
         UserData = snapshot.data!.docs[0].data()! as Map;
         print(UserData);
         if (snapshot.hasError) {
@@ -85,7 +77,6 @@ class _UserInfoState extends State<UserInfo> {
           drawer: Drawer(
             child: ListView(
               children: [
-
                 const UserAccountsDrawerHeader(
                   accountName: null,
                   accountEmail: null,
@@ -105,8 +96,8 @@ class _UserInfoState extends State<UserInfo> {
                     color: Colors.white,
                   ),
                   onTap: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) => Dashboard()));
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Dashboard()));
                   },
                   title: const Text(
                     "Dasboard",
@@ -135,8 +126,8 @@ class _UserInfoState extends State<UserInfo> {
                     color: Colors.white,
                   ),
                   onTap: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => const EcoCount()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const EcoCount()));
                   },
                   title: const Text(
                     "Eco Count",
@@ -155,7 +146,7 @@ class _UserInfoState extends State<UserInfo> {
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(builder: (context) => const Wrapper()),
-                          (Route<dynamic> route) => false,
+                      (Route<dynamic> route) => false,
                     );
                   },
                   title: const Text(
@@ -169,7 +160,6 @@ class _UserInfoState extends State<UserInfo> {
           body: SingleChildScrollView(
             child: Column(
               children: [
-
                 Stack(
                   children: [
                     const Opacity(
@@ -198,13 +188,14 @@ class _UserInfoState extends State<UserInfo> {
                     ),
                   ],
                 ),
-                 Center(
-
-                    child: Text( UserData['name'] ?? "User Name",
-                      style: const TextStyle(fontSize: 25, color: Colors.black),
-                    )),
-                 Card(
-                  margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+                Center(
+                    child: Text(
+                  UserData['name'] ?? "User Name",
+                  style: const TextStyle(fontSize: 25, color: Colors.black),
+                )),
+                Card(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
                   child: ListTile(
                     leading: const Icon(
                       Icons.phone,
@@ -212,8 +203,9 @@ class _UserInfoState extends State<UserInfo> {
                     title: Text(UserData['Conatct'] ?? "Contact Detail"),
                   ),
                 ),
-                 Card(
-                  margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+                Card(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
                   child: ListTile(
                     leading: const Icon(
                       Icons.email,
@@ -221,8 +213,9 @@ class _UserInfoState extends State<UserInfo> {
                     title: Text(UserData['Email'] ?? "Email ID"),
                   ),
                 ),
-                 Card(
-                  margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+                Card(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
                   child: ListTile(
                     leading: const Icon(
                       Icons.date_range_sharp,
@@ -230,8 +223,9 @@ class _UserInfoState extends State<UserInfo> {
                     title: Text(UserData['Date'] ?? "Date of Birth"),
                   ),
                 ),
-                 Card(
-                  margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+                Card(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
                   child: ListTile(
                     leading: const Icon(
                       Icons.location_city,
@@ -240,7 +234,8 @@ class _UserInfoState extends State<UserInfo> {
                   ),
                 ),
                 Padding(
-                    padding: const EdgeInsets.only(top: 15, left: 20, right: 20),
+                    padding:
+                        const EdgeInsets.only(top: 15, left: 20, right: 20),
                     child: InkWell(
                       child: Container(
                         height: 50,
@@ -267,7 +262,6 @@ class _UserInfoState extends State<UserInfo> {
         );
       },
     );
-
   }
 }
 
