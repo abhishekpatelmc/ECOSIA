@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecosia/screens/wrapper.dart';
+import 'package:ecosia/screens/home/Userprofile/UserProfile.dart';
+
 import 'package:ecosia/services/auth.dart';
 import 'package:ecosia/shared/loading.dart';
 import 'package:flutter/material.dart';
@@ -34,22 +35,6 @@ class _RegisterState extends State<Register> {
               elevation: 0.0,
               centerTitle: true,
               title: const Text('Sign up to Ecosia'),
-              // actions: [
-              //   TextButton.icon(
-              //     onPressed: () {
-              //       widget.toggelView();
-              //     },
-              //     icon: const Icon(Icons.person),
-              //     label: const Text('Sign in'),
-              //     style: TextButton.styleFrom(
-              //       primary: Colors.white,
-              //       //backgroundColor: Colors.teal,
-              //       textStyle: const TextStyle(
-              //         fontSize: 14,
-              //       ),
-              //     ),
-              //   )
-              // ],
             ),
             body: Container(
               padding:
@@ -115,7 +100,7 @@ class _RegisterState extends State<Register> {
                               // ignore: use_build_context_synchronously
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => const Wrapper(),
+                                  builder: (context) => const UserProfile(),
                                 ),
                               );
                               // SharedPreferences prefs = await SharedPreferences.getInstance();

@@ -5,6 +5,7 @@ import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../wrapper.dart';
 import '../EcoCount/EcoCount.dart';
 import '../UserTask/UserTask.dart';
 import '../Userprofile/UserProfile.dart';
@@ -110,6 +111,11 @@ class Dashboard extends StatelessWidget {
               ),
               onTap: () async {
                 await _auth.signOut();
+                // ignore: use_build_context_synchronously
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Wrapper()),
+                    (Route<dynamic> route) => false);
               },
               title: const Text(
                 "Log out",
@@ -263,7 +269,7 @@ addTask(String id, int point) async {
       .where("Email", isEqualTo: uid)
       .get()
       .then((res) => {
-            totalpoint =  res.docs[0].data()['Point'] + point,
+            totalpoint = res.docs[0].data()['Point'] + point,
             FirebaseFirestore.instance
                 .collection('users')
                 .doc(res.docs[0].id)
