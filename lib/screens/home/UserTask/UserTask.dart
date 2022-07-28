@@ -25,16 +25,16 @@ class _UserTaskState extends State<UserTask> {
               accountName: null,
               accountEmail: null,
               decoration: BoxDecoration(
-                // image: DecorationImage(
-                //   image: ExactAssetImage('assets/images/drawerbg.jpg'),
-                //   fit: BoxFit.cover,
-                // ),
+                image: const DecorationImage(
+                    image: NetworkImage(
+                        "https://i.pinimg.com/originals/86/32/d5/8632d55b6dda69565282c907475ee594.jpg"),
+                    fit: BoxFit.fill),
                 color: Colors.white,
               ),
               currentAccountPicture: CircleAvatar(
-                  // backgroundImage: AssetImage(
-                  //   'assets/images/girlicon.png',
-                  // ),
+                  backgroundImage: AssetImage(
+                    'assets/images/person.png',
+                  ),
                   ),
             ),
             ListTile(
@@ -48,7 +48,7 @@ class _UserTaskState extends State<UserTask> {
                     .push(MaterialPageRoute(builder: (context) => Dashboard()));
               },
               title: const Text(
-                "Dasboard",
+                "Dashboard",
                 style: TextStyle(color: Colors.white),
               ),
             ),
