@@ -231,7 +231,7 @@ class _TaskInformationState extends State<TaskInformation> {
                         icon: Icon(Icons.check_circle_outline,
                             color:
                                 (selectedIndex.contains(document.reference.id))
-                                    ? Color.fromARGB(255, 13, 151, 0)
+                                    ? Colors.green[300]
                                     : Color(0xff9A9A9A)),
                         onPressed: () => {
                               setState(() {
