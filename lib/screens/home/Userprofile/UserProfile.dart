@@ -77,6 +77,7 @@ class _UserInfoState extends State<UserInfo> {
           drawer: Drawer(
             child: ListView(
               children: [
+
                 const UserAccountsDrawerHeader(
                   accountName: null,
                   accountEmail: null,
@@ -100,7 +101,7 @@ class _UserInfoState extends State<UserInfo> {
                         MaterialPageRoute(builder: (context) => Dashboard()));
                   },
                   title: const Text(
-                    "Dasboard",
+                    "Dashboard",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),

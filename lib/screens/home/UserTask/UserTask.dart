@@ -25,16 +25,16 @@ class _UserTaskState extends State<UserTask> {
               accountName: null,
               accountEmail: null,
               decoration: BoxDecoration(
-                // image: DecorationImage(
-                //   image: ExactAssetImage('assets/images/drawerbg.jpg'),
-                //   fit: BoxFit.cover,
-                // ),
+                image: const DecorationImage(
+                    image: NetworkImage(
+                        "https://i.pinimg.com/originals/86/32/d5/8632d55b6dda69565282c907475ee594.jpg"),
+                    fit: BoxFit.fill),
                 color: Colors.white,
               ),
               currentAccountPicture: CircleAvatar(
-                  // backgroundImage: AssetImage(
-                  //   'assets/images/girlicon.png',
-                  // ),
+                  backgroundImage: AssetImage(
+                    'assets/images/person.png',
+                  ),
                   ),
             ),
             ListTile(
@@ -48,7 +48,7 @@ class _UserTaskState extends State<UserTask> {
                     .push(MaterialPageRoute(builder: (context) => Dashboard()));
               },
               title: const Text(
-                "Dasboard",
+                "Dashboard",
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -107,10 +107,10 @@ class _UserTaskState extends State<UserTask> {
       body: Column(
         children: [
           const Opacity(
-            opacity: 0.7,
+            opacity: 0.8,
             child: Image(
               image: NetworkImage(
-                  "https://images.pexels.com/photos/2382325/pexels-photo-2382325.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
+                  "https://www.businesswest.co.uk/sites/default/files/styles/event_image/public/blog/featured/shutterstock_1339316864_0.png?itok=NpRryd5d"),
             ),
           ),
           CarouselSlider(
@@ -145,7 +145,17 @@ class _UserTaskState extends State<UserTask> {
                         ],
                       ),
                     ),
-                    child: const Text("Running"),
+                    child: Align(
+                      alignment: Alignment.center,
+                    child: const Text(
+                      "Running",
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.black, //font color
+                        letterSpacing: 2, //letter spacing
+                      ),
+                    ),
+                    ),
                   ),
                 ],
               ),
@@ -187,7 +197,17 @@ class _UserTaskState extends State<UserTask> {
                         ],
                       ),
                     ),
-                    child: const Text("Walking"),
+                    child: Align(
+                      alignment: Alignment.center,
+                    child: const Text(
+                        "Walking ",
+                      style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.black, //font color
+                          letterSpacing: 2, //letter spacing
+                      ),
+                    ),
+                    ),
                   ),
                 ],
               ),
@@ -230,7 +250,17 @@ class _UserTaskState extends State<UserTask> {
                         ],
                       ),
                     ),
-                    child: const Text("Cycling"),
+                    child: Align(
+                      alignment: Alignment.center,
+                    child: const Text(
+                      "Cycling",
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.black, //font color
+                        letterSpacing: 2, //letter spacing
+                      ),
+                    ),
+                    ),
                   ),
                 ],
               ),
