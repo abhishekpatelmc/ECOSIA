@@ -200,7 +200,7 @@ class _UserTaskState extends State<UserTask> {
                     child: Align(
                       alignment: Alignment.center,
                     child: const Text(
-                        "Walking",
+                        "Walking ",
                       style: TextStyle(
                           fontSize: 22,
                           color: Colors.black, //font color
