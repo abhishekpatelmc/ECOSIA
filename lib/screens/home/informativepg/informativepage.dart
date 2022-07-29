@@ -23,6 +23,7 @@ class _InformativePage extends State<InformativePage> {
           child: SingleChildScrollView(
               child: Column(children: [
             InkWell(
+
                 child: customCard(
                   name: 'Articles',
                   image:
@@ -39,8 +40,10 @@ class _InformativePage extends State<InformativePage> {
                 onTap: () async {
                   _launchURL4();
                 }),
+
             InkWell(
                 child: customCard(
+
                   name: 'Videos',
                   image:
                       'https://img.icons8.com/external-anggara-flat-anggara-putra/50/000000/external-video-ui-basic-anggara-flat-anggara-putra-2.png',
