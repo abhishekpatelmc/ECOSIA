@@ -1,6 +1,7 @@
-import 'package:carousel_slider/carousel_options.dart';
+// ignore_for_file: file_names
+
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:ecosia/screens/wrapper.dart';
 
@@ -33,13 +34,12 @@ class _TutorialState extends State<Tutorial> {
               ),
               Container(
                 width: double.infinity,
-                height: 400,
+                height: 450,
                 // margin: const EdgeInsets.all(6.0),
                 decoration: const BoxDecoration(
                   // borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                    image: AssetImage(
-                        "assets/images/Picture9.png"),
+                    image: AssetImage("assets/images/Picture9.png"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -68,8 +68,7 @@ class _TutorialState extends State<Tutorial> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                     image: const DecorationImage(
-                      image: AssetImage(
-                          "assets/images/Picture13.png"),
+                      image: AssetImage("assets/images/Picture13.png"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -141,8 +140,8 @@ class _TutorialState extends State<Tutorial> {
           ),
         ],
         options: CarouselOptions(
-          height: 750,
-          // enlargeCenterPage: true,
+          height: 850,
+          enlargeCenterPage: true,
           // autoPlay: true,
           // aspectRatio: 16 / 9,
           autoPlayCurve: Curves.fastOutSlowIn,
