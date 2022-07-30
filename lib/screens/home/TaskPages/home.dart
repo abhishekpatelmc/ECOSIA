@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:ecosia/models/tasks.dart';
 import 'package:ecosia/screens/home/TaskPages/taskDescription.dart';
@@ -31,12 +33,14 @@ class Home extends StatelessWidget {
           )
         ],
       ),
-      body: TaskInformation(),
+      body: const TaskInformation(),
     );
   }
 }
 
 class TaskInformation extends StatefulWidget {
+  const TaskInformation({Key? key}) : super(key: key);
+
   @override
   _TaskInformationState createState() => _TaskInformationState();
 }
@@ -52,32 +56,33 @@ class _TaskInformationState extends State<TaskInformation> {
       stream: _tasksStream,
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
-          return Text('Something went wrong');
+          return const Text('Something went wrong');
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading");
+          return const Text("Loading");
         }
 
         return Container(
           height: 40,
           margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-            child: ListView(
-          children: snapshot.data!.docs.map((DocumentSnapshot document) {
-            Map<String, dynamic> data =
-                document.data()! as Map<String, dynamic>;
-            return ListTile(
-                title: Text(data['Name']),
-                subtitle: Text(data['Description']),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              TaskDesription(document.reference.id)));
-                });
-          }).toList(),
-        ),);
+          child: ListView(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> data =
+                  document.data()! as Map<String, dynamic>;
+              return ListTile(
+                  title: Text(data['Name']),
+                  subtitle: Text(data['Description']),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                TaskDesription(document.reference.id)));
+                  });
+            }).toList(),
+          ),
+        );
       },
     );
   }

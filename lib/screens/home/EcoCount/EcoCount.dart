@@ -250,8 +250,8 @@ class _EcoCountState extends State<EcoCount> {
                     Image.network(
                       // scale: 1,
                       // alignment: Alignment.topRight,
-                      fit: BoxFit.fitHeight,
                       'https://images.unsplash.com/photo-1533038590840-1cde6e668a91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+                      fit: BoxFit.fitHeight,
                       height: 300.0,
                       width: 150.0,
                     ),
