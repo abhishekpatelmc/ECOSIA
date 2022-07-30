@@ -1,16 +1,13 @@
 // ignore_for_file: file_names, non_constant_identifier_names, prefer_typing_uninitialized_variables, no_leading_underscores_for_local_identifiers, duplicate_ignore, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecosia/screens/home/EcoCount/EcoCount.dart';
 import 'package:ecosia/screens/home/Userprofile/firestore.dart';
 import 'package:ecosia/screens/home/dashboard/dashboard.dart';
+import 'package:ecosia/shared/navigationDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:ecosia/services/auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../shared/loading.dart';
-import '../../wrapper.dart';
-import '../informativepg/informativepage.dart';
 
 class UserInfo extends StatefulWidget {
   const UserInfo({Key? key}) : super(key: key);
@@ -20,8 +17,6 @@ class UserInfo extends StatefulWidget {
 }
 
 class _UserInfoState extends State<UserInfo> {
-  final AuthService _auth = AuthService();
-
   // late Map<String, dynamic>? data;
   String? userEmail;
   TextEditingController name = TextEditingController();
@@ -71,93 +66,19 @@ class _UserInfoState extends State<UserInfo> {
 
         return Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.green[300],
-            elevation: 5.0,
-          ),
-          drawer: Drawer(
-            child: ListView(
-              children: [
-
-                const UserAccountsDrawerHeader(
-                  accountName: null,
-                  accountEmail: null,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                  ),
-                  currentAccountPicture: CircleAvatar(
-                    backgroundImage: AssetImage(
-                      'assets/images/flag.png',
-                    ),
-                  ),
-                ),
-                ListTile(
-                  tileColor: Colors.green[300],
-                  leading: const Icon(
-                    Icons.home_outlined,
-                    color: Colors.white,
-                  ),
-                  onTap: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Dashboard()));
-                  },
-                  title: const Text(
-                    "Dashboard",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                ListTile(
-                  tileColor: Colors.green[300],
-                  leading: const Icon(
-                    Icons.info_outline_rounded,
-                    color: Colors.white,
-                  ),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const InformativePage()));
-                  },
-                  title: const Text(
-                    "Informative Page",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                ListTile(
-                  tileColor: Colors.green[300],
-                  leading: const Icon(
-                    Icons.info_outline_rounded,
-                    color: Colors.white,
-                  ),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const EcoCount()));
-                  },
-                  title: const Text(
-                    "Eco Count",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                ListTile(
-                  tileColor: Colors.green[300],
-                  leading: const Icon(
-                    Icons.logout_outlined,
-                    color: Colors.white,
-                  ),
-                  onTap: () async {
-                    await _auth.signOut();
-                    // ignore: use_build_context_synchronously
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Wrapper()),
-                      (Route<dynamic> route) => false,
-                    );
-                  },
-                  title: const Text(
-                    "Log out",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ],
+            centerTitle: true,
+            title: const Text(
+              "User Profile",
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w400,
+              ),
             ),
+            backgroundColor: Colors.white10,
+            elevation: 0,
+            iconTheme: const IconThemeData(color: Colors.black),
           ),
+          drawer: NavigationDrawer(),
           body: SingleChildScrollView(
             child: Column(
               children: [
@@ -499,7 +420,7 @@ class _UserProfileState extends State<UserProfile> {
                           userSet(name.text, email.text, location.text,
                               enterDate.text, contact.text);
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Dashboard()));
+                              builder: (context) => const Dashboard()));
                         },
                       )),
                 ],
