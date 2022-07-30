@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);
@@ -12,39 +10,8 @@ class ForgotPasswordPage extends StatefulWidget {
 }
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
-    final emailController = TextEditingController();
-    Future passwordreset() async {
-    showDialog(
-        context: context,
-        builder: (context) => const Center(
-              child: CircularProgressIndicator(),
-            ));
-    try {
-      await FirebaseAuth.instance
-          .sendPasswordResetEmail(email: emailController.text.trim());
-      final text = "The mail has been sent to provided email address";
-      final snackbar = SnackBar(
-        content: Text(text),
-      );
-      ScaffoldMessenger.of(context).showSnackBar(snackbar);
-      Navigator.of(context).pop();
-    } on FirebaseAuthException catch (e) {
-      print(e);
-      final text = e.message.toString();
-      final snackbar = SnackBar(
-        content: Text(text),
-        action: SnackBarAction(
-          label: 'Dismiss',
-          onPressed: () {
-            emailController.clear();
-          },
-        ),
-      );
-      ScaffoldMessenger.of(context).showSnackBar(snackbar);
-      Navigator.of(context).pop();
-    }
-  } 
-  
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -76,7 +43,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0),
                     child: TextField(
-                      controller: emailController,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Enter your Email ID',
@@ -87,7 +53,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             height: 10,
           ),
           MaterialButton(
-            onPressed: () =>  passwordreset(),
+            onPressed: (){
+
+            },
             child: Text(
               'Reset Password',
             ),
@@ -99,6 +67,5 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         ],
       ),
     );
- 
-}
+  }
 }
