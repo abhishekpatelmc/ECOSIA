@@ -17,6 +17,7 @@ class UserInfo extends StatefulWidget {
 }
 
 class _UserInfoState extends State<UserInfo> {
+  bool loading = false;
   // late Map<String, dynamic>? data;
   String? userEmail;
   TextEditingController name = TextEditingController();
@@ -57,6 +58,7 @@ class _UserInfoState extends State<UserInfo> {
         UserData = snapshot.data!.docs[0].data()! as Map;
         print(UserData);
         if (snapshot.hasError) {
+          setState(() => loading = true);
           return const Text('Something went wrong');
         }
 
@@ -64,124 +66,130 @@ class _UserInfoState extends State<UserInfo> {
           return const Loading();
         }
 
-        return Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            title: const Text(
-              "User Profile",
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            backgroundColor: Colors.white10,
-            elevation: 0,
-            iconTheme: const IconThemeData(color: Colors.black),
-          ),
-          drawer: NavigationDrawer(),
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                Stack(
-                  children: [
-                    const Opacity(
-                      opacity: 0.7,
-                      child: Image(
-                        image: NetworkImage(
-                            "https://images.pexels.com/photos/2382325/pexels-photo-2382325.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
-                      ),
+        return loading
+            ? const Loading()
+            : Scaffold(
+                appBar: AppBar(
+                  centerTitle: true,
+                  title: const Text(
+                    "User Profile",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400,
                     ),
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 120),
-                        child: InkWell(
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(80),
-                                color: Colors.teal),
-                            height: 150,
-                            width: 150,
-                            child: const Image(
-                              image: AssetImage("assets/images/flag.png"),
+                  ),
+                  backgroundColor: Colors.white10,
+                  elevation: 0,
+                  iconTheme: const IconThemeData(color: Colors.black),
+                ),
+                drawer: NavigationDrawer(),
+                body: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Stack(
+                        children: [
+                          const Opacity(
+                            opacity: 0.7,
+                            child: Image(
+                              image: NetworkImage(
+                                  "https://images.pexels.com/photos/2382325/pexels-photo-2382325.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
                             ),
                           ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Center(
-                    child: Text(
-                  UserData['name'] ?? "User Name",
-                  style: const TextStyle(fontSize: 25, color: Colors.black),
-                )),
-                Card(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
-                  child: ListTile(
-                    leading: const Icon(
-                      Icons.phone,
-                    ),
-                    title: Text(UserData['Conatct'] ?? "Contact Detail"),
-                  ),
-                ),
-                Card(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
-                  child: ListTile(
-                    leading: const Icon(
-                      Icons.email,
-                    ),
-                    title: Text(UserData['Email'] ?? "Email ID"),
-                  ),
-                ),
-                Card(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
-                  child: ListTile(
-                    leading: const Icon(
-                      Icons.date_range_sharp,
-                    ),
-                    title: Text(UserData['Date'] ?? "Date of Birth"),
-                  ),
-                ),
-                Card(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
-                  child: ListTile(
-                    leading: const Icon(
-                      Icons.location_city,
-                    ),
-                    title: Text(UserData['location'] ?? "Location Detail"),
-                  ),
-                ),
-                Padding(
-                    padding:
-                        const EdgeInsets.only(top: 15, left: 20, right: 20),
-                    child: InkWell(
-                      child: Container(
-                        height: 50,
-                        // width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.green[300],
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'Edit User Details',
-                            style: TextStyle(fontSize: 24, color: Colors.white),
+                          Center(
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 120),
+                              child: InkWell(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(80),
+                                      color: Colors.teal),
+                                  height: 150,
+                                  width: 150,
+                                  child: const Image(
+                                    image: AssetImage("assets/images/flag.png"),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
+                        ],
+                      ),
+                      Center(
+                          child: Text(
+                        UserData['name'] ?? "User Name",
+                        style:
+                            const TextStyle(fontSize: 25, color: Colors.black),
+                      )),
+                      Card(
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 25),
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.phone,
+                          ),
+                          title: Text(UserData['Conatct'] ?? "Contact Detail"),
                         ),
                       ),
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const UserProfile()));
-                      },
-                    )),
-              ],
-            ),
-          ),
-        );
+                      Card(
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 25),
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.email,
+                          ),
+                          title: Text(UserData['Email'] ?? "Email ID"),
+                        ),
+                      ),
+                      Card(
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 25),
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.date_range_sharp,
+                          ),
+                          title: Text(UserData['Date'] ?? "Date of Birth"),
+                        ),
+                      ),
+                      Card(
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 25),
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.location_city,
+                          ),
+                          title:
+                              Text(UserData['location'] ?? "Location Detail"),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(top: 15, left: 20, right: 20),
+                        child: InkWell(
+                          child: Container(
+                            height: 50,
+                            // width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.green[300],
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'Edit User Details',
+                                style: TextStyle(
+                                    fontSize: 24, color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const UserProfile()));
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
       },
     );
   }

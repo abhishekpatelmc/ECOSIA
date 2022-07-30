@@ -1,5 +1,4 @@
 // ignore_for_file: file_names, prefer_const_declarations, unused_local_variable
-
 import 'package:ecosia/screens/home/EcoCount/EcoCount.dart';
 import 'package:ecosia/screens/home/UserTask/UserTask.dart';
 import 'package:ecosia/screens/home/Userprofile/UserProfile.dart';
@@ -11,33 +10,48 @@ import 'package:flutter/material.dart';
 import '../screens/wrapper.dart';
 
 class NavigationDrawer extends StatelessWidget {
-  final padding = const EdgeInsets.symmetric(horizontal: 20);
+  // final padding = const EdgeInsets.fromLTRB(20, 10, 0, 0);
+  final padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 10);
   NavigationDrawer({Key? key}) : super(key: key);
 
   final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
+    final name = 'Sarah Abs';
+    final email = 'sarah@abs.com';
+    final urlImage =
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80';
     return Drawer(
       child: Material(
           color: Colors.white10,
           child: ListView(
             padding: padding,
             children: <Widget>[
+              buildHeader(
+                urlImage: urlImage,
+                name: name,
+                email: email,
+                onClicked: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const UserInfo(),
+                  ));
+                },
+              ),
               const SizedBox(
-                height: 30,
+                height: 10,
               ),
               buildMenuItem(
                 text: 'Dashboard',
                 icon: Icons.home_outlined,
                 onClicked: () => selectedItem(context, 0),
               ),
-              const SizedBox(height: 12),
-              buildMenuItem(
-                text: 'User Profile',
-                icon: Icons.person_outlined,
-                onClicked: () => selectedItem(context, 1),
-              ),
+              // const SizedBox(height: 12),
+              // buildMenuItem(
+              //   text: 'User Profile',
+              //   icon: Icons.person_outlined,
+              //   onClicked: () => selectedItem(context, 1),
+              // ),
               const SizedBox(height: 16),
               buildMenuItem(
                 text: 'Eco Count',
@@ -56,9 +70,9 @@ class NavigationDrawer extends StatelessWidget {
                 icon: Icons.task_outlined,
                 onClicked: () => selectedItem(context, 4),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 16),
               const Divider(color: Colors.black),
-              const SizedBox(height: 24),
+              const SizedBox(height: 16),
               buildMenuItem(
                 text: 'Log out',
                 icon: Icons.logout_rounded,
@@ -76,6 +90,49 @@ class NavigationDrawer extends StatelessWidget {
     );
   }
 
+  Widget buildHeader({
+    required String urlImage,
+    required String name,
+    required String email,
+    required VoidCallback onClicked,
+  }) =>
+      InkWell(
+        onTap: onClicked,
+        child: Container(
+          padding: padding.add(
+            const EdgeInsets.fromLTRB(
+              0,
+              30,
+              0,
+              10,
+            ),
+          ),
+          child: Row(
+            children: [
+              CircleAvatar(
+                radius: 30,
+                backgroundImage: NetworkImage(urlImage),
+              ),
+              const SizedBox(width: 20),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: const TextStyle(fontSize: 20, color: Colors.black),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    email,
+                    style: const TextStyle(fontSize: 14, color: Colors.black),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+
   Widget buildMenuItem({
     required String text,
     required IconData icon,
@@ -84,8 +141,15 @@ class NavigationDrawer extends StatelessWidget {
     final color = Colors.black87;
 
     return ListTile(
-      leading: Icon(icon, color: color),
-      title: Text(text, style: TextStyle(color: color)),
+      leading: Icon(icon, color: color, size: 30),
+      title: Text(
+        text,
+        style: TextStyle(
+          color: color,
+          fontSize: 18,
+          fontWeight: FontWeight.w400,
+        ),
+      ),
       onTap: onClicked,
     );
   }

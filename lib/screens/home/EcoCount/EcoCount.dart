@@ -1,11 +1,7 @@
 // ignore_for_file: file_names
 import 'package:ecosia/shared/navigationDrawer.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-// import 'package:ecosia/screens/home/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
-// import '../UserTask/UserTask.dart';
-// import '../Userprofile/UserProfile.dart';
-// import '../informativepg/informativepage.dart';
 
 class EcoCount extends StatefulWidget {
   const EcoCount({Key? key}) : super(key: key);
@@ -18,8 +14,15 @@ class _EcoCountState extends State<EcoCount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: const Color.fromARGB(255, 246, 246, 248),
       appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          "Eco count",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
         backgroundColor: Colors.white10,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
@@ -27,7 +30,7 @@ class _EcoCountState extends State<EcoCount> {
       drawer: NavigationDrawer(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 25, 8, 10),
+          padding: const EdgeInsets.fromLTRB(20, 25, 10, 10),
           child: Center(
             child: Column(
               children: [
