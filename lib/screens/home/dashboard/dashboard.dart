@@ -8,9 +8,7 @@ import '../TaskPages/taskDescription.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
-
   // final AuthService _auth = AuthService();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,10 +75,15 @@ class Dashboard extends StatelessWidget {
   }
 }
 
+@override
+State<StatefulWidget> createState() {
+  // TODO: implement createState
+  throw UnimplementedError();
+}
+
 class TaskInformation extends StatefulWidget {
   // ignore: use_key_in_widget_constructors
   const TaskInformation();
-
   @override
   // ignore: library_private_types_in_public_api
   _TaskInformationState createState() => _TaskInformationState();
@@ -90,7 +93,7 @@ class _TaskInformationState extends State<TaskInformation> {
   final Stream<QuerySnapshot> _tasksStream = FirebaseFirestore.instance
       .collection('Tasks')
       .snapshots(includeMetadataChanges: true);
-
+  var selectedIndex = [];
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -99,11 +102,9 @@ class _TaskInformationState extends State<TaskInformation> {
         if (snapshot.hasError) {
           return const Text('Something went wrong');
         }
-
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Loading();
         }
-
         return Container(
           height: MediaQuery.of(context).size.height,
           margin: const EdgeInsets.fromLTRB(10, 15, 10, 0),
@@ -128,10 +129,20 @@ class _TaskInformationState extends State<TaskInformation> {
                     ),
                     // subtitle: Text(data['Description']),
                     leading: IconButton(
-                      icon: const Icon(Icons.check_circle_outline),
-                      onPressed: () =>
-                          {addTask(document.reference.id, data['points'])},
-                    ),
+                        icon: Icon(Icons.check_circle_outline,
+                            color:
+                                (selectedIndex.contains(document.reference.id))
+                                    ? Color.fromARGB(255, 13, 151, 0)
+                                    : Color(0xff9A9A9A)),
+                        onPressed: () => {
+                              setState(() {
+                                if (selectedIndex
+                                    .contains(document.reference.id))
+                                  selectedIndex.remove(document.reference.id);
+                                else
+                                  selectedIndex.add(document.reference.id);
+                              }),
+                            }),
                     trailing: IconButton(
                       icon: Icon(
                         Icons.arrow_forward_ios,
@@ -169,7 +180,6 @@ addTask(String id, int point) async {
     // ignore: avoid_print
     print(point);
   }
-
   FirebaseFirestore.instance
       .collection('users')
       .where("Email", isEqualTo: uid)
