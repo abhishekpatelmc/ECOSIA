@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import '../screens/wrapper.dart';
 
 class NavigationDrawer extends StatelessWidget {
-  // final padding = const EdgeInsets.fromLTRB(20, 10, 0, 0);
-  final padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 10);
+  final padding = const EdgeInsets.fromLTRB(0, 10, 0, 0);
+  // final padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 10);
   NavigationDrawer({Key? key}) : super(key: key);
 
   final AuthService _auth = AuthService();
@@ -71,7 +71,11 @@ class NavigationDrawer extends StatelessWidget {
                 onClicked: () => selectedItem(context, 4),
               ),
               const SizedBox(height: 16),
-              const Divider(color: Colors.black),
+              const Divider(
+                color: Colors.black,
+                indent: 20,
+                endIndent: 20,
+              ),
               const SizedBox(height: 16),
               buildMenuItem(
                 text: 'Log out',
@@ -101,7 +105,7 @@ class NavigationDrawer extends StatelessWidget {
         child: Container(
           padding: padding.add(
             const EdgeInsets.fromLTRB(
-              0,
+              20,
               30,
               0,
               10,
@@ -141,17 +145,25 @@ class NavigationDrawer extends StatelessWidget {
     final color = Colors.black87;
     final darkGreen = Colors.green[800];
 
-    return ListTile(
-      leading: Icon(icon, color: darkGreen, size: 30),
-      title: Text(
-        text,
-        style: TextStyle(
-          color: color,
-          fontSize: 18,
-          fontWeight: FontWeight.w400,
-        ),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(
+        20,
+        0,
+        0,
+        10,
       ),
-      onTap: onClicked,
+      child: ListTile(
+        leading: Icon(icon, color: darkGreen, size: 30),
+        title: Text(
+          text,
+          style: TextStyle(
+            color: color,
+            fontSize: 18,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        onTap: onClicked,
+      ),
     );
   }
 

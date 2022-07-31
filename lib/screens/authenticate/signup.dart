@@ -18,6 +18,8 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   bool showSignUp = true;
+  bool _btnActive = false;
+
   void toggelView() {
     setState(() => showSignUp = !showSignUp);
   }
@@ -113,6 +115,9 @@ class _SignUpState extends State<SignUp> {
                                   val!.isEmpty ? 'Enter an email' : null,
                               onChanged: (val) {
                                 setState(() => email = val);
+                                setState(() {
+                                  _btnActive = val.isNotEmpty ? true : false;
+                                });
                               },
                             ),
                             const SizedBox(height: 20.0),
@@ -137,6 +142,9 @@ class _SignUpState extends State<SignUp> {
                                   : null,
                               onChanged: (val) {
                                 setState(() => password = val);
+                                setState(() {
+                                  _btnActive = val.isNotEmpty ? true : false;
+                                });
                               },
                             ),
                             const SizedBox(height: 25.0),
@@ -145,43 +153,7 @@ class _SignUpState extends State<SignUp> {
                               children: [
                                 ElevatedButton(
                                   onPressed: () async {
-                                    setState(() => loading = true);
-                                    if (_formKey.currentState!.validate()) {
-                                      dynamic result =
-                                          await _auth.registerEmailPassword(
-                                              email, password);
-                                      if (result == null) {
-                                        setState(() {
-                                          error = 'Please supply a valid email';
-                                          loading = false;
-                                        });
-                                      } else {
-                                        FirebaseFirestore.instance
-                                            .collection('users')
-                                            .add({
-                                              'Email': email,
-                                            })
-                                            // ignore: avoid_print
-                                            .then(
-                                                (value) => print("User Added"))
-                                            .catchError((error) =>
-                                                // ignore: avoid_print
-                                                print(
-                                                    "Failed to add user: $error"));
-
-                                        // ignore: use_build_context_synchronously
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                const UserProfile(),
-                                          ),
-                                        );
-                                        // SharedPreferences prefs = await SharedPreferences.getInstance();
-                                        // prefs.setString("email",email);
-                                      }
-                                      // print(email);
-                                      // print(password);
-                                    }
+                                    _btnActive == true ? _signupButton() : null;
                                   },
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
@@ -241,5 +213,40 @@ class _SignUpState extends State<SignUp> {
               ],
             ),
           );
+  }
+
+  void _signupButton() async {
+    setState(() => loading = true);
+    if (_formKey.currentState!.validate()) {
+      dynamic result = await _auth.registerEmailPassword(email, password);
+      if (result == null) {
+        setState(() {
+          error = 'Please supply a valid email';
+          loading = false;
+        });
+      } else {
+        FirebaseFirestore.instance
+            .collection('users')
+            .add({
+              'Email': email,
+            })
+            // ignore: avoid_print
+            .then((value) => print("User Added"))
+            .catchError((error) =>
+                // ignore: avoid_print
+                print("Failed to add user: $error"));
+
+        // ignore: use_build_context_synchronously
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const UserProfile(),
+          ),
+        );
+        // SharedPreferences prefs = await SharedPreferences.getInstance();
+        // prefs.setString("email",email);
+      }
+      // print(email);
+      // print(password);
+    }
   }
 }

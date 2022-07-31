@@ -18,6 +18,7 @@ class Login extends StatefulWidget {
 
 class _LoginPageState extends State<Login> {
   bool showSgnIn = true;
+  bool _btnActive = false;
 // TO toggel between sign in and sign up
   void toggelView() {
     setState(() => showSgnIn = !showSgnIn);
@@ -121,7 +122,13 @@ class _LoginPageState extends State<Login> {
                                   validator: (val) =>
                                       val!.isEmpty ? 'Enter an email' : null,
                                   onChanged: (val) {
-                                    setState(() => email = val);
+                                    setState(
+                                      () => email = val,
+                                    );
+                                    setState(() {
+                                      _btnActive =
+                                          val.isNotEmpty ? true : false;
+                                    });
                                   },
                                 ),
 
@@ -150,7 +157,13 @@ class _LoginPageState extends State<Login> {
                                       : null,
                                   obscureText: true,
                                   onChanged: (val) {
-                                    setState(() => password = val);
+                                    setState(() {
+                                      _btnActive =
+                                          val.isNotEmpty ? true : false;
+                                    });
+                                    setState(
+                                      () => password = val,
+                                    );
                                   },
                                 ),
                                 SizedBox(
@@ -209,22 +222,10 @@ class _LoginPageState extends State<Login> {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     ElevatedButton(
-                                      onPressed: () async {
-                                        setState(() => loading = true);
-                                        if (_formKey.currentState!.validate()) {
-                                          dynamic result =
-                                              await _auth.signInEmailPassword(
-                                                  email, password);
-                                          if (result == null) {
-                                            setState(() {
-                                              error =
-                                                  'couldnt sign in with those credentials';
-                                              loading = false;
-                                            });
-                                          }
-                                          // print(email);
-                                          // print(password);
-                                        }
+                                      onPressed: () {
+                                        _btnActive == true
+                                            ? _loginButton()
+                                            : null;
                                       },
                                       style: ElevatedButton.styleFrom(
                                           shape: RoundedRectangleBorder(
@@ -309,5 +310,20 @@ class _LoginPageState extends State<Login> {
               ],
             ),
           );
+  }
+
+  void _loginButton() async {
+    setState(() => loading = true);
+    if (_formKey.currentState!.validate()) {
+      dynamic result = await _auth.signInEmailPassword(email, password);
+      if (result == null) {
+        setState(() {
+          error = 'couldnt sign in with those credentials';
+          loading = false;
+        });
+      }
+      // print(email);
+      // print(password);
+    }
   }
 }

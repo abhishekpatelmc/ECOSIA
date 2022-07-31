@@ -208,54 +208,40 @@ class _UserProfileState extends State<UserProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(""),
-        // backgroundColor: ,
-        flexibleSpace: Container(
-          height: 150,
-          width: 600,
-          decoration: BoxDecoration(
-              // borderRadius: BorderRadius.circular(30),
-              color: Colors.green[300]),
-          child: const Padding(
-            padding: EdgeInsets.only(top: 30),
-            child: Center(
-              child: Text(
-                'Edit User profile',
-                style: TextStyle(fontSize: 24, color: Colors.white),
-              ),
-            ),
+        leading: IconButton(
+          icon:
+              const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: const Text(
+          "Edit User profile",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w400,
           ),
         ),
+        centerTitle: true,
+        backgroundColor: Colors.white10,
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: SingleChildScrollView(
-        child: Stack(
+        child: Column(
           children: [
-            const Opacity(
-              opacity: 0.7,
-              child: Image(
-                image: NetworkImage(
-                    "https://images.pexels.com/photos/2382325/pexels-photo-2382325.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
-              ),
-            ),
-            Center(
+            const Center(
               child: Padding(
-                padding: const EdgeInsets.only(top: 120),
+                padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
                 child: InkWell(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(80),
-                        color: Colors.teal),
-                    height: 150,
-                    width: 150,
-                    child: const Image(
-                      image: AssetImage("assets/images/flag.png"),
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundImage: NetworkImage(
+                      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
                     ),
                   ),
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(top: 230),
+            SizedBox(
               // height: 200,
               width: double.infinity,
               // color: Colors.,
@@ -263,7 +249,7 @@ class _UserProfileState extends State<UserProfile> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsets.only(top: 60, left: 20, right: 20),
+                        const EdgeInsets.only(top: 20, left: 20, right: 20),
                     child: TextField(
                       controller: name,
                       keyboardType: TextInputType.name,
@@ -334,67 +320,48 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                   ),
                   Padding(
-                      padding:
-                          const EdgeInsets.only(top: 15, left: 20, right: 20),
-                      child: TextField(
-                          controller: enterDate,
-                          readOnly: true,
-                          // keyboardType: TextInputType.datetime,
-                          decoration: InputDecoration(
-                            icon: const Icon(
-                              Icons.date_range_sharp,
-                              size: 30,
-                            ),
-                            hintText: "User's Birth Date",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
-                          onTap: () async {
-                            // ignore: non_constant_identifier_names
-                            DateTime? UserPickedDate = await showDatePicker(
-                                context: context,
-                                initialDate: DateTime.now(),
-                                firstDate: DateTime(1960),
-                                lastDate: DateTime(2101));
-                            if (UserPickedDate != null) {
-                              // ignore: avoid_print
-                              print(
-                                  UserPickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                              String formattedDate = DateFormat('yyyy-MM-dd')
-                                  .format(UserPickedDate);
-                              // ignore: avoid_print
-                              print(
-                                  formattedDate); //formatted date output using intl package =>  2021-03-16
-                              //you can implement different kind of Date Format here according to your requirement
+                    padding:
+                        const EdgeInsets.only(top: 15, left: 20, right: 20),
+                    child: TextField(
+                      controller: enterDate,
+                      readOnly: true,
+                      // keyboardType: TextInputType.datetime,
+                      decoration: InputDecoration(
+                        icon: const Icon(
+                          Icons.date_range_sharp,
+                          size: 30,
+                        ),
+                        hintText: "User's Birth Date",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      onTap: () async {
+                        // ignore: non_constant_identifier_names
+                        DateTime? UserPickedDate = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(1960),
+                            lastDate: DateTime(2101));
+                        if (UserPickedDate != null) {
+                          // ignore: avoid_print
+                          print(
+                              UserPickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                          String formattedDate =
+                              DateFormat('yyyy-MM-dd').format(UserPickedDate);
+                          // ignore: avoid_print
+                          print(
+                              formattedDate); //formatted date output using intl package =>  2021-03-16
+                          //you can implement different kind of Date Format here according to your requirement
 
-                              setState(() {
-                                enterDate.text =
-                                    formattedDate; //set output date to TextField value.
-                              });
-                            }
-                          })),
-                  // Padding(
-                  //     padding:
-                  //         const EdgeInsets.only(top: 15, left: 20, right: 20),
-                  //     child: InkWell(
-                  //       child: Container(
-                  //         height: 50,
-                  //         // width: double.infinity,
-                  //         decoration: BoxDecoration(
-                  //             borderRadius: BorderRadius.circular(30),
-                  //             color: Colors.green[300]),
-                  //         child: const Center(
-                  //           child: Text(
-                  //             'Change password',
-                  //             style:
-                  //                 TextStyle(fontSize: 24, color: Colors.white),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //       onTap: () {},
-                  //     )
-                  //     ),
+                          setState(() {
+                            enterDate.text =
+                                formattedDate; //set output date to TextField value.
+                          });
+                        }
+                      },
+                    ),
+                  ),
                   Padding(
                       padding: const EdgeInsets.only(
                           top: 15, left: 20, right: 20, bottom: 15),
@@ -404,7 +371,7 @@ class _UserProfileState extends State<UserProfile> {
                           // width: double.infinity,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
-                              color: Colors.green[300]),
+                              color: Colors.green[400]),
                           child: const Center(
                             child: Text(
                               'Save',
