@@ -131,6 +131,7 @@ class _LoginPageState extends State<Login> {
 
                                 //Password TextField
                                 TextFormField(
+                                  // keyboardType: TextInputType.visiblePassword,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(30),
@@ -166,8 +167,12 @@ class _LoginPageState extends State<Login> {
 
                                 //Forgot password button
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 25.0, vertical: 10),
+                                  padding: const EdgeInsets.fromLTRB(
+                                    10,
+                                    5,
+                                    15,
+                                    10,
+                                  ),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
@@ -201,7 +206,7 @@ class _LoginPageState extends State<Login> {
                                 //Sign in Button
                                 Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceAround,
                                   children: [
                                     ElevatedButton(
                                       onPressed: () async {
@@ -268,7 +273,7 @@ class _LoginPageState extends State<Login> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text('Skip Sing in',
+                                    Text('Skip Sign in',
                                         style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 18,
