@@ -122,7 +122,8 @@ class TaskDesription extends StatelessWidget {
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  child: const Icon(Icons.arrow_back, color: Colors.white),
+                  child: const Icon(Icons.arrow_back_ios_new_rounded,
+                      color: Colors.white),
                 ),
               )
             ],

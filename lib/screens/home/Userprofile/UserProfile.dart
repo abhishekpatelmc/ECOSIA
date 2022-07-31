@@ -3,7 +3,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/screens/home/Userprofile/firestore.dart';
 import 'package:ecosia/screens/home/dashboard/dashboard.dart';
-import 'package:ecosia/shared/navigationDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -70,6 +69,11 @@ class _UserInfoState extends State<UserInfo> {
             ? const Loading()
             : Scaffold(
                 appBar: AppBar(
+                  leading: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                        color: Colors.black),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
                   centerTitle: true,
                   title: const Text(
                     "User Profile",
@@ -82,7 +86,7 @@ class _UserInfoState extends State<UserInfo> {
                   elevation: 0,
                   iconTheme: const IconThemeData(color: Colors.black),
                 ),
-                drawer: NavigationDrawer(),
+                // drawer: NavigationDrawer(),
                 body: SingleChildScrollView(
                   child: Column(
                     children: [

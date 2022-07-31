@@ -1,5 +1,4 @@
 // ignore_for_file: file_names
-import 'package:ecosia/shared/navigationDrawer.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +14,11 @@ class _EcoCountState extends State<EcoCount> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon:
+              const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         centerTitle: true,
         title: const Text(
           "Eco count",
@@ -27,7 +31,7 @@ class _EcoCountState extends State<EcoCount> {
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
       ),
-      drawer: NavigationDrawer(),
+      // drawer: NavigationDrawer(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20, 25, 10, 10),

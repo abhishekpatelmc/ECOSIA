@@ -1,6 +1,4 @@
 // ignore_for_file: prefer_const_constructors
-
-import 'package:ecosia/shared/navigationDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -16,6 +14,10 @@ class _InformativePage extends State<InformativePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
           centerTitle: true,
           title: Text(
             "Informative Page",
@@ -28,7 +30,7 @@ class _InformativePage extends State<InformativePage> {
           elevation: 0,
           iconTheme: IconThemeData(color: Colors.black),
         ),
-        drawer: NavigationDrawer(),
+        // drawer: NavigationDrawer(),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: SingleChildScrollView(

@@ -1,6 +1,5 @@
 // ignore_for_file: file_names
 
-import 'package:ecosia/shared/navigationDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -15,8 +14,13 @@ class _UserTaskState extends State<UserTask> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavigationDrawer(),
       appBar: AppBar(
+        leading: IconButton(
+          icon:
+              const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        // drawer: NavigationDrawer(),
         centerTitle: true,
         title: const Text(
           "Your Task",
