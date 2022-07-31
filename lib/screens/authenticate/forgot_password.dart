@@ -13,8 +13,20 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green[300],
-        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        centerTitle: true,
+        title: Text(
+          "Forgot Password",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        backgroundColor: Colors.white10,
+        elevation: 0.0,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
