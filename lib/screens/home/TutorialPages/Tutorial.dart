@@ -24,11 +24,11 @@ class _TutorialState extends State<Tutorial> {
               Padding(
                 padding: const EdgeInsets.only(top: 150),
                 child: Text(
-                  "Learn more on how to reduce waste",
+                  "Tips & Tricks to reduce waste",
                   style: TextStyle(
                       color: Colors.green[800],
                       fontWeight: FontWeight.bold,
-                      fontSize: 35),
+                      fontSize: 40),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -39,7 +39,7 @@ class _TutorialState extends State<Tutorial> {
                 decoration: const BoxDecoration(
                   // borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                    image: AssetImage("assets/images/1.png"),
+                    image: AssetImage("assets/images/Picture9.png"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -49,13 +49,13 @@ class _TutorialState extends State<Tutorial> {
           Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 110),
+                padding: const EdgeInsets.only(top: 150),
                 child: Text(
-                  "Learn more on how to reduce carbon emissions",
+                  "Tips & Tricks to reduce carbon emissions",
                   style: TextStyle(
                       color: Colors.green[800],
                       fontWeight: FontWeight.bold,
-                      fontSize: 35),
+                      fontSize: 40),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -63,7 +63,7 @@ class _TutorialState extends State<Tutorial> {
                 padding: const EdgeInsets.only(top: 50),
                 child: Container(
                   // width: double.infinity,
-                  height: 330,
+                  height: 200,
                   // margin: const EdgeInsets.all(6.0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
@@ -81,22 +81,22 @@ class _TutorialState extends State<Tutorial> {
               Padding(
                 padding: const EdgeInsets.only(top: 150),
                 child: Text(
-                  "Learn more on how to make healthy choices",
+                  "Tips & Tricks to eat healthy",
                   style: TextStyle(
                       color: Colors.green[800],
                       fontWeight: FontWeight.bold,
-                      fontSize: 35),
+                      fontSize: 40),
                   textAlign: TextAlign.center,
                 ),
               ),
               Container(
                 width: double.infinity,
-                height: 380,
+                height: 350,
                 // margin: const EdgeInsets.all(6.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   image: const DecorationImage(
-                    image: AssetImage("assets/images/3.png"),
+                    image: AssetImage("assets/images/Picture11.png"),
                     // image: NetworkImage("https://cdn.dribbble.com/users/3524019/screenshots/16284498/media/d03e7f6dcf5f3a6973b650e3ede72920.gif"),
                     // fit: BoxFit.cover,
                   ),

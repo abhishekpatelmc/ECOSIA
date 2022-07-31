@@ -1,12 +1,10 @@
-import 'package:ecosia/screens/authenticate/register.dart';
-// import 'package:ecosia/screens/authenticate/sign_in.dart';
+import 'package:ecosia/screens/authenticate/login.dart';
+import 'package:ecosia/screens/authenticate/signup.dart';
 import 'package:flutter/material.dart';
 
-import '../home/LoginPage/login_page.dart';
-
 /*
-This file to determine wheather the app redirects to Sign-In or Register/Sign Page
-  - Sign IN
+This file to determine wheather the app redirects to Login or SignUp Page
+  - Login
   - Sign Up / Register
 */
 class Authenticate extends StatefulWidget {
@@ -27,9 +25,9 @@ class _AuthenticateState extends State<Authenticate> {
   @override
   Widget build(BuildContext context) {
     if (showSgnIn) {
-      return LoginPage(toggelView: toggelView);
+      return Login(toggelView: toggelView);
     } else {
-      return Register(toggelView: toggelView);
+      return SignUp(toggelView: toggelView);
     }
   }
 }

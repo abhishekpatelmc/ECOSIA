@@ -6,7 +6,7 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.3 <3.0.0"
+  sdk: ">=2.16.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -27,14 +27,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.9.3
-
-
-flutter_icons:
-  android: "launcher_icon"
-  iOS: true
-  image_path: .\assets\images\tree.png
-
   flutter_lints: ^2.0.0
 
 flutter:
