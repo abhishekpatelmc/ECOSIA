@@ -77,7 +77,6 @@ class _UserInfoState extends State<UserInfo> {
           drawer: Drawer(
             child: ListView(
               children: [
-
                 const UserAccountsDrawerHeader(
                   accountName: null,
                   accountEmail: null,
