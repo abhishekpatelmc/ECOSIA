@@ -114,11 +114,18 @@ class _TaskInformationState extends State<TaskInformation> {
                     document.data()! as Map<String, dynamic>;
                 return Card(
                   elevation: 2,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
                   margin: const EdgeInsets.all(10),
                   child: ListTile(
-                    title: Text(data['Name'],
-                        style: const TextStyle(
-                            fontWeight: FontWeight.w400, fontSize: 18)),
+                    title: Text(
+                      data['Name'],
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 18,
+                      ),
+                    ),
                     // subtitle: Text(data['Description']),
                     leading: IconButton(
                       icon: const Icon(Icons.check_circle_outline),

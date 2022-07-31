@@ -56,8 +56,11 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             onPressed: () {},
             child: Text(
               'Reset Password',
+              style: TextStyle(
+                color: Colors.white,
+              ),
             ),
-            color: Colors.green[300],
+            color: Colors.green[400],
           ),
           SizedBox(
             height: 10,

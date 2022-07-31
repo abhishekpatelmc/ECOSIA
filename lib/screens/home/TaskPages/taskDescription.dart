@@ -61,7 +61,7 @@ class TaskDesription extends StatelessWidget {
           final topContentText = Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const SizedBox(height: 120.0),
+              const SizedBox(height: 100.0),
               const Icon(
                 Icons.task_rounded,
                 color: Colors.white,
