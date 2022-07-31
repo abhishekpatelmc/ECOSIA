@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecosia/screens/home/LoginPage/login_page.dart';
+import 'package:ecosia/shared/loading.dart';
 import 'package:ecosia/shared/navigationDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -48,11 +48,12 @@ class Dashboard extends StatelessWidget {
                   Column(
                     // ignore: prefer_const_literals_to_create_immutables
                     children: <Widget>[
-                      SizedBox(
-                          height: 150,
-                          width: 150,
-                          child: Image(
-                              image: AssetImage('assets/images/person.png'))),
+                      CircleAvatar(
+                        radius: 50,
+                        backgroundImage: NetworkImage(
+                          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -64,7 +65,7 @@ class Dashboard extends StatelessWidget {
             Text(
               "Today's tasks",
               style: TextStyle(
-                  color: Colors.grey[700],
+                  color: Colors.green[800],
                   fontWeight: FontWeight.w500,
                   fontSize: 22.0),
             ),
@@ -125,7 +126,10 @@ class _TaskInformationState extends State<TaskInformation> {
                           {addTask(document.reference.id, data['points'])},
                     ),
                     trailing: IconButton(
-                      icon: const Icon(Icons.arrow_forward_ios),
+                      icon: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.green[300],
+                      ),
                       onPressed: () {
                         Navigator.push(
                           context,

@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, non_constant_identifier_names, prefer_typing_uninitialized_variables, no_leading_underscores_for_local_identifiers, duplicate_ignore, avoid_print
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_typing_uninitialized_variables, no_leading_underscores_for_local_identifiers, duplicate_ignore, avoid_print, prefer_const_literals_to_create_immutables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/screens/home/Userprofile/firestore.dart';
@@ -86,33 +86,18 @@ class _UserInfoState extends State<UserInfo> {
                 body: SingleChildScrollView(
                   child: Column(
                     children: [
-                      Stack(
-                        children: [
-                          const Opacity(
-                            opacity: 0.7,
-                            child: Image(
-                              image: NetworkImage(
-                                  "https://images.pexels.com/photos/2382325/pexels-photo-2382325.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
-                            ),
-                          ),
-                          Center(
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 120),
-                              child: InkWell(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(80),
-                                      color: Colors.teal),
-                                  height: 150,
-                                  width: 150,
-                                  child: const Image(
-                                    image: AssetImage("assets/images/flag.png"),
-                                  ),
-                                ),
+                      const Center(
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                          child: InkWell(
+                            child: CircleAvatar(
+                              radius: 50,
+                              backgroundImage: NetworkImage(
+                                'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
                               ),
                             ),
                           ),
-                        ],
+                        ),
                       ),
                       Center(
                           child: Text(

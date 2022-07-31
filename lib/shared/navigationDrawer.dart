@@ -139,9 +139,10 @@ class NavigationDrawer extends StatelessWidget {
     VoidCallback? onClicked,
   }) {
     final color = Colors.black87;
+    final darkGreen = Colors.green[800];
 
     return ListTile(
-      leading: Icon(icon, color: color, size: 30),
+      leading: Icon(icon, color: darkGreen, size: 30),
       title: Text(
         text,
         style: TextStyle(

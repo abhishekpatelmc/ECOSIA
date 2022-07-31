@@ -136,7 +136,7 @@ class customCard extends StatelessWidget {
       height: 95,
       width: double.infinity,
       child: Card(
-        elevation: 8,
+        elevation: 5,
         shadowColor: Colors.grey,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(0, 15, 10, 0),

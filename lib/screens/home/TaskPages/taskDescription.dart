@@ -1,10 +1,7 @@
 // ignore_for_file: file_names
-
 import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecosia/screens/home/LoginPage/login_page.dart';
-// import 'package:ecosia/models/tasks.dart';
+import 'package:ecosia/shared/loading.dart';
 import 'package:flutter/material.dart';
 
 class TaskDesription extends StatelessWidget {

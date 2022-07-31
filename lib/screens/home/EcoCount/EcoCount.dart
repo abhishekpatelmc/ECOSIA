@@ -38,10 +38,11 @@ class _EcoCountState extends State<EcoCount> {
                   radius: 70.0,
                   lineWidth: 14.0,
                   percent: 0.8,
-                  center: Image.asset(
-                    'assets/images/person.png',
-                    height: 140.0,
-                    width: 140.0,
+                  center: const CircleAvatar(
+                    radius: 50,
+                    backgroundImage: NetworkImage(
+                      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+                    ),
                   ),
                   progressColor: Colors.green[300],
                 ),
