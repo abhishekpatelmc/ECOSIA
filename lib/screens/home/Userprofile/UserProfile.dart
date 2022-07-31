@@ -100,7 +100,7 @@ class _UserInfoState extends State<UserInfo> {
                         MaterialPageRoute(builder: (context) => Dashboard()));
                   },
                   title: const Text(
-                    "Dasboard",
+                    "Dashboard",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
