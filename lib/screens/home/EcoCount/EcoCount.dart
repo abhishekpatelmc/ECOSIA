@@ -1,6 +1,9 @@
 // ignore_for_file: file_names
+import 'dart:convert';
+
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class EcoCount extends StatefulWidget {
   const EcoCount({Key? key}) : super(key: key);
@@ -10,6 +13,26 @@ class EcoCount extends StatefulWidget {
 }
 
 class _EcoCountState extends State<EcoCount> {
+  double value = 0;
+  dynamic tasks = "";
+  var taskList = [];
+
+  Future<void> getTaskList() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    tasks = prefs.getString("tasks");
+    setState(() {
+      taskList = json.decode(tasks);
+      value = taskList.length / 10;
+    });
+    print("retrive " + tasks);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getTaskList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +64,7 @@ class _EcoCountState extends State<EcoCount> {
                 CircularPercentIndicator(
                   radius: 70.0,
                   lineWidth: 14.0,
-                  percent: 0.8,
+                  percent: value,
                   center: const CircleAvatar(
                     radius: 50,
                     backgroundImage: NetworkImage(
