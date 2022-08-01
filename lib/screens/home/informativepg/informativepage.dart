@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -15,9 +14,23 @@ class _InformativePage extends State<InformativePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Informative Page"),
-          backgroundColor: Colors.green[300],
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          centerTitle: true,
+          title: Text(
+            "Informative Page",
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          backgroundColor: Colors.white10,
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.black),
         ),
+        // drawer: NavigationDrawer(),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: SingleChildScrollView(
@@ -98,18 +111,15 @@ class _InformativePage extends State<InformativePage> {
     }
   }
 }
- _launchURL5() async {
-    const url = 'https://oen.ca/';
-    if (await launchUrlString(url)) {
-      await launchUrlString(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+
+_launchURL5() async {
+  const url = 'https://oen.ca/';
+  if (await launchUrlString(url)) {
+    await launchUrlString(url);
+  } else {
+    throw 'Could not launch $url';
   }
-
-
-
-
+}
 
 // ignore: camel_case_types, must_be_immutable
 class customCard extends StatelessWidget {
@@ -125,10 +135,10 @@ class customCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-      height: 95,
+      height: 90,
       width: double.infinity,
       child: Card(
-        elevation: 8,
+        elevation: 4,
         shadowColor: Colors.grey,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(0, 15, 10, 0),
