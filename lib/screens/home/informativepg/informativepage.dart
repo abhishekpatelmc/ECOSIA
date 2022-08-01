@@ -135,10 +135,10 @@ class customCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-      height: 95,
+      height: 90,
       width: double.infinity,
       child: Card(
-        elevation: 5,
+        elevation: 4,
         shadowColor: Colors.grey,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(0, 15, 10, 0),

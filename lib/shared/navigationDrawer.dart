@@ -41,11 +41,11 @@ class NavigationDrawer extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              buildMenuItem(
-                text: 'Dashboard',
-                icon: Icons.home_outlined,
-                onClicked: () => selectedItem(context, 0),
-              ),
+              // buildMenuItem(
+              //   text: 'Dashboard',
+              //   icon: Icons.home_outlined,
+              //   onClicked: () => selectedItem(context, 0),
+              // ),
               // const SizedBox(height: 12),
               // buildMenuItem(
               //   text: 'User Profile',
@@ -60,15 +60,16 @@ class NavigationDrawer extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               buildMenuItem(
-                text: 'Informative Page',
-                icon: Icons.info_outline_rounded,
-                onClicked: () => selectedItem(context, 3),
-              ),
-              const SizedBox(height: 16),
-              buildMenuItem(
                 text: 'Your Tasks',
                 icon: Icons.task_outlined,
                 onClicked: () => selectedItem(context, 4),
+              ),
+
+              const SizedBox(height: 16),
+              buildMenuItem(
+                text: 'Informative Page',
+                icon: Icons.info_outline_rounded,
+                onClicked: () => selectedItem(context, 3),
               ),
               const SizedBox(height: 16),
               const Divider(
