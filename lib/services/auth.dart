@@ -68,7 +68,7 @@ class AuthService {
       User? user = result.user;
 
       String? uid = user?.email.toString();
-      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final prefs = await SharedPreferences.getInstance();
 
       prefs.setString("email", uid!);
 
@@ -87,7 +87,7 @@ class AuthService {
           email: email, password: password);
       User? user = result.user;
       String? uid = user?.email.toString();
-      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final prefs = await SharedPreferences.getInstance();
 
       prefs.setString("email", uid!);
 
@@ -106,7 +106,7 @@ class AuthService {
       if (user != null) {
         await _auth.signOut();
 
-        SharedPreferences preferences = await SharedPreferences.getInstance();
+        final preferences = await SharedPreferences.getInstance();
         await preferences.clear();
       }
     } catch (e) {

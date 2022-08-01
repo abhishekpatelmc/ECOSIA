@@ -167,7 +167,7 @@ class _UserInfoState extends State<UserInfo> {
                       opacity: 0.7,
                       child: Image(
                         image: NetworkImage(
-                            "https://i0.wp.com/zenbird.media/wp-content/uploads/2020/11/footprint_1.jpg?fit=1000%2C563&ssl=1"),
+                            "https://images.pexels.com/photos/2382325/pexels-photo-2382325.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
                       ),
                     ),
                     Center(
