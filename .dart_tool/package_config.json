@@ -308,6 +308,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "smooth_page_indicator",
+      "rootUri": "file:///C:/Users/Abhishek/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/smooth_page_indicator-1.0.0+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "source_span",
       "rootUri": "file:///C:/Users/Abhishek/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/source_span-1.8.2",
       "packageUri": "lib/",
@@ -422,7 +428,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-07-31T21:25:35.591154Z",
+  "generated": "2022-07-31T23:04:37.760264Z",
   "generator": "pub",
   "generatorVersion": "2.17.6"
 }
