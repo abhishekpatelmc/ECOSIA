@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/shared/loading.dart';
 import 'package:ecosia/shared/navigationDrawer.dart';
@@ -9,6 +10,7 @@ import '../TaskPages/taskDescription.dart';
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
   // final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,6 +96,8 @@ class _TaskInformationState extends State<TaskInformation> {
       .collection('Tasks')
       .snapshots(includeMetadataChanges: true);
   var selectedIndex = [];
+  var taskArray = [];
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -137,12 +141,20 @@ class _TaskInformationState extends State<TaskInformation> {
                         onPressed: () => {
                               setState(() {
                                 if (selectedIndex
-                                    .contains(document.reference.id)){
-                                  addTask(document.reference.id, data['points']);
+                                    .contains(document.reference.id)) {
                                   selectedIndex.remove(document.reference.id);
-                                }
-                                else {
+                                  Map taskObject = {};
+                                  taskObject['id'] = data['Name'];
+                                  taskArray.removeWhere(
+                                      (item) => item["id"] == data['Name']);
+                                  addToSP(json.encode(taskArray));
+                                  // }
+                                } else {
                                   selectedIndex.add(document.reference.id);
+                                  Map taskObject = {};
+                                  taskObject['id'] = data['Name'];
+                                  taskArray.add(taskObject);
+                                  addToSP(json.encode(taskArray));
                                 }
                               }),
                             }),
@@ -170,12 +182,18 @@ class _TaskInformationState extends State<TaskInformation> {
       },
     );
   }
+
+  Future<void> addToSP(String s) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString("tasks", s); //no commit
+    print("working " + s);
+  }
 }
 
 addTask(String id, int point) async {
-  final prefs = await SharedPreferences.getInstance();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
   String? uid;
-  int totalpoint=0;
+  int totalpoint;
   if (prefs.containsKey("email")) {
     // setState(() {
     uid = prefs.getString("email");
