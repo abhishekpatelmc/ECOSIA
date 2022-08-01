@@ -1,10 +1,7 @@
 // ignore_for_file: file_names
-
 import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecosia/screens/home/LoginPage/login_page.dart';
-// import 'package:ecosia/models/tasks.dart';
+import 'package:ecosia/shared/loading.dart';
 import 'package:flutter/material.dart';
 
 class TaskDesription extends StatelessWidget {
@@ -64,7 +61,7 @@ class TaskDesription extends StatelessWidget {
           final topContentText = Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const SizedBox(height: 120.0),
+              const SizedBox(height: 100.0),
               const Icon(
                 Icons.task_rounded,
                 color: Colors.white,
@@ -125,7 +122,8 @@ class TaskDesription extends StatelessWidget {
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  child: const Icon(Icons.arrow_back, color: Colors.white),
+                  child: const Icon(Icons.arrow_back_ios_new_rounded,
+                      color: Colors.white),
                 ),
               )
             ],

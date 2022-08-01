@@ -1,11 +1,6 @@
 // ignore_for_file: file_names
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:ecosia/screens/home/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
-
-import '../UserTask/UserTask.dart';
-import '../Userprofile/UserProfile.dart';
-import '../informativepg/informativepage.dart';
 
 class EcoCount extends StatefulWidget {
   const EcoCount({Key? key}) : super(key: key);
@@ -18,96 +13,28 @@ class _EcoCountState extends State<EcoCount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 246, 246, 248),
       appBar: AppBar(
-        backgroundColor: Colors.green[300],
-        elevation: 5.0,
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            UserAccountsDrawerHeader(
-              accountName: null,
-              accountEmail: null,
-              decoration: BoxDecoration(
-                image: const DecorationImage(
-                    image: NetworkImage(
-                        "https://cdn2.outdoorphotographer.com/2019/12/FMB_Landscapes_03.jpg"),
-                    fit: BoxFit.fill),
-                color: Colors.green[300],
-              ),
-              currentAccountPicture: const CircleAvatar(
-                backgroundImage: AssetImage(
-                  'assets/images/person.png',
-                ),
-              ),
-            ),
-            ListTile(
-              tileColor: Colors.green[300],
-              leading: const Icon(
-                Icons.person_outlined,
-                color: Colors.white,
-              ),
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
-              },
-              title: const Text(
-                "Dashboard",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            ListTile(
-              tileColor: Colors.green[300],
-              leading: const Icon(
-                Icons.person_outlined,
-                color: Colors.white,
-              ),
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const UserInfo()));
-              },
-              title: const Text(
-                "User profile",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            ListTile(
-              tileColor: Colors.green[300],
-              leading: const Icon(
-                Icons.info_outline_rounded,
-                color: Colors.white,
-              ),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const InformativePage()));
-              },
-              title: const Text(
-                "Informative Page",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            ListTile(
-              tileColor: Colors.green[300],
-              leading: const Icon(
-                Icons.task_alt_outlined,
-                color: Colors.white,
-              ),
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const UserTask()));
-              },
-              title: const Text(
-                "Your Tasks",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
+        leading: IconButton(
+          icon:
+              const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
         ),
+        centerTitle: true,
+        title: const Text(
+          "Eco count",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        backgroundColor: Colors.white10,
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
+      // drawer: NavigationDrawer(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 25, 8, 10),
+          padding: const EdgeInsets.fromLTRB(20, 25, 10, 10),
           child: Center(
             child: Column(
               children: [
@@ -115,10 +42,11 @@ class _EcoCountState extends State<EcoCount> {
                   radius: 70.0,
                   lineWidth: 14.0,
                   percent: 0.8,
-                  center: Image.asset(
-                    'assets/images/person.png',
-                    height: 140.0,
-                    width: 140.0,
+                  center: const CircleAvatar(
+                    radius: 50,
+                    backgroundImage: NetworkImage(
+                      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+                    ),
                   ),
                   progressColor: Colors.green[300],
                 ),
@@ -250,8 +178,8 @@ class _EcoCountState extends State<EcoCount> {
                     Image.network(
                       // scale: 1,
                       // alignment: Alignment.topRight,
-                      fit: BoxFit.fitHeight,
                       'https://images.unsplash.com/photo-1533038590840-1cde6e668a91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+                      fit: BoxFit.fitHeight,
                       height: 300.0,
                       width: 150.0,
                     ),
