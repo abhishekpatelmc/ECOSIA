@@ -137,10 +137,13 @@ class _TaskInformationState extends State<TaskInformation> {
                         onPressed: () => {
                               setState(() {
                                 if (selectedIndex
-                                    .contains(document.reference.id))
+                                    .contains(document.reference.id)){
+                                  addTask(document.reference.id, data['points']);
                                   selectedIndex.remove(document.reference.id);
-                                else
+                                }
+                                else {
                                   selectedIndex.add(document.reference.id);
+                                }
                               }),
                             }),
                     trailing: IconButton(
@@ -170,9 +173,9 @@ class _TaskInformationState extends State<TaskInformation> {
 }
 
 addTask(String id, int point) async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
+  final prefs = await SharedPreferences.getInstance();
   String? uid;
-  int totalpoint;
+  int totalpoint=0;
   if (prefs.containsKey("email")) {
     // setState(() {
     uid = prefs.getString("email");

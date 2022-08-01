@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserTask extends StatefulWidget {
   const UserTask({Key? key}) : super(key: key);
@@ -11,6 +12,26 @@ class UserTask extends StatefulWidget {
 }
 
 class _UserTaskState extends State<UserTask> {
+
+  String? userEmail = "test@gmail.com";
+
+  @override
+  void initState() {
+    super.initState();
+    userGet();
+  }
+
+  Future<void> userGet() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      if (prefs.containsKey("email")) {
+        userEmail = prefs.getString("email");
+        // print("userEmail $userEmail");
+      }
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

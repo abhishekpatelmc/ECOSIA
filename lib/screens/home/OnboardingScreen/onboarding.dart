@@ -35,7 +35,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             fit: BoxFit.cover,
             width: double.infinity,
           ),
-          const SizedBox(height: 64),
+          const SizedBox(height: 30),
           Text(
             title,
             style: TextStyle(
@@ -50,7 +50,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
             child: Text(
               subtitle,
               style: const TextStyle(
-                color: Colors.black54,
+                fontSize: 18,
+                color: Colors.black87,
               ),
             ),
           ),
@@ -72,94 +73,94 @@ class _OnboardingPageState extends State<OnboardingPage> {
           children: [
             buildPage(
               color: Colors.green.shade100,
-              urlImage: '',
+              urlImage: 'assets/images/reduce.png',
               title: 'REDUCE',
               subtitle:
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              'The Best Waste is None.\nUse less. Buy less.\nAvoid waste. Carpool\nTurn off lights take shorter showers.',
             ),
             buildPage(
               color: Colors.green.shade100,
-              urlImage: '',
+              urlImage: 'assets/images/recycle.png',
               title: 'RECYCLE',
               subtitle:
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              'Use things more than once.\nUse cloth shopping bags.\nRepair. Regift. Compost.\nTry travel mugs.',
             ),
             buildPage(
               color: Colors.green.shade100,
-              urlImage: '',
+              urlImage: 'assets/images/reuse.png',
               title: 'REUSE',
               subtitle:
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              'Donate old garments.\nSeparate waste materials so that\nrecyclable products can be\ntransformed into something new!',
             ),
           ],
         ),
       ),
       bottomSheet: isLastPage
           ? TextButton(
-              style: TextButton.styleFrom(
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(8),
-                    topRight: Radius.circular(8),
-                  ),
-                ),
-                primary: Colors.white,
-                backgroundColor: Colors.green.shade700,
-                minimumSize: const Size.fromHeight(80),
-              ),
-              onPressed: () async {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const Wrapper()));
-              },
-              child: const Text('Get Started',
-                  style: TextStyle(
-                    fontSize: 24,
-                  )))
-          : Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              height: 80,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    onPressed: () => controller.jumpToPage(2),
-                    child: Text(
-                      'SKIP',
-                      style: TextStyle(color: Colors.green[700], fontSize: 18),
-                    ),
-                  ),
-                  Center(
-                    child: SmoothPageIndicator(
-                      controller: controller,
-                      count: 3,
-                      effect: WormEffect(
-                        spacing: 16,
-                        dotColor: Colors.black26,
-                        activeDotColor: Colors.green.shade700,
-                      ),
-                      onDotClicked: (index) => controller.animateToPage(
-                        index,
-                        duration: const Duration(
-                          milliseconds: 500,
-                        ),
-                        curve: Curves.easeIn,
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () => controller.nextPage(
-                        duration: const Duration(
-                          milliseconds: 500,
-                        ),
-                        curve: Curves.easeInOut),
-                    child: Text(
-                      'NEXT',
-                      style: TextStyle(color: Colors.green[700], fontSize: 18),
-                    ),
-                  ),
-                ],
+          style: TextButton.styleFrom(
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(8),
+                topRight: Radius.circular(8),
               ),
             ),
+            primary: Colors.white,
+            backgroundColor: Colors.green.shade700,
+            minimumSize: const Size.fromHeight(80),
+          ),
+          onPressed: () async {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const Wrapper()));
+          },
+          child: const Text('Get Started',
+              style: TextStyle(
+                fontSize: 24,
+              )))
+          : Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        height: 80,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextButton(
+              onPressed: () => controller.jumpToPage(2),
+              child: Text(
+                'SKIP',
+                style: TextStyle(color: Colors.green[700], fontSize: 18),
+              ),
+            ),
+            Center(
+              child: SmoothPageIndicator(
+                controller: controller,
+                count: 3,
+                effect: WormEffect(
+                  spacing: 16,
+                  dotColor: Colors.black26,
+                  activeDotColor: Colors.green.shade700,
+                ),
+                onDotClicked: (index) => controller.animateToPage(
+                  index,
+                  duration: const Duration(
+                    milliseconds: 500,
+                  ),
+                  curve: Curves.easeIn,
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () => controller.nextPage(
+                  duration: const Duration(
+                    milliseconds: 500,
+                  ),
+                  curve: Curves.easeInOut),
+              child: Text(
+                'NEXT',
+                style: TextStyle(color: Colors.green[700], fontSize: 18),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
