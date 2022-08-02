@@ -77,7 +77,7 @@ Happy to answer any questions
 
 ## Connect with Developers
 
-- [Abhishek Patel](https://www.linkedin.com/in/abhishekpatelmc/){:target="_blank"}
+- [Abhishek Patel](https://www.linkedin.com/in/abhishekpatelmc/{:target="_blank"})
 - [Dhwani Hansoti](https://www.linkedin.com/in/dhwani-hansoti-26977a17b/)
 - [HaniKumari Patel](https://www.linkedin.com/in/hani-p-428444141/)
 - [Jaydutt Bhatt](https://www.linkedin.com/in/jaydutt-bhatt-94bb5b133/)
