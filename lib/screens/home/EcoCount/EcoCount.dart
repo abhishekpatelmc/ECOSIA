@@ -16,7 +16,8 @@ class _EcoCountState extends State<EcoCount> {
   double value = 0;
   int level = 0;
   dynamic points = 0;
-  dynamic cd = 200;
+  dynamic cd = 320;
+  dynamic cf = 0;
   dynamic tasks = "";
   var taskList = [];
 
@@ -30,8 +31,8 @@ class _EcoCountState extends State<EcoCount> {
       taskList.forEach((element) {
         points += element['points'];
       });
-      points *= 0.276;
-      cd += points;
+      cf = points * 0.276;
+      cd += cf;
     });
     print("retrive " + cd);
   }
@@ -118,7 +119,7 @@ class _EcoCountState extends State<EcoCount> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                points.toStringAsFixed(2),
+                                points.toString(),
                                 style: TextStyle(
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.w500,
@@ -126,11 +127,12 @@ class _EcoCountState extends State<EcoCount> {
                                 ),
                               ),
                               Divider(
+                                height: 10,
                                 color: Colors.grey[900],
                                 endIndent: 10,
                               ),
                               Text(
-                                "carbon footprint",
+                                "Points",
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w500,
@@ -138,10 +140,12 @@ class _EcoCountState extends State<EcoCount> {
                                 ),
                               ),
                               const SizedBox(
-                                height: 10,
+                                height: 15,
                               ),
                               Text(
-                                cd.toString(),
+                                (points > 0)
+                                    ? cf.toStringAsFixed(2)
+                                    : 0.toString(),
                                 style: TextStyle(
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.w500,
@@ -149,11 +153,12 @@ class _EcoCountState extends State<EcoCount> {
                                 ),
                               ),
                               Divider(
+                                height: 10,
                                 color: Colors.grey[900],
                                 endIndent: 40,
                               ),
                               Text(
-                                "carbon Dioxide",
+                                "Carbon Footprint",
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w500,
@@ -161,10 +166,10 @@ class _EcoCountState extends State<EcoCount> {
                                 ),
                               ),
                               const SizedBox(
-                                height: 10,
+                                height: 15,
                               ),
                               Text(
-                                "1000",
+                                (points > 0) ? cd.toString() : 0.toString(),
                                 style: TextStyle(
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.w500,
@@ -172,40 +177,42 @@ class _EcoCountState extends State<EcoCount> {
                                 ),
                               ),
                               Divider(
+                                height: 10,
                                 color: Colors.grey[900],
                                 endIndent: 40,
                               ),
                               Text(
-                                "carbon Dioxide",
+                                "Carbon Cost",
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.grey[600],
                                 ),
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "100,000",
-                                style: TextStyle(
-                                  fontSize: 30.0,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.grey[600],
-                                ),
-                              ),
-                              Divider(
-                                color: Colors.grey[900],
-                                endIndent: 10,
-                              ),
-                              Text(
-                                "carbon Dioxide",
-                                style: TextStyle(
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.grey[600],
-                                ),
-                              ),
+                              // const SizedBox(
+                              //   height: 15,
+                              // ),
+                              // Text(
+                              //   "100,000",
+                              //   style: TextStyle(
+                              //     fontSize: 30.0,
+                              //     fontWeight: FontWeight.w500,
+                              //     color: Colors.grey[600],
+                              //   ),
+                              // ),
+                              // Divider(
+                              //   height: 10,
+                              //   color: Colors.grey[900],
+                              //   endIndent: 10,
+                              // ),
+                              // Text(
+                              //   "Carbon Dioxide",
+                              //   style: TextStyle(
+                              //     fontSize: 20.0,
+                              //     fontWeight: FontWeight.w500,
+                              //     color: Colors.grey[600],
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
