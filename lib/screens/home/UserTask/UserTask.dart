@@ -11,7 +11,6 @@ class UserTask extends StatefulWidget {
 }
 
 class _UserTaskState extends State<UserTask> {
-  // var sample = ["macro", "micro"];
   var taskList = [];
   dynamic tasks = "";
 

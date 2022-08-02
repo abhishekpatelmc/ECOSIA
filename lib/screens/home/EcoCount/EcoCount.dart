@@ -15,6 +15,9 @@ class EcoCount extends StatefulWidget {
 class _EcoCountState extends State<EcoCount> {
   double value = 0;
   int level = 0;
+  dynamic points = 0;
+  dynamic cd = 320;
+  dynamic cf = 0;
   dynamic tasks = "";
   var taskList = [];
 
@@ -25,8 +28,13 @@ class _EcoCountState extends State<EcoCount> {
       taskList = json.decode(tasks);
       value = taskList.length * 25;
       level = taskList.length * 25;
+      taskList.forEach((element) {
+        points += element['points'];
+      });
+      cf = points * 0.276;
+      cd += cf;
     });
-    print("retrive " + tasks);
+    print("retrive " + cd);
   }
 
   @override
@@ -41,8 +49,7 @@ class _EcoCountState extends State<EcoCount> {
       appBar: AppBar(
         leading: IconButton(
           icon:
-          const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
-
+              const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
         centerTitle: true,
@@ -112,7 +119,7 @@ class _EcoCountState extends State<EcoCount> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "1000",
+                                points.toString(),
                                 style: TextStyle(
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.w500,
@@ -120,22 +127,25 @@ class _EcoCountState extends State<EcoCount> {
                                 ),
                               ),
                               Divider(
+                                height: 10,
                                 color: Colors.grey[900],
                                 endIndent: 10,
                               ),
                               Text(
-                                "carbon footprint",
+                                "Points",
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.lightGreen,
+                                  color: Colors.grey[600],
                                 ),
                               ),
                               const SizedBox(
-                                height: 10,
+                                height: 15,
                               ),
                               Text(
-                                "1000",
+                                (points > 0)
+                                    ? cf.toStringAsFixed(2)
+                                    : 0.toString(),
                                 style: TextStyle(
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.w500,
@@ -143,22 +153,23 @@ class _EcoCountState extends State<EcoCount> {
                                 ),
                               ),
                               Divider(
+                                height: 10,
                                 color: Colors.grey[900],
                                 endIndent: 40,
                               ),
                               Text(
-                                "carbon Dioxide",
+                                "Carbon Footprint",
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.lightGreen,
+                                  color: Colors.grey[600],
                                 ),
                               ),
                               const SizedBox(
-                                height: 10,
+                                height: 15,
                               ),
                               Text(
-                                "1000",
+                                (points > 0) ? cd.toString() : 0.toString(),
                                 style: TextStyle(
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.w500,
@@ -166,40 +177,42 @@ class _EcoCountState extends State<EcoCount> {
                                 ),
                               ),
                               Divider(
+                                height: 10,
                                 color: Colors.grey[900],
                                 endIndent: 40,
                               ),
                               Text(
-                                "carbon Dioxide",
+                                "Carbon Cost",
                                 style: TextStyle(
                                   fontSize: 20.0,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.lightGreen,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "100,000",
-                                style: TextStyle(
-                                  fontSize: 30.0,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.grey[600],
                                 ),
                               ),
-                              Divider(
-                                color: Colors.grey[900],
-                                endIndent: 10,
-                              ),
-                              Text(
-                                "carbon Dioxide",
-                                style: TextStyle(
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.lightGreen,
-                                ),
-                              ),
+                              // const SizedBox(
+                              //   height: 15,
+                              // ),
+                              // Text(
+                              //   "100,000",
+                              //   style: TextStyle(
+                              //     fontSize: 30.0,
+                              //     fontWeight: FontWeight.w500,
+                              //     color: Colors.grey[600],
+                              //   ),
+                              // ),
+                              // Divider(
+                              //   height: 10,
+                              //   color: Colors.grey[900],
+                              //   endIndent: 10,
+                              // ),
+                              // Text(
+                              //   "Carbon Dioxide",
+                              //   style: TextStyle(
+                              //     fontSize: 20.0,
+                              //     fontWeight: FontWeight.w500,
+                              //     color: Colors.grey[600],
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
@@ -207,7 +220,7 @@ class _EcoCountState extends State<EcoCount> {
                     ),
                     Image.network(
                       // scale: 1,
-                      'https://images.unsplash.com/photo-1533038590840-1cde6e668a91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60',
+                      'https://cdn-icons-png.flaticon.com/512/902/902543.png?w=740&t=st=1659399128~exp=1659399728~hmac=a7683694f6f1628083a7d79b437757d4203fb6d84b161a8d4af689f6138c1d07',
                       alignment: Alignment.bottomCenter,
                       fit: BoxFit.fitWidth,
                       height: 240.0,
