@@ -17,10 +17,10 @@ class NavigationDrawer extends StatefulWidget {
 }
 
 class _NavigationState extends State<NavigationDrawer> {
-  late String userEmail = "hanikumari1998@gmail.com";
-  late String userName = "Hani,";
   final AuthService _auth = AuthService();
   final padding = const EdgeInsets.fromLTRB(0, 10, 0, 0);
+
+  get userEmail => null;
 
   @override
   void initState() {
@@ -31,7 +31,7 @@ class _NavigationState extends State<NavigationDrawer> {
   Future<void> userGet() async {
     final prefs = await SharedPreferences.getInstance();
     if (prefs.containsKey("email")) {
-      userEmail = prefs.getString("email")!;
+      var userEmail = prefs.getString("email")!;
       userName = prefs.getString("name")!;
       print("userEmail $userEmail");
     }
