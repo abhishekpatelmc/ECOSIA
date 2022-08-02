@@ -7,19 +7,43 @@ import 'package:ecosia/screens/home/informativepg/informativepage.dart';
 import 'package:ecosia/screens/home/supportPage/supportPage.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../screens/wrapper.dart';
 
-class NavigationDrawer extends StatelessWidget {
-  final padding = const EdgeInsets.fromLTRB(0, 10, 0, 0);
-  // final padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 10);
-  NavigationDrawer({Key? key}) : super(key: key);
+class NavigationDrawer extends StatefulWidget {
+  const NavigationDrawer({Key? key}) : super(key: key);
+  @override
+  State<NavigationDrawer> createState() => _NavigationState();
 
+}
+class _NavigationState extends State<NavigationDrawer> {
+
+  late  String userEmail = "hanikumari1998@gmail.com";
+   late  String userName = "Hani,";
   final AuthService _auth = AuthService();
+  final padding = const EdgeInsets.fromLTRB(0, 10, 0, 0);
+
+  @override
+  void initState() {
+    userGet();
+    super.initState();
+  }
+
+  Future<void> userGet() async {
+    final prefs = await SharedPreferences.getInstance();
+      if (prefs.containsKey("email")) {
+        userEmail = prefs.getString("email")!;
+        userName = prefs.getString("name")!;
+        print("userEmail $userEmail");
+      }
+    // return userEmail;
+  }
 
   @override
   Widget build(BuildContext context) {
-    final name = 'Sarah Abs';
-    final email = 'sarah@abs.com';
+
+    final name = userName;
+    final email = userEmail;
     final urlImage =
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80';
     return Drawer(
@@ -179,7 +203,7 @@ class NavigationDrawer extends StatelessWidget {
     switch (index) {
       case 0:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => const Dashboard(),
+          builder: (context) =>  const Dashboard(),
         ));
         break;
       case 1:

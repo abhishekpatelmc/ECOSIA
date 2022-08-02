@@ -417,7 +417,7 @@ class _UserProfileState extends State<UserProfile> {
                             userSet(name.text, email.text, location.text,
                                 enterDate.text, contact.text);
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const Dashboard()));
+                                builder: (context) =>  const Dashboard()));
                           }
 
                         },

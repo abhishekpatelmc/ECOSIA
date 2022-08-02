@@ -6,13 +6,22 @@ import 'package:ecosia/shared/navigationDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../TaskPages/taskDescription.dart';
-
+String userName="Hani ";
 class Dashboard extends StatelessWidget {
-  const Dashboard({Key? key}) : super(key: key);
+   const Dashboard({Key? key}) : super(key: key);
+
   // final AuthService _auth = AuthService();
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   userGet();
+  // }
 
   @override
   Widget build(BuildContext context) {
+
+    userGet();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white10,
@@ -32,8 +41,8 @@ class Dashboard extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      Text("Hello user,",
+                    children:  [
+                      Text("Hello $userName",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 24.0)),
                       Text("Today you have mutiple",
@@ -76,6 +85,15 @@ class Dashboard extends StatelessWidget {
       ),
     );
   }
+
+   Future<void> userGet() async {
+     final prefs = await SharedPreferences.getInstance();
+
+     if (prefs.containsKey("email")) {
+       userName = prefs.getString("name")!;
+       // print("userEmail $userEmail");
+     }
+   }
 }
 
 @override
