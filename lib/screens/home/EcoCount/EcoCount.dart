@@ -15,6 +15,8 @@ class EcoCount extends StatefulWidget {
 class _EcoCountState extends State<EcoCount> {
   double value = 0;
   int level = 0;
+  dynamic points = 0;
+  dynamic cd = 200;
   dynamic tasks = "";
   var taskList = [];
 
@@ -25,8 +27,13 @@ class _EcoCountState extends State<EcoCount> {
       taskList = json.decode(tasks);
       value = taskList.length * 25;
       level = taskList.length * 25;
+      taskList.forEach((element) {
+        points += element['points'];
+      });
+      points *= 0.276;
+      cd += points;
     });
-    print("retrive " + tasks);
+    print("retrive " + cd);
   }
 
   @override
@@ -111,7 +118,7 @@ class _EcoCountState extends State<EcoCount> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "1000",
+                                points.toStringAsFixed(2),
                                 style: TextStyle(
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.w500,
@@ -134,7 +141,7 @@ class _EcoCountState extends State<EcoCount> {
                                 height: 10,
                               ),
                               Text(
-                                "1000",
+                                cd.toString(),
                                 style: TextStyle(
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.w500,
