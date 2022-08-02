@@ -36,11 +36,10 @@ class _InformativePage extends State<InformativePage> {
           child: SingleChildScrollView(
               child: Column(children: [
             InkWell(
-
                 child: customCard(
                   name: 'Articles',
                   image:
-                      'https://img.icons8.com/parakeet/45/000000/experimental-news-parakeet.png',
+                      'https://img.icons8.com/parakeet/42/000000/experimental-news-parakeet.png',
                 ),
                 onTap: () async {
                   _launchURL3();
@@ -48,18 +47,16 @@ class _InformativePage extends State<InformativePage> {
             InkWell(
                 child: customCard(
                   name: 'Get involved',
-                  image: 'https://img.icons8.com/color/45/000000/get-along.png',
+                  image: 'https://img.icons8.com/color/42/000000/get-along.png',
                 ),
                 onTap: () async {
                   _launchURL4();
                 }),
-
             InkWell(
                 child: customCard(
-
                   name: 'Videos',
                   image:
-                      'https://img.icons8.com/external-anggara-flat-anggara-putra/45/000000/external-video-ui-basic-anggara-flat-anggara-putra-2.png',
+                      'https://img.icons8.com/external-anggara-flat-anggara-putra/42/000000/external-video-ui-basic-anggara-flat-anggara-putra-2.png',
                 ),
                 onTap: () async {
                   _launchURL2();
@@ -68,7 +65,7 @@ class _InformativePage extends State<InformativePage> {
                 child: customCard(
                   name: 'Connect',
                   image:
-                      'https://img.icons8.com/fluency/45/000000/handshake.png',
+                      'https://img.icons8.com/fluency/42/000000/handshake.png',
                 ),
                 onTap: () async {
                   _launchURL5();
@@ -77,7 +74,7 @@ class _InformativePage extends State<InformativePage> {
                 child: customCard(
                   name: 'Share Feedback',
                   image:
-                      'https://img.icons8.com/external-filled-outline-wichaiwi/45/000000/external-Feedback-business-filled-outline-wichaiwi.png',
+                      'https://img.icons8.com/external-filled-outline-wichaiwi/42/000000/external-Feedback-business-filled-outline-wichaiwi.png',
                 ),
                 onTap: () async {
                   _launchURL2();
@@ -138,7 +135,7 @@ class customCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-      height: 90,
+      height: 80,
       width: double.infinity,
       child: Card(
         shape: RoundedRectangleBorder(
@@ -147,7 +144,7 @@ class customCard extends StatelessWidget {
         elevation: 4,
         shadowColor: Colors.grey,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 15, 10, 0),
+          padding: const EdgeInsets.fromLTRB(0, 10, 10, 0),
           child: ListTile(
             leading: Image.network(
               image,
@@ -156,7 +153,7 @@ class customCard extends StatelessWidget {
             ),
             title: Text(
               name,
-              style: TextStyle(fontSize: 23, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
             ),
           ),
         ),

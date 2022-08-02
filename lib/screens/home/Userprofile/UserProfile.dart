@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_typing_uninitialized_variables, avoid_print, no_leading_underscores_for_local_identifiers, duplicate_ignore
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/screens/home/Userprofile/firestore.dart';
 import 'package:ecosia/screens/home/dashboard/dashboard.dart';
@@ -69,117 +71,136 @@ class _UserInfoState extends State<UserInfo> {
         return loading
             ? const Loading()
             : Scaffold(
-          appBar: AppBar(
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                  color: Colors.black),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-            centerTitle: true,
-            title: const Text(
-              "User Profile",
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            backgroundColor: Colors.white10,
-            elevation: 0,
-            iconTheme: const IconThemeData(color: Colors.black),
-          ),
-          // drawer: NavigationDrawer(),
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                const Center(
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                    child: InkWell(
-                      child: CircleAvatar(
-                        radius: 50,
-                        backgroundImage: NetworkImage(
-                          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+                appBar: AppBar(
+                  leading: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                        color: Colors.black),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                  centerTitle: true,
+                  title: const Text(
+                    "User Profile",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  backgroundColor: Colors.white10,
+                  elevation: 0,
+                  iconTheme: const IconThemeData(color: Colors.black),
+                ),
+                // drawer: NavigationDrawer(),
+                body: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const Center(
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                          child: InkWell(
+                            child: CircleAvatar(
+                              radius: 50,
+                              backgroundImage: NetworkImage(
+                                'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                ),
-                Center(
-                    child: Text(
-                      UserData['name'] ?? "User Name",
-                      style:
-                      const TextStyle(fontSize: 25, color: Colors.black),
-                    )),
-                Card(
-                  margin: const EdgeInsets.symmetric(
-                      vertical: 5, horizontal: 25),
-                  child: ListTile(
-                    leading: const Icon(
-                      Icons.phone,
-                    ),
-                    title: Text(UserData['Conatct'] ?? "Contact Detail"),
-                  ),
-                ),
-                Card(
-                  margin: const EdgeInsets.symmetric(
-                      vertical: 5, horizontal: 25),
-                  child: ListTile(
-                    leading: const Icon(
-                      Icons.email,
-                    ),
-                    title: Text(UserData['Email'] ?? "Email ID"),
-                  ),
-                ),
-                Card(
-                  margin: const EdgeInsets.symmetric(
-                      vertical: 5, horizontal: 25),
-                  child: ListTile(
-                    leading: const Icon(
-                      Icons.date_range_sharp,
-                    ),
-                    title: Text(UserData['Date'] ?? "Date of Birth"),
-                  ),
-                ),
-                Card(
-                  margin: const EdgeInsets.symmetric(
-                      vertical: 5, horizontal: 25),
-                  child: ListTile(
-                    leading: const Icon(
-                      Icons.location_city,
-                    ),
-                    title:
-                    Text(UserData['location'] ?? "Location Detail"),
-                  ),
-                ),
-                Padding(
-                  padding:
-                  const EdgeInsets.only(top: 15, left: 20, right: 20),
-                  child: InkWell(
-                    child: Container(
-                      height: 50,
-                      // width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: Colors.green[300],
+                      Center(
+                          child: Text(
+                        UserData['name'] ?? "User Name",
+                        style:
+                            const TextStyle(fontSize: 25, color: Colors.black),
+                      )),
+                      const SizedBox(
+                        height: 20,
                       ),
-                      child: const Center(
-                        child: Text(
-                          'Edit User Details',
-                          style: TextStyle(
-                              fontSize: 24, color: Colors.white),
+                      Card(
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 25),
+                        elevation: 4,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.phone,
+                          ),
+                          title: Text(UserData['Conatct'] ?? "Contact Detail"),
                         ),
                       ),
-                    ),
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const UserProfile()));
-                    },
+                      Card(
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 25),
+                        elevation: 4,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.email,
+                          ),
+                          title: Text(UserData['Email'] ?? "Email ID"),
+                        ),
+                      ),
+                      Card(
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 25),
+                        elevation: 4,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.date_range_sharp,
+                          ),
+                          title: Text(UserData['Date'] ?? "Date of Birth"),
+                        ),
+                      ),
+                      Card(
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 25),
+                        elevation: 4,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.location_city,
+                          ),
+                          title:
+                              Text(UserData['location'] ?? "Location Detail"),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(top: 15, left: 20, right: 20),
+                        child: InkWell(
+                          child: Container(
+                            height: 50,
+                            // width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.green[300],
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'Edit User Details',
+                                style: TextStyle(
+                                    fontSize: 24, color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const UserProfile()));
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ),
-        );
+              );
       },
     );
   }
@@ -229,7 +250,7 @@ class _UserProfileState extends State<UserProfile> {
       appBar: AppBar(
         leading: IconButton(
           icon:
-          const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
+              const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text(
@@ -268,7 +289,7 @@ class _UserProfileState extends State<UserProfile> {
                 children: [
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 20, left: 20, right: 20),
+                        const EdgeInsets.only(top: 20, left: 20, right: 20),
                     child: TextField(
                       controller: name,
                       keyboardType: TextInputType.name,
@@ -287,7 +308,7 @@ class _UserProfileState extends State<UserProfile> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 15, left: 20, right: 20),
+                        const EdgeInsets.only(top: 15, left: 20, right: 20),
                     child: TextField(
                       controller: email,
                       keyboardType: TextInputType.emailAddress,
@@ -306,7 +327,7 @@ class _UserProfileState extends State<UserProfile> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 15, left: 20, right: 20),
+                        const EdgeInsets.only(top: 15, left: 20, right: 20),
                     child: TextField(
                       maxLength: 10,
                       controller: contact,
@@ -326,7 +347,7 @@ class _UserProfileState extends State<UserProfile> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 15, left: 20, right: 20),
+                        const EdgeInsets.only(top: 15, left: 20, right: 20),
                     child: TextField(
                       controller: location,
                       keyboardType: TextInputType.streetAddress,
@@ -345,7 +366,7 @@ class _UserProfileState extends State<UserProfile> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 15, left: 20, right: 20),
+                        const EdgeInsets.only(top: 15, left: 20, right: 20),
                     child: TextField(
                       controller: enterDate,
                       readOnly: true,
@@ -356,7 +377,8 @@ class _UserProfileState extends State<UserProfile> {
                           size: 30,
                         ),
                         hintText: "User's Birth Date",
-                        errorText: _DOBvalidate ? 'Value Can\'t Be Empty' : null,
+                        errorText:
+                            _DOBvalidate ? 'Value Can\'t Be Empty' : null,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
@@ -373,7 +395,7 @@ class _UserProfileState extends State<UserProfile> {
                           print(
                               UserPickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
                           String formattedDate =
-                          DateFormat('yyyy-MM-dd').format(UserPickedDate);
+                              DateFormat('yyyy-MM-dd').format(UserPickedDate);
                           // ignore: avoid_print
                           print(
                               formattedDate); //formatted date output using intl package =>  2021-03-16
@@ -389,7 +411,7 @@ class _UserProfileState extends State<UserProfile> {
                   ),
                   Padding(
                       padding: const EdgeInsets.only(
-                          top: 15, left: 40, right: 40, bottom: 15),
+                          top: 15, left: 70, right: 20, bottom: 15),
                       child: InkWell(
                         child: Container(
                           height: 50,
@@ -401,25 +423,38 @@ class _UserProfileState extends State<UserProfile> {
                             child: Text(
                               'Save',
                               style:
-                              TextStyle(fontSize: 24, color: Colors.white),
+                                  TextStyle(fontSize: 24, color: Colors.white),
                             ),
                           ),
                         ),
                         onTap: () {
                           setState(() {
-                            name.text.isEmpty ? _Nvalidate = true : _Nvalidate = false;
-                            location.text.isEmpty ? _Lvalidate = true : _Lvalidate = false;
-                            enterDate.text.isEmpty ? _DOBvalidate = true : _DOBvalidate = false;
-                            email.text.isEmpty ? _Evalidate = true : _Evalidate = false;
-                            (contact.text.isEmpty && (contact.text.length>10)) ? _Cvalidate = true : _Cvalidate = false;
+                            name.text.isEmpty
+                                ? _Nvalidate = true
+                                : _Nvalidate = false;
+                            location.text.isEmpty
+                                ? _Lvalidate = true
+                                : _Lvalidate = false;
+                            enterDate.text.isEmpty
+                                ? _DOBvalidate = true
+                                : _DOBvalidate = false;
+                            email.text.isEmpty
+                                ? _Evalidate = true
+                                : _Evalidate = false;
+                            (contact.text.isEmpty && (contact.text.length > 10))
+                                ? _Cvalidate = true
+                                : _Cvalidate = false;
                           });
-                          if(_Nvalidate == false && _Evalidate == false && _Cvalidate == false && _Lvalidate == false && _DOBvalidate == false ){
+                          if (_Nvalidate == false &&
+                              _Evalidate == false &&
+                              _Cvalidate == false &&
+                              _Lvalidate == false &&
+                              _DOBvalidate == false) {
                             userSet(name.text, email.text, location.text,
                                 enterDate.text, contact.text);
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>  const Dashboard()));
+                                builder: (context) => const Dashboard()));
                           }
-
                         },
                       )),
                 ],

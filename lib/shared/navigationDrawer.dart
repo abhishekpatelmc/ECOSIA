@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, prefer_const_declarations, unused_local_variable
+// ignore_for_file: file_names, prefer_const_declarations, unused_local_variable, avoid_print
 import 'package:ecosia/screens/home/EcoCount/EcoCount.dart';
 import 'package:ecosia/screens/home/UserTask/UserTask.dart';
 import 'package:ecosia/screens/home/Userprofile/UserProfile.dart';
@@ -14,12 +14,11 @@ class NavigationDrawer extends StatefulWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
   @override
   State<NavigationDrawer> createState() => _NavigationState();
-
 }
-class _NavigationState extends State<NavigationDrawer> {
 
-  late  String userEmail = "hanikumari1998@gmail.com";
-   late  String userName = "Hani,";
+class _NavigationState extends State<NavigationDrawer> {
+  late String userEmail = "hanikumari1998@gmail.com";
+  late String userName = "Hani,";
   final AuthService _auth = AuthService();
   final padding = const EdgeInsets.fromLTRB(0, 10, 0, 0);
 
@@ -31,17 +30,16 @@ class _NavigationState extends State<NavigationDrawer> {
 
   Future<void> userGet() async {
     final prefs = await SharedPreferences.getInstance();
-      if (prefs.containsKey("email")) {
-        userEmail = prefs.getString("email")!;
-        userName = prefs.getString("name")!;
-        print("userEmail $userEmail");
-      }
+    if (prefs.containsKey("email")) {
+      userEmail = prefs.getString("email")!;
+      userName = prefs.getString("name")!;
+      print("userEmail $userEmail");
+    }
     // return userEmail;
   }
 
   @override
   Widget build(BuildContext context) {
-
     final name = userName;
     final email = userEmail;
     final urlImage =
@@ -203,7 +201,7 @@ class _NavigationState extends State<NavigationDrawer> {
     switch (index) {
       case 0:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) =>  const Dashboard(),
+          builder: (context) => const Dashboard(),
         ));
         break;
       case 1:

@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, non_constant_identifier_names, must_be_immutable, deprecated_member_use
+// ignore_for_file: camel_case_types, non_constant_identifier_names, must_be_immutable, deprecated_member_use, file_names
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 

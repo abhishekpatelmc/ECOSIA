@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, avoid_print, prefer_interpolation_to_compose_strings
+// ignore_for_file: file_names, avoid_print, prefer_interpolation_to_compose_strings, avoid_function_literals_in_foreach_calls
 import 'dart:convert';
 
 import 'package:percent_indicator/percent_indicator.dart';
@@ -67,7 +67,7 @@ class _EcoCountState extends State<EcoCount> {
       // drawer: NavigationDrawer(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 25, 10, 10),
+          padding: const EdgeInsets.fromLTRB(20, 25, 20, 10),
           child: Center(
             child: Column(
               children: [
@@ -90,13 +90,26 @@ class _EcoCountState extends State<EcoCount> {
                 const SizedBox(
                   height: 10.0,
                 ),
-                Text(
-                  "Level " + (level / 100 + 1).floor().toString(),
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.grey[600],
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Level ",
+                      style: TextStyle(
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                    Text(
+                      (level / 100 + 1).floor().toString(),
+                      style: TextStyle(
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.green[600],
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 40.0,
@@ -119,11 +132,11 @@ class _EcoCountState extends State<EcoCount> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                points.toString(),
+                                (points > 0) ? cd.toString() : 0.toString(),
                                 style: TextStyle(
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.grey[600],
+                                  color: Colors.green[600],
                                 ),
                               ),
                               Divider(
@@ -131,8 +144,9 @@ class _EcoCountState extends State<EcoCount> {
                                 color: Colors.grey[900],
                                 endIndent: 10,
                               ),
+
                               Text(
-                                "Points",
+                                "Carbon Cost",
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w500,
@@ -149,7 +163,7 @@ class _EcoCountState extends State<EcoCount> {
                                 style: TextStyle(
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.grey[600],
+                                  color: Colors.green[600],
                                 ),
                               ),
                               Divider(
@@ -169,26 +183,27 @@ class _EcoCountState extends State<EcoCount> {
                                 height: 15,
                               ),
                               Text(
-                                (points > 0) ? cd.toString() : 0.toString(),
+                                points.toString(),
                                 style: TextStyle(
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.grey[600],
+                                  color: Colors.green[600],
                                 ),
                               ),
                               Divider(
                                 height: 10,
                                 color: Colors.grey[900],
-                                endIndent: 40,
+                                endIndent: 60,
                               ),
                               Text(
-                                "Carbon Cost",
+                                "Points",
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.grey[600],
                                 ),
                               ),
+
                               // const SizedBox(
                               //   height: 15,
                               // ),
@@ -221,10 +236,10 @@ class _EcoCountState extends State<EcoCount> {
                     Image.network(
                       // scale: 1,
                       'https://cdn-icons-png.flaticon.com/512/902/902543.png?w=740&t=st=1659399128~exp=1659399728~hmac=a7683694f6f1628083a7d79b437757d4203fb6d84b161a8d4af689f6138c1d07',
-                      alignment: Alignment.bottomCenter,
+                      alignment: Alignment.center,
                       fit: BoxFit.fitWidth,
                       height: 240.0,
-                      width: 160.0,
+                      width: 150.0,
                     ),
                   ],
                 ),
