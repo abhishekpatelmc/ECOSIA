@@ -26,7 +26,7 @@ class Wrapper extends StatelessWidget {
       return const Authenticate();
     } else {
       // return AddTask("Walk", "Walk for 20 minutes", 10);
-      return const Dashboard();
+      return  const Dashboard();
     }
   }
 }

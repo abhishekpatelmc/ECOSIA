@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -67,10 +68,18 @@ class AuthService {
           email: email, password: password);
       User? user = result.user;
 
-      String? uid = user?.email.toString();
+      // String? uid = user?.email.toString();
       final prefs = await SharedPreferences.getInstance();
+      prefs.setString("email", email);
 
-      prefs.setString("email", uid!);
+      FirebaseFirestore.instance.collection("users").where("Email", isEqualTo: email).get().then((res) => {
+        FirebaseFirestore.instance
+            .collection('users')
+            .doc(res.docs[0].id).get()
+            .then((value) => {
+          prefs.setString("name",value.get("name"))
+        })
+      });
 
       return _userFromFirebaseUser(user!);
     } catch (e) {
