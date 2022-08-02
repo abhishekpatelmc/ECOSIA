@@ -4,9 +4,9 @@ import 'package:ecosia/screens/home/UserTask/UserTask.dart';
 import 'package:ecosia/screens/home/Userprofile/UserProfile.dart';
 import 'package:ecosia/screens/home/dashboard/dashboard.dart';
 import 'package:ecosia/screens/home/informativepg/informativepage.dart';
+import 'package:ecosia/screens/home/supportPage/supportPage.dart';
 import 'package:ecosia/services/auth.dart';
 import 'package:flutter/material.dart';
-
 import '../screens/wrapper.dart';
 
 class NavigationDrawer extends StatelessWidget {
@@ -64,7 +64,6 @@ class NavigationDrawer extends StatelessWidget {
                 icon: Icons.task_outlined,
                 onClicked: () => selectedItem(context, 4),
               ),
-
               const SizedBox(height: 16),
               buildMenuItem(
                 text: 'Informative Page',
@@ -89,6 +88,12 @@ class NavigationDrawer extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => const Wrapper()),
                       (Route<dynamic> route) => false);
                 },
+              ),
+              const SizedBox(height: 16),
+              buildMenuItem(
+                text: 'Support',
+                icon: Icons.support_agent_rounded,
+                onClicked: () => selectedItem(context, 5),
               ),
             ],
           )),
@@ -195,6 +200,11 @@ class NavigationDrawer extends StatelessWidget {
       case 4:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => const UserTask(),
+        ));
+        break;
+      case 5:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => const SupportPage(),
         ));
         break;
     }

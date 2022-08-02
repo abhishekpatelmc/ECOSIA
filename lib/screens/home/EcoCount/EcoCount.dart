@@ -14,6 +14,9 @@ class EcoCount extends StatefulWidget {
 
 class _EcoCountState extends State<EcoCount> {
   double value = 0;
+  int level = 0;
+  dynamic points = 0;
+  dynamic cd = 200;
   dynamic tasks = "";
   var taskList = [];
 
@@ -22,9 +25,15 @@ class _EcoCountState extends State<EcoCount> {
     tasks = prefs.getString("tasks");
     setState(() {
       taskList = json.decode(tasks);
-      value = taskList.length / 10;
+      value = taskList.length * 25;
+      level = taskList.length * 25;
+      taskList.forEach((element) {
+        points += element['points'];
+      });
+      points *= 0.276;
+      cd += points;
     });
-    print("retrive " + tasks);
+    print("retrive " + cd);
   }
 
   @override
@@ -64,7 +73,7 @@ class _EcoCountState extends State<EcoCount> {
                 CircularPercentIndicator(
                   radius: 70.0,
                   lineWidth: 14.0,
-                  percent: value,
+                  percent: (value % 100) / 100,
                   backgroundColor: Colors.white10,
                   circularStrokeCap: CircularStrokeCap.round,
                   animationDuration: 1200,
@@ -81,7 +90,7 @@ class _EcoCountState extends State<EcoCount> {
                   height: 10.0,
                 ),
                 Text(
-                  "Level 1",
+                  "Level " + (level / 100 + 1).floor().toString(),
                   style: TextStyle(
                     fontSize: 30.0,
                     fontWeight: FontWeight.w500,
@@ -109,7 +118,7 @@ class _EcoCountState extends State<EcoCount> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "1000",
+                                points.toStringAsFixed(2),
                                 style: TextStyle(
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.w500,
@@ -132,7 +141,7 @@ class _EcoCountState extends State<EcoCount> {
                                 height: 10,
                               ),
                               Text(
-                                "1000",
+                                cd.toString(),
                                 style: TextStyle(
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.w500,
