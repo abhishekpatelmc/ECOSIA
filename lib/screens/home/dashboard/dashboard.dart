@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, avoid_print, duplicate_ignore
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/shared/loading.dart';
@@ -79,6 +79,7 @@ class Dashboard extends StatelessWidget {
 
 @override
 State<StatefulWidget> createState() {
+  // ignore: todo
   // TODO: implement createState
   throw UnimplementedError();
 }
@@ -118,7 +119,10 @@ class _TaskInformationState extends State<TaskInformation> {
                 Map<String, dynamic> data =
                     document.data()! as Map<String, dynamic>;
                 return Card(
-                  elevation: 2,
+                  color: (selectedIndex.contains(document.reference.id))
+                      ? Colors.green[100]
+                      : Colors.white,
+                  elevation: 4,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
@@ -133,11 +137,13 @@ class _TaskInformationState extends State<TaskInformation> {
                     ),
                     // subtitle: Text(data['Description']),
                     leading: IconButton(
-                        icon: Icon(Icons.check_circle_outline,
-                            color:
-                                (selectedIndex.contains(document.reference.id))
-                                    ? Color.fromARGB(255, 13, 151, 0)
-                                    : Color(0xff9A9A9A)),
+                        icon: Icon(
+                          Icons.check_circle,
+                          size: 28,
+                          color: (selectedIndex.contains(document.reference.id))
+                              ? Color.fromARGB(255, 13, 151, 0)
+                              : Color(0xff9A9A9A),
+                        ),
                         onPressed: () => {
                               setState(() {
                                 if (selectedIndex
@@ -159,10 +165,10 @@ class _TaskInformationState extends State<TaskInformation> {
                               }),
                             }),
                     trailing: IconButton(
-                      icon: Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.green[300],
-                      ),
+                      icon: Icon(Icons.arrow_forward_ios,
+                          color: (selectedIndex.contains(document.reference.id))
+                              ? Color.fromARGB(255, 13, 151, 0)
+                              : Colors.green[300]),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -205,22 +211,24 @@ addTask(String id, int point) async {
       .collection('users')
       .where("Email", isEqualTo: uid)
       .get()
-      .then((res) => {
-            totalpoint = res.docs[0].data()['Point'] + point,
-            FirebaseFirestore.instance
-                .collection('users')
-                .doc(res.docs[0].id)
-                .set({
-                  'completedTasks': FieldValue.arrayUnion([
-                    {
-                      'ID': id,
-                    },
-                  ]),
-                  'Point': totalpoint
-                }, SetOptions(merge: true))
-                // ignore: avoid_print
-                .then((value) => print("Task Added"))
-                // ignore: avoid_print
-                .catchError((error) => print("Failed to add user: $error")),
-          });
+      .then(
+        (res) => {
+          totalpoint = res.docs[0].data()['Point'] + point,
+          FirebaseFirestore.instance
+              .collection('users')
+              .doc(res.docs[0].id)
+              .set({
+                'completedTasks': FieldValue.arrayUnion([
+                  {
+                    'ID': id,
+                  },
+                ]),
+                'Point': totalpoint
+              }, SetOptions(merge: true))
+              // ignore: avoid_print
+              .then((value) => print("Task Added"))
+              // ignore: avoid_print
+              .catchError((error) => print("Failed to add user: $error")),
+        },
+      );
 }

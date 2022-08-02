@@ -1,8 +1,6 @@
 // ignore_for_file: file_names
-
 import 'dart:async';
 import 'package:ecosia/screens/home/OnboardingScreen/onboarding.dart';
-import 'package:ecosia/screens/home/TutorialPages/Tutorial.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreenOne extends StatefulWidget {

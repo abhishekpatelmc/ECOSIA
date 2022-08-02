@@ -1,6 +1,9 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, avoid_print, prefer_interpolation_to_compose_strings
+import 'dart:convert';
+
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class EcoCount extends StatefulWidget {
   const EcoCount({Key? key}) : super(key: key);
@@ -10,6 +13,28 @@ class EcoCount extends StatefulWidget {
 }
 
 class _EcoCountState extends State<EcoCount> {
+  double value = 0;
+  int level = 0;
+  dynamic tasks = "";
+  var taskList = [];
+
+  Future<void> getTaskList() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    tasks = prefs.getString("tasks");
+    setState(() {
+      taskList = json.decode(tasks);
+      value = taskList.length * 25;
+      level = taskList.length * 25;
+    });
+    print("retrive " + tasks);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getTaskList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,20 +66,24 @@ class _EcoCountState extends State<EcoCount> {
                 CircularPercentIndicator(
                   radius: 70.0,
                   lineWidth: 14.0,
-                  percent: 0.8,
+                  percent: (value % 100) / 100,
+                  backgroundColor: Colors.white10,
+                  circularStrokeCap: CircularStrokeCap.round,
+                  animationDuration: 1200,
+                  animation: true,
                   center: const CircleAvatar(
                     radius: 50,
                     backgroundImage: NetworkImage(
                       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
                     ),
                   ),
-                  progressColor: Colors.green[300],
+                  progressColor: const Color.fromARGB(255, 67, 168, 60),
                 ),
                 const SizedBox(
                   height: 10.0,
                 ),
                 Text(
-                  "Level 1",
+                  "Level " + (level / 100 + 1).floor().toString(),
                   style: TextStyle(
                     fontSize: 30.0,
                     fontWeight: FontWeight.w500,
@@ -177,11 +206,11 @@ class _EcoCountState extends State<EcoCount> {
                     ),
                     Image.network(
                       // scale: 1,
-                      // alignment: Alignment.topRight,
-                      'https://images.unsplash.com/photo-1533038590840-1cde6e668a91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-                      fit: BoxFit.fitHeight,
-                      height: 300.0,
-                      width: 150.0,
+                      'https://cdn-icons-png.flaticon.com/512/902/902543.png?w=740&t=st=1659399128~exp=1659399728~hmac=a7683694f6f1628083a7d79b437757d4203fb6d84b161a8d4af689f6138c1d07',
+                      alignment: Alignment.bottomCenter,
+                      fit: BoxFit.fitWidth,
+                      height: 240.0,
+                      width: 160.0,
                     ),
                   ],
                 ),
