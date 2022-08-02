@@ -4,7 +4,7 @@ Ecosia is a mobile application that guides users to make lifestyle changes, whic
 
 ## Dowload App
 
-- [Dowload App here](https://github.com/abhishekpatelmc/ECOSIA/releases/tag/v0.1-alpha)
+- [Dowload App here](https://github.com/abhishekpatelmc/ECOSIA/releases/tag/v0.2-beta)
 
 ## How to Use 
 
@@ -75,4 +75,12 @@ Checkout [wiki](https://github.com/abhishekpatelmc/ECOSIA/wiki) for more info
 
 Happy to answer any questions
 
-## Meet our Developers
+## Connect with Developers
+
+- [Abhishek Patel](https://www.linkedin.com/in/abhishekpatelmc/)
+- [Dhwani Hansoti](https://www.linkedin.com/in/dhwani-hansoti-26977a17b/)
+- [HaniKumari Patel](https://www.linkedin.com/in/hani-p-428444141/)
+- [Jaydutt Bhatt](https://www.linkedin.com/in/jaydutt-bhatt-94bb5b133/)
+- [Jay Modi](https://www.linkedin.com/in/jay-bharatkumar-modi-13510a169/)
+- [Jay Patel](https://www.linkedin.com/in/jaypatel1696/)
+- [Sherin Tharakan](https://www.linkedin.com/in/sherinjacob97/)
