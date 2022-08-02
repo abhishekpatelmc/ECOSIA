@@ -149,8 +149,9 @@ class _TaskInformationState extends State<TaskInformation> {
                                 if (selectedIndex
                                     .contains(document.reference.id)) {
                                   selectedIndex.remove(document.reference.id);
-                                  Map taskObject = {};
-                                  taskObject['id'] = data['Name'];
+                                  // Map taskObject = {};
+                                  // taskObject['id'] = data['Name'];
+                                  // taskObject['points'] = data['points'];
                                   taskArray.removeWhere(
                                       (item) => item["id"] == data['Name']);
                                   addToSP(json.encode(taskArray));
@@ -159,6 +160,7 @@ class _TaskInformationState extends State<TaskInformation> {
                                   selectedIndex.add(document.reference.id);
                                   Map taskObject = {};
                                   taskObject['id'] = data['Name'];
+                                  taskObject['points'] = data['points'];
                                   taskArray.add(taskObject);
                                   addToSP(json.encode(taskArray));
                                 }
