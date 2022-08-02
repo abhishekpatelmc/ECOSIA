@@ -1,4 +1,5 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, avoid_print, duplicate_ignore
+import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecosia/shared/loading.dart';
 import 'package:ecosia/shared/navigationDrawer.dart';
@@ -9,6 +10,7 @@ import '../TaskPages/taskDescription.dart';
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
   // final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,6 +79,7 @@ class Dashboard extends StatelessWidget {
 
 @override
 State<StatefulWidget> createState() {
+  // ignore: todo
   // TODO: implement createState
   throw UnimplementedError();
 }
@@ -94,6 +97,8 @@ class _TaskInformationState extends State<TaskInformation> {
       .collection('Tasks')
       .snapshots(includeMetadataChanges: true);
   var selectedIndex = [];
+  var taskArray = [];
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -114,7 +119,10 @@ class _TaskInformationState extends State<TaskInformation> {
                 Map<String, dynamic> data =
                     document.data()! as Map<String, dynamic>;
                 return Card(
-                  elevation: 2,
+                  color: (selectedIndex.contains(document.reference.id))
+                      ? Colors.green[100]
+                      : Colors.white,
+                  elevation: 4,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
@@ -129,28 +137,38 @@ class _TaskInformationState extends State<TaskInformation> {
                     ),
                     // subtitle: Text(data['Description']),
                     leading: IconButton(
-                        icon: Icon(Icons.check_circle_outline,
-                            color:
-                                (selectedIndex.contains(document.reference.id))
-                                    ? Color.fromARGB(255, 13, 151, 0)
-                                    : Color(0xff9A9A9A)),
+                        icon: Icon(
+                          Icons.check_circle,
+                          size: 28,
+                          color: (selectedIndex.contains(document.reference.id))
+                              ? Color.fromARGB(255, 13, 151, 0)
+                              : Color(0xff9A9A9A),
+                        ),
                         onPressed: () => {
                               setState(() {
                                 if (selectedIndex
-                                    .contains(document.reference.id)){
-                                  addTask(document.reference.id, data['points']);
+                                    .contains(document.reference.id)) {
                                   selectedIndex.remove(document.reference.id);
-                                }
-                                else {
+                                  Map taskObject = {};
+                                  taskObject['id'] = data['Name'];
+                                  taskArray.removeWhere(
+                                      (item) => item["id"] == data['Name']);
+                                  addToSP(json.encode(taskArray));
+                                  // }
+                                } else {
                                   selectedIndex.add(document.reference.id);
+                                  Map taskObject = {};
+                                  taskObject['id'] = data['Name'];
+                                  taskArray.add(taskObject);
+                                  addToSP(json.encode(taskArray));
                                 }
                               }),
                             }),
                     trailing: IconButton(
-                      icon: Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.green[300],
-                      ),
+                      icon: Icon(Icons.arrow_forward_ios,
+                          color: (selectedIndex.contains(document.reference.id))
+                              ? Color.fromARGB(255, 13, 151, 0)
+                              : Colors.green[300]),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -170,12 +188,18 @@ class _TaskInformationState extends State<TaskInformation> {
       },
     );
   }
+
+  Future<void> addToSP(String s) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString("tasks", s); //no commit
+    print("working " + s);
+  }
 }
 
 addTask(String id, int point) async {
-  final prefs = await SharedPreferences.getInstance();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
   String? uid;
-  int totalpoint=0;
+  int totalpoint;
   if (prefs.containsKey("email")) {
     // setState(() {
     uid = prefs.getString("email");
@@ -187,22 +211,24 @@ addTask(String id, int point) async {
       .collection('users')
       .where("Email", isEqualTo: uid)
       .get()
-      .then((res) => {
-            totalpoint = res.docs[0].data()['Point'] + point,
-            FirebaseFirestore.instance
-                .collection('users')
-                .doc(res.docs[0].id)
-                .set({
-                  'completedTasks': FieldValue.arrayUnion([
-                    {
-                      'ID': id,
-                    },
-                  ]),
-                  'Point': totalpoint
-                }, SetOptions(merge: true))
-                // ignore: avoid_print
-                .then((value) => print("Task Added"))
-                // ignore: avoid_print
-                .catchError((error) => print("Failed to add user: $error")),
-          });
+      .then(
+        (res) => {
+          totalpoint = res.docs[0].data()['Point'] + point,
+          FirebaseFirestore.instance
+              .collection('users')
+              .doc(res.docs[0].id)
+              .set({
+                'completedTasks': FieldValue.arrayUnion([
+                  {
+                    'ID': id,
+                  },
+                ]),
+                'Point': totalpoint
+              }, SetOptions(merge: true))
+              // ignore: avoid_print
+              .then((value) => print("Task Added"))
+              // ignore: avoid_print
+              .catchError((error) => print("Failed to add user: $error")),
+        },
+      );
 }
