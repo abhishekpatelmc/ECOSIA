@@ -127,7 +127,7 @@ class _EcoCountState extends State<EcoCount> {
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.grey[600],
+                                  color: Colors.lightGreen,
                                 ),
                               ),
                               const SizedBox(
@@ -150,7 +150,7 @@ class _EcoCountState extends State<EcoCount> {
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.grey[600],
+                                  color: Colors.lightGreen,
                                 ),
                               ),
                               const SizedBox(
@@ -173,7 +173,7 @@ class _EcoCountState extends State<EcoCount> {
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.grey[600],
+                                  color: Colors.lightGreen,
                                 ),
                               ),
                               const SizedBox(
@@ -196,7 +196,7 @@ class _EcoCountState extends State<EcoCount> {
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.grey[600],
+                                  color: Colors.lightGreen,
                                 ),
                               ),
                             ],
@@ -206,7 +206,7 @@ class _EcoCountState extends State<EcoCount> {
                     ),
                     Image.network(
                       // scale: 1,
-                      'https://cdn-icons-png.flaticon.com/512/902/902543.png?w=740&t=st=1659399128~exp=1659399728~hmac=a7683694f6f1628083a7d79b437757d4203fb6d84b161a8d4af689f6138c1d07',
+                      'https://images.unsplash.com/photo-1533038590840-1cde6e668a91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60',
                       alignment: Alignment.bottomCenter,
                       fit: BoxFit.fitWidth,
                       height: 240.0,

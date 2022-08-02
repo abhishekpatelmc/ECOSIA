@@ -24,6 +24,7 @@ class Dashboard extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
+
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
