@@ -42,6 +42,7 @@ class _EcoCountState extends State<EcoCount> {
         leading: IconButton(
           icon:
           const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
+
           onPressed: () => Navigator.of(context).pop(),
         ),
         centerTitle: true,
