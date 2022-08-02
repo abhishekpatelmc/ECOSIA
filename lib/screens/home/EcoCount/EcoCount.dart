@@ -14,6 +14,7 @@ class EcoCount extends StatefulWidget {
 
 class _EcoCountState extends State<EcoCount> {
   double value = 0;
+  int level = 0;
   dynamic tasks = "";
   var taskList = [];
 
@@ -22,7 +23,8 @@ class _EcoCountState extends State<EcoCount> {
     tasks = prefs.getString("tasks");
     setState(() {
       taskList = json.decode(tasks);
-      value = taskList.length / 10;
+      value = taskList.length * 25;
+      level = taskList.length * 25;
     });
     print("retrive " + tasks);
   }
@@ -64,7 +66,7 @@ class _EcoCountState extends State<EcoCount> {
                 CircularPercentIndicator(
                   radius: 70.0,
                   lineWidth: 14.0,
-                  percent: value,
+                  percent: (value % 100) / 100,
                   backgroundColor: Colors.white10,
                   circularStrokeCap: CircularStrokeCap.round,
                   animationDuration: 1200,
@@ -81,7 +83,7 @@ class _EcoCountState extends State<EcoCount> {
                   height: 10.0,
                 ),
                 Text(
-                  "Level 1",
+                  "Level " + (level / 100 + 1).floor().toString(),
                   style: TextStyle(
                     fontSize: 30.0,
                     fontWeight: FontWeight.w500,
