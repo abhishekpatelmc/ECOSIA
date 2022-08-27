@@ -85,12 +85,15 @@ Happy to answer any questions
 - [Jay Girishkumar Patel](https://www.linkedin.com/in/jaypatel1696/)
 - [Sherin Tharakan](https://www.linkedin.com/in/sherinjacob97/)
 
+<!---
 ## Contributors
 
 <a href="https://flowcv.me/abhishekpatel" target="_blank">
   <img src="https://media-exp1.licdn.com/dms/image/C4D03AQE0tmsoklKQeg/profile-displayphoto-shrink_400_400/0/1651635196030?e=1665014400&v=beta&t=zO_Il1kt7wI1WM4DrfiIuRQBivbYE7-maDX9BJVRYtw"  width="50" >
 </a>
 
+
 <a href="https://www.linkedin.com/in/dhwani-hansoti-26977a17b/" target="_blank">
   <img src="https://media-exp1.licdn.com/dms/image/C5103AQHYPrg54ifSgQ/profile-displayphoto-shrink_400_400/0/1578026669657?e=1665014400&v=beta&t=OH2XSGr5CLjJq7UdVWrn9CbAhOrZQVkJaBe2gb2tzy4"  width="50" >
 </a>
+--->
