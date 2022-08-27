@@ -1,6 +1,6 @@
 # ECOSIA
 
-Ecosia is a mobile application that guides users to make lifestyle changes, which will benefit the environment
+Ecosia is a mobile application that guides users to make lifestyle changes, which will benefit the environment.
 
 ## Dowload App
 
