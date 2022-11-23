@@ -90,8 +90,8 @@ Happy to answer any questions
 - [Dhwani Hansoti](https://www.linkedin.com/in/dhwani-hansoti-26977a17b/)
 - [HaniKumari Patel](https://www.linkedin.com/in/hani-p-428444141/)
 - [Jaydutt Bhatt](https://www.linkedin.com/in/jaydutt-bhatt-94bb5b133/)
-- [Jay Modi](https://www.linkedin.com/in/jay-bharatkumar-modi-13510a169/)
 - [Jay Girishkumar Patel](https://www.linkedin.com/in/jaypatel1696/)
+- [Jay Modi](https://www.linkedin.com/in/jay-bharatkumar-modi-13510a169/)
 - [Sherin Tharakan](https://www.linkedin.com/in/sherinjacob97/)
 
 <!---
