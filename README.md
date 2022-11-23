@@ -6,10 +6,14 @@ Ecosia is a mobile application that guides users to make lifestyle changes, whic
 
 - [Dowload App here](https://github.com/abhishekpatelmc/ECOSIA/releases/tag/v0.2-beta)
 
-### Screenshots
+## Screenshots
 
 <img src="screenshots/Picture1.jpg" width="180"  >       <img src="screenshots/Picture2.jpg" width="180" hspace="20">
 <img src="screenshots/Picture3.jpg" width="180" >       <img src="screenshots/Picture4.jpg" width="180" hspace="20">
+
+## Presenataion Demo 
+
+- [ECOSIA Demo](https://docs.google.com/presentation/d/12zHesK9M6OcKn3XJEsF8ZqRAFa-TfJJFhOVufJBFHwU/edit#slide=id.p1)
 
 ## How to Use 
 
