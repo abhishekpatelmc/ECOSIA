@@ -8,8 +8,8 @@ Ecosia is a mobile application that guides users to make lifestyle changes, whic
 
 ### Screenshots
 
-<img src="screenshots/Picture1.jpg" width="220"  >       <img src="screenshots/Picture2.jpg" width="220" hspace="20">
-<img src="screenshots/Picture3.jpg" width="220" >       <img src="screenshots/Picture4.jpg" width="220" hspace="20">
+<img src="screenshots/Picture1.jpg" width="210"  >       <img src="screenshots/Picture2.jpg" width="210" hspace="20">
+<img src="screenshots/Picture3.jpg" width="210" >       <img src="screenshots/Picture4.jpg" width="210" hspace="20">
 
 ## How to Use 
 
